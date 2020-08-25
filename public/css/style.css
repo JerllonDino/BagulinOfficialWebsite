@@ -1,0 +1,303 @@
+/* Colors */
+.card-body,
+.tab-content,
+.bg-light {
+	background: white !important;
+}
+.bg-dark {
+	background: #B53A3A !important; 
+}
+.text-dark {
+	color: #B53A3A !important;
+}
+.btn-dark{
+	border:none;
+	background: #B53A3A !important;
+
+}
+.btn-dark:hover{
+	background: #702323 !important;
+	
+}
+#anouncements .list-group-item h6,
+.text-primary {
+	color: #8B2D2D !important;
+}
+.sticky-top {
+	top: 5em;
+}
+/* Navbar */
+.navbar{
+	padding-top: 0;
+	padding-bottom: 0; 
+	box-shadow: 0px 2px 10px;
+}
+#govLogo {
+	-moz-transition: all 0.7s ease;
+	transition: all 0.7s ease;
+}
+#govPH {
+	vertical-align: middle;
+	line-height: 30px;
+}
+#banner {
+	width: 100%;
+	line-height: 100px;
+	background: url('../img/bagulin.jpg');
+	background-size: cover;
+	background-position:center;
+	position: relative;
+	z-index: 1;
+	margin-top: 51px;
+}
+#masthead img {
+	width: 400px;
+	margin-top: -1%;
+}
+#overlay {
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0.56) 0%, rgba(0, 0, 0, 0.42) 100%);
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	z-index: 2;
+}
+#masthead {
+	position: relative;
+	z-index: 3;
+	vertical-align: middle;
+}
+.dropdown-submenu {
+	position: relative;
+	
+}
+
+.dropdown-submenu a::after {
+	transform: rotate(-90deg);
+	position: absolute;
+	right: 5px;
+	top: .8em;
+}
+.dropdown-submenu, .dropdown-menu{
+	border-radius: 0;
+	background: #B53A3A !important;
+}
+.dropdown-menu{
+	margin-top: 0;
+}
+.dropdown-submenu .dropdown-menu {
+	top: -9px;
+	left: 100%;
+}
+.dropdown:hover>.dropdown-menu, .dropdown-submenu:hover>.dropdown-menu{
+	display: block;
+}
+
+.dropdown>.dropdown-toggle:active, .dropdown-submenu>.dropdown-toggle:active{
+	pointer-events: none;
+}
+@media (max-width: 992px) {
+	.dropdown-menu{
+		width: 100%;
+	}
+	.dropdown-menu .dropdown-submenu{
+		width: 100%;
+	}
+	.nav-item{
+		min-width: 100% !important;
+		padding-top: 0 !important;
+		padding-bottom: 0 !important;
+	}
+	.dropdown-submenu a::after {
+		transform: rotate(0deg);
+		position: absolute;
+		right: 5px;
+		top: .8em;
+
+	}
+	.dropdown-menu ul{
+		padding-top: 0;
+		padding-bottom: 0;
+	}
+	.dropdown:hover>.dropdown-menu, .dropdown-submenu:hover>.dropdown-menu{
+		display: grid;
+	}
+
+	.dropdown>.dropdown-toggle:active, .dropdown-submenu>.dropdown-toggle:active{
+		pointer-events: auto;
+	}
+}
+
+/* Annoucements */
+#anouncements {
+	height: 315px;
+	overflow: auto;
+}
+#anouncements .list-group-item{
+	background: transparent;
+	border-color: transparent;
+	margin-bottom: 10px;
+	border-bottom: 1px solid rgba(0,0,0,.1);	
+	border-radius: 0px;
+}
+#anouncements .list-group-item:last-child {
+	border-color: transparent;
+}
+
+/* Facts */
+#facts .list-group-item{
+	background: transparent;
+	padding: 5px;
+}
+
+/* Cards */
+.card {
+	background: transparent;
+	
+	border-radius: 0 !important;
+	border-color: transparent !important;
+}
+.card-header:first-child {
+	border-radius: 0;
+}
+h6.card-header {
+	max-width: 100% !important;
+}
+.card-header {
+	
+	box-shadow: 
+	inset 0 3px 0 white,
+	inset 0 -3px 0 white;
+
+	border-top: 6px solid #E24949;
+	border-bottom: 6px solid #E24949;
+	
+	margin-bottom: 5px;
+	padding: .5rem!important;
+	background:#262525;
+	max-width: 25%;
+}
+
+/* NavPills */
+.nav-item{
+	max-width: 50% !important;
+	padding-top: 1%;
+	padding-bottom: 1%;
+	border-radius: 0;
+	cursor: pointer;
+}
+.navbar-toggler{
+	margin-top: 1%;
+	margin-bottom: 1%;
+}
+.nav-link{
+	border-color: transparent;
+	margin-left: 5px;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	
+
+}
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+	color: #fff;
+	background-color: #872929;
+}
+.dropdown-item{
+	color: #fff;
+	font-size: 0.8rem;
+}
+.nav-item:hover, .dropdown-item:hover{
+	background-color: rgba(255, 255, 255, 0.3);
+	border-radius: 0;
+	color: #fff !important;
+}
+/* IDK */
+a{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: none;
+
+
+}
+audio{
+	width:100%;
+	max-width: 100%;
+	height: 25px;
+}
+
+
+#footers{
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0.56) 0%, rgba(0, 0, 0, 0.42) 100%),url('../img/bagulin.jpg') no-repeat center center fixed;
+	opacity: 1;
+	border-style: hidden;
+	text-align: justify;
+	color: #fff;
+	margin-top: 20px;
+	background-size: cover;
+	height: 10%;
+}
+.txt-group{
+	font-size: 0.8rem;
+	line-height: 1.6;
+	margin-bottom: 1rem;
+	text-align: justify;
+}
+hr {
+	border: 0.5px solid white;
+}
+.ft-ico{
+	width: 15%;
+	height: auto;
+	margin-left:5px;
+
+}
+#addition{
+	height: 90px;
+}
+
+
+/* Small to Medium Screen */
+@media (max-width: 768px) {
+	#body.container {
+		margin-top: 56px;
+	}
+	.card-header {
+		max-width: 100%!important;
+	}
+
+	#pills-tab {
+		display: table;
+	}
+
+	#pills-tab .nav-item {
+		max-width: 50% !important;
+		min-width: 50% !important;
+		display: table-cell;	
+	}
+
+	#officials img{
+		width: 70px !important;
+	}
+	#officials h6 {
+		font-size: 0.8rem;
+	}
+}
+.carousel-item {
+	top:0;
+	left:0;
+	background-color: rgba(0,0,0,0.4);
+}
+.carousel-item p {
+	color: white;
+	text-align: right;
+	top: 0;
+	right: 0;
+	width: 50%;
+	font-weight: bolder;
+	font-variant: small-caps;
+}
+._3-8w{
+	max-width: 50% !important;
+}

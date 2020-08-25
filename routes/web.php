@@ -12,7 +12,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::view('/', 'home');
+Route::view('/municipality/message', 'pages/municipality/message');
+Route::view('/municipality/vision-mission', 'pages/municipality/general/vision-mission');
+Route::view('/municipality/history', 'pages/municipality/general/history');
+Route::view('/municipality/hymns', 'pages/municipality/general/hymns');
