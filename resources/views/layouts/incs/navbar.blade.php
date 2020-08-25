@@ -35,10 +35,10 @@
 									<li class="dropdown-submenu">
 										<a class="dropdown-item dropdown-toggle" href="#">Municipal Officials</a>
 										<ul class="dropdown-menu">
-											<li><a class="dropdown-item" href="municipality/government/officials/mayor.php">Mayor</a>
-												<li><a class="dropdown-item" href="municipality/government/officials/vice-mayor.php">Vice Mayor</a></li>
-												<li><a class="dropdown-item" href="municipality/government/officials/councilors.php">Councilors</a></li>
-												<li><a class="dropdown-item" href="municipality/government/past_executives">Past Local Chief Officials</a></li>
+											<li><a class="dropdown-item" href="{{url('municipality/government/officials/mayor')}}">Mayor</a>
+												<li><a class="dropdown-item" href="{{url('municipality/government/officials/vice-mayor')}}">Vice Mayor</a></li>
+												<li><a class="dropdown-item" href="{{url('municipality/government/officials/councilors')}}">Councilors</a></li>
+												<li><a class="dropdown-item" href="{{url('municipality/government/past_executives')}}">Past Local Chief Officials</a></li>
 
 											</ul>
 										</li>
