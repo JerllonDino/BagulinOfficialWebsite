@@ -110,10 +110,10 @@
 			var st = $(this).scrollTop();
 
 			if (st > lastScrollTop && st > 52) {
-				$navbar.fadeOut()
+				$navbar.hide();
 			}
 			else {
-				$navbar.fadeIn()
+				$navbar.show();
 			}
 			lastScrollTop = st;
 		});

@@ -22,4 +22,11 @@ Route::view('/municipality/government/barangay/skchairmans', 'pages/municipality
 Route::view('/municipality/government/officials/councilors', 'pages/municipality/government/officials/councilors');
 Route::view('/municipality/government/officials/mayor', 'pages/municipality/government/officials/mayor');
 Route::view('/municipality/government/officials/vice-mayor', 'pages/municipality/government/officials/vice-mayor');
-Route::view('/municipality/government/past_executives', 'pages/municipality/government/past_executives/index');
+Route::view('/municipality/government/past-executives', 'pages/municipality/government/past_executives/index');
+Route::view('/official-documents', 'pages/official_documents');
+
+Route::prefix('admin')->group(function () {
+    Route::get('/documents/{category?}', 'Admin\OfficialDocuments@index');
+    Route::post('/upload-documents', 'Admin\OfficialDocuments@save');
+    Route::delete('/delete-document', 'Admin\OfficialDocuments@delete');
+});
