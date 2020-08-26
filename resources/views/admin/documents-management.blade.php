@@ -18,7 +18,7 @@
     opacity: 1;
   }
 
-  #uploaded-documents .list-group-item:hover {
+  #docs .list-group-item:hover {
     background-color: #f1f1f1;
   }
 </style>
@@ -35,7 +35,7 @@
     </div>
     <div class="col-8">
       <h1 class="mb-3">{{$folder}}</h1>
-      <div class="row" id="uploaded-documents">
+      <div class="row" id="docs">
         @foreach ($documents as $document)
         <div class="col-4 border text-center p-4 document">
           <button class="btn delete-document-db" data-id="{{$document->id}}"><i class="fas fa-times"></i></button>
