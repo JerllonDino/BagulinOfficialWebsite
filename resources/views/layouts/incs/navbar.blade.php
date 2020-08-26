@@ -46,7 +46,7 @@
 										<li class="dropdown-submenu">
 											<a class="dropdown-item dropdown-toggle" href="#">Barangay Officials</a>
 											<ul class="dropdown-menu">
-												<li><a class="dropdown-item" href="municipality/government/barangay/chairmans.php">Barangay Chairmans</a>
+												<li><a class="dropdown-item" href="{{url('municipality/government/barangay/chairmans.php')}}">Barangay Chairmans</a>
 													<li><a class="dropdown-item" href="municipality/government/barangay/skchairmans.php">Barangay SK Chairmans</a></li>
 												</ul>
 											</li>
@@ -58,13 +58,13 @@
 									<li class="dropdown-submenu">
 										<a class="dropdown-item dropdown-toggle" href="#">Municipal Profile</a>
 										<ul class="dropdown-menu">
-											<li><a class="dropdown-item" href="municipality/profile/profile-geophysical.php">Geophysical Environment</a>
-												<li><a class="dropdown-item" href="municipality/profile/profile-infrastructure.php">Infrastracture/Utilities/Facilities</a></li>
-												<li><a class="dropdown-item" href="municipality/profile/profile-population.php">Population and Social Profile</a></li>
-												<li><a class="dropdown-item" href="municipality/profile/profile-health.php">Health</a></li>
-												<li><a class="dropdown-item" href="municipality/profile/profile-education.php">Education</a></li>
-												<li><a class="dropdown-item" href="municipality/profile/profile-local.php">Local Institutional Capability</a></li>
-												<li><a class="dropdown-item" href="municipality/profile/profile-local-economy.php">Local Economy</a></li>
+											<li><a class="dropdown-item" href="{{url('municipality/profile/geophysical')}}">Geophysical Environment</a>
+												<li><a class="dropdown-item" href="{{url('municipality/profile/infrastructure')}}">Infrastracture/Utilities/Facilities</a></li>
+												<li><a class="dropdown-item" href="{{url('municipality/profile/population')}}">Population and Social Profile</a></li>
+												<li><a class="dropdown-item" href="{{url('municipality/profile/health')}}">Health</a></li>
+												<li><a class="dropdown-item" href="{{url('municipality/profile/education')}}">Education</a></li>
+												<li><a class="dropdown-item" href="{{url('municipality/profile/local')}}">Local Institutional Capability</a></li>
+												<li><a class="dropdown-item" href="{{url('municipality/profile/local-economy')}}">Local Economy</a></li>
 											</ul>
 										</li>
 									</ul>
@@ -89,8 +89,8 @@
 	    		Agri-Tourism
 	    	</a>
 	    	<ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-	    		<li><a class="dropdown-item" href="municipality/general/bagulin_tourism.php">Tourism</a></li>
-	    		<li><a class="dropdown-item" href="municipality/general/bagulin_agriculture.php">Agriculture</a></li>
+	    		<li><a class="dropdown-item" href="{{url('agri-tour/tourism')}}">Tourism</a></li>
+	    		<li><a class="dropdown-item" href="{{url('agri-tour/agriculture')}}">Agriculture</a></li>
 	    	</ul>
 
 	    	<li class="nav-item active">
