@@ -45,4 +45,5 @@ Route::prefix('admin')->group(function () {
     Route::get('/documents/{category?}', 'Admin\OfficialDocuments@index');
     Route::post('/upload-documents', 'Admin\OfficialDocuments@save');
     Route::delete('/delete-document', 'Admin\OfficialDocuments@delete');
+    Route::put('/rename-document', 'Admin\OfficialDocuments@rename');
 });

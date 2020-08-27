@@ -7,22 +7,24 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\OfficialDocument;
 use Illuminate\Support\Facades\Storage;
+use League\CommonMark\Block\Element\Document;
 
 class OfficialDocuments extends Controller
 {
     public function index($category = NULL) {
+        $category_name = DocumentCategory::select('category')->where('id', $category)->first();
         $official_documents = OfficialDocument::select('id', 'category_id', 'file_name')
                                             ->when($category, function($query) use ($category) {
                                                 return $query->where('category_id', $category);
                                             })
-                                            ->get();
+                                            ->paginate(10);
 
         $document_categories = DocumentCategory::select('id','category')->get();
 
         return view('admin/documents-management')
                 ->with('categories', $document_categories)
                 ->with('documents', $official_documents)
-                ->with('folder', $category == NULL ? 'All' : $category);
+                ->with('folder', $category_name == null ? 'All' : $category_name->category);
     }
 
     public function save(Request $request) {
@@ -31,6 +33,21 @@ class OfficialDocuments extends Controller
         ]);
 
         $this->storeDocuments($request->uploads, $request->category);
+    }
+
+    public function rename(Request $request) {
+        $request->validate([
+            'rename_to' => 'required',
+            'id' => 'required'
+        ]);
+
+        $old_file = OfficialDocument::select('category_id', 'file_name')->where('id', $request->id)->first();
+        $extension = explode('.',$old_file->file_name)[1];
+
+        Storage::disk('public')->move(
+            $old_file->category_id. "/". $old_file->file_name,
+            $old_file->category_id. "/". $request->rename_to . ".$extension");
+        OfficialDocument::where('id', $request->id)->update(['file_name'=>$request->rename_to . ".$extension"]);
     }
 
     public function delete(Request $request) {
@@ -65,7 +82,7 @@ class OfficialDocuments extends Controller
             $data = array();
             foreach ($documents as $document) {
                 $decoded = $this->decodeBase64($document['base64']);
-                $fileName =  time() . rand(11, 99) . '_' . str_replace(' ', '-', $document['fileName']);
+                $fileName =  time() . rand(11, 99) . '_' . str_replace('_', '-', $document['fileName']);
 
                 if ($decoded !== FALSE) {
                     $result = Storage::disk('public')->put( $category . '/' . $fileName, $decoded['contents']);
