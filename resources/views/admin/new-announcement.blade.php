@@ -3,14 +3,16 @@
 @section('content')
 <div class="container my-5">
     <div class="row">
-        <div class="col-lg-10 mx-auto">
+        <div class="mx-auto">
             <h1 class="mb-4">New Announcement</h1>
             <form id="new-form">
                 <div class="form-group">
                     <input class="form-control col-lg-5" type="text" placeholder="Title" name="title">
                 </div>
                 <div class="form-group">
-                    <textarea name="content" id="editor1" rows="10" cols="80"></textarea>
+                    <textarea name="content" id="editor1" rows="10" cols="80">
+
+                    </textarea>
                 </div>
                 <button class="btn btn-primary mt-3 float-right">Post</button>
             </form>

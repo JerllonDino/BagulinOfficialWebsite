@@ -22,8 +22,8 @@
 				<h6 class="p-2 bg-dark text-white text-center mb-0 rounded">CONNECT WITH US</h6>
 				<div class="container pt-2">
 
-					<div id="fb-root"></div>
-					<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=456638428390540&autoLogAppEvents=1"></script>
+					{{-- <div id="fb-root"></div>
+					<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=456638428390540&autoLogAppEvents=1"></script> --}}
 					<div class="fb-page" data-href="https://www.facebook.com/bagulinlaunionofficial/?eid=ARCXRLM6SmaEyNLnA2Q6RNK0sjZ89h0HWF8WEjt6PMHw4ikoWS2N0vfWWOEMBal5PC4opmXFPtwPb2mQ" data-tabs="" data-width="230" data-height="" data-small-header="true" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/bagulinlaunionofficial/?eid=ARCXRLM6SmaEyNLnA2Q6RNK0sjZ89h0HWF8WEjt6PMHw4ikoWS2N0vfWWOEMBal5PC4opmXFPtwPb2mQ" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/bagulinlaunionofficial/?eid=ARCXRLM6SmaEyNLnA2Q6RNK0sjZ89h0HWF8WEjt6PMHw4ikoWS2N0vfWWOEMBal5PC4opmXFPtwPb2mQ">Municipality of Bagulin, La Union</a></blockquote></div>
 				</div>
 			</div>
@@ -71,8 +71,6 @@
 		</div>
 	</div>
 </div>
-<div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0"></script>
 <script type="text/javascript" src="{{asset('/js/timeline.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/app.js')}}"></script>
 

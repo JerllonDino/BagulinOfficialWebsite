@@ -35,6 +35,21 @@ class OfficialDocuments extends Controller
         $category = new DocumentCategory;
         $category->category = $request->new_category;
         $category->save();
+
+        return response()->json([
+            "link" => $category->id
+        ]);
+    }
+
+    public function deleteCategory(Request $request) {
+        $request->validate([
+            'category_id' => 'required'
+        ]);
+
+        $category = DocumentCategory::find($request->category_id);
+        OfficialDocument::where('category_id', $request->category_id)->delete();
+        Storage::disk('public')->deleteDirectory("$request->category_id/");
+        $category->delete();
     }
 
     public function save(Request $request) {

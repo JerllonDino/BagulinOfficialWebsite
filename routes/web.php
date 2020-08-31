@@ -40,7 +40,8 @@ Route::prefix('agri-tour')->group(function () {
     Route::view('tourism', 'pages/municipality/general/tourism');
 });
 
-Route::view('/official-documents', 'pages/official_documents');
+Route::get('/official-documents', 'DocumentsController@index');
+Route::get('/get-documents', 'DocumentsController@getFiles');
 
 Route::prefix('admin')->group(function () {
     Route::get('/documents/{category?}', 'Admin\OfficialDocuments@index');
@@ -62,6 +63,7 @@ Route::prefix('admin')->group(function () {
     Route::delete('/delete-document', 'Admin\OfficialDocuments@delete');
     Route::put('/rename-document', 'Admin\OfficialDocuments@rename');
     Route::post('/new-document-category', 'Admin\OfficialDocuments@addCategory');
+    Route::delete('/delete-document-category', 'Admin\OfficialDocuments@deleteCategory');
 
     Route::get('/', 'Auth\LoginController@index');
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');

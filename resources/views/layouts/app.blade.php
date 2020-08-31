@@ -7,6 +7,8 @@
 
         @yield('styles')
         <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/fontawesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/solid.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/style.css') }}">
         <link rel="shortcut icon" href="{{ asset('img/logo-2.png') }}"/>
 

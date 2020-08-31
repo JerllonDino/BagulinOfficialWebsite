@@ -80,7 +80,7 @@
 	    	<a class="nav-link text-white" href="municipality/general/bagulin_agriculture.php">Agriculture</a>
 	    </li> -->
 	    <li class="nav-item">
-	    	<a class="nav-link text-white" href="docs/docs.php">
+	    	<a class="nav-link text-white" href="/official-documents">
 	    		Official Documents
 	    	</a>
 	    </li>

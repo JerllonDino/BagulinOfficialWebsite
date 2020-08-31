@@ -51,14 +51,14 @@
   <title>Bagulin Admin</title>
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
   <link rel="stylesheet" href="{{ asset('css/fontawesome.min.css') }}">
   <link rel="stylesheet" href="{{ asset('css/solid.css') }}">
   <link rel="stylesheet" href="{{ asset('css/admin/sidenav.css') }}">
   @yield('styles')
 </head>
 
-<body class="bg-light">
+<body>
   <div class="popup" style="display:none;"></div>
   <div class="wrapper">
     @php
@@ -131,16 +131,41 @@
 
     </div>
   </div>
-  <script src="{{ asset('/js/jquery.js') }}"></script>
-  <script src="{{ asset('/js/bootstrap.js') }}"></script>
+
+  <script src="{{ asset('/js/app.js') }}"></script>
+  {{-- <script src="{{ asset('/js/jquery.js') }}"></script> --}}
+  @yield('scripts')
   <script>
     $(document).ready(function () {
         $('#sidebarCollapse').on('click', function () {
             $('#sidebar').toggleClass('active');
         });
+
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            complete: function( res ) {
+                $('.is-invalid').removeClass('is-invalid');
+                console.log(res);
+                switch( res.status ) {
+                    //validation error
+                    case 422:
+                        errors = res.responseJSON.errors;
+                        for(i in errors) {
+                            $input = $('[name="' + i + '"]');
+                            $input.parent().find('.invalid-feedback').text(errors[i]);
+                            $input.addClass('is-invalid');
+                        }
+                        $('html,body').animate({'scrollTop':0}, 'slow');
+                        break;
+                    case 500:
+                        break;
+                }
+            }
+          });
     });
   </script>
-  @yield('scripts')
 </body>
 
 </html>
