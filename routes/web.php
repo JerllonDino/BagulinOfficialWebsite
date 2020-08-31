@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::view('/', 'home');
 Route::prefix('municipality')->group(function () {
     Route::view('message', 'pages/municipality/message');
@@ -61,4 +62,20 @@ Route::prefix('admin')->group(function () {
     Route::delete('/delete-document', 'Admin\OfficialDocuments@delete');
     Route::put('/rename-document', 'Admin\OfficialDocuments@rename');
     Route::post('/new-document-category', 'Admin\OfficialDocuments@addCategory');
+
+    Route::get('/', 'Auth\LoginController@index');
+    Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
+    Route::post('/login', 'Auth\LoginController@login');
+    Route::post('/logout', 'Auth\LoginController@logout')->name('logout');
+    Route::post('/password/confirm', 'Auth\ConfirmPasswordController@confirm');
+    Route::get('/password/confirm', 'Auth\ConfirmPasswordController@showConfirmForm')->name('password.confirm');
+    Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('password.email');
+    Route::post('/password/reset', 'Auth\ResetPasswordController@reset')->name('password.update');
+    Route::get('/password/reset', 'Auth\ResetPasswordController@showLinkRequestForm')->name('password.request');
+    Route::get('/password/reset/{token}', 'Auth\ResetPasswordController@showResetForm')->name('showResetForm');
+    Route::post('/register', 'Auth\RegisterController@register');
+    Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 });
+// Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
