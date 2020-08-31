@@ -1,0 +1,189 @@
+.modal {
+    overflow-y: auto;
+}
+
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+.no-gutters .col,
+.no-gutters .col[class*="col-"] {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.popup {
+    background-color: #38c172 !important;
+    color: #fff !important;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0.25rem;
+    margin: 0.75rem;
+    z-index: 1030;
+}
+
+label {
+    font-weight: bold;
+}
+
+td {
+    cursor: pointer;
+}
+
+/* input[type="checkbox"] {
+    width: 100% !important;
+} */
+
+.uploaded-pdf,
+.pdf {
+    position: relative;
+    background-color: #e9ecef;
+    border: 1px solid #dee2e6;
+    text-align: center;
+    padding: 1rem;
+}
+.pdf .delete {
+    color: #212529;
+}
+.pdf .delete:hover {
+    color: white;
+}
+
+.uploaded-photo,
+.photo {
+    width: 150px;
+    height: 150px;
+    border: 1px solid #dee2e6;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+}
+
+.delete-file,
+.delete,
+.delete-photo,
+.delete-photo-db {
+    padding: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1030;
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    margin: 10px;
+}
+
+.uploaded-video,
+.video {
+    position: relative;
+}
+
+.uploaded-photo:hover .set-thumbnail,
+.photo:hover .set-thumbnail {
+    display: block;
+    cursor: pointer;
+}
+
+.thumbnail {
+    outline: 3px solid #4592ff;
+    outline-offset: -3px;
+}
+
+.set-thumbnail {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1029;
+    background-color: #4592ff8f;
+    display: none;
+}
+
+.set-thumbnail p {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.delete {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 1030;
+    color: white;
+    text-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+    margin: 10px;
+}
+
+.btn-primary {
+    background-color: #702323;
+    border-color: #702323;
+}
+
+.btn-primary.active,
+.btn-primary:hover,
+.btn-primary:focus {
+    background-color: #2D2926FF !important;
+    border-color: #2D2926FF !important;
+}
+
+.bg-primary {
+    background-color: #702323 !important;
+}
+
+.text-primary {
+    color: #2D2926FF !important;
+}
+
+/* Loading on file */
+.upload-container {
+    position: relative;
+}
+.loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1031;
+    background-color: white;
+}
+.loading div {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1032;
+    box-shadow: 0px 5px 15px rgba(0,0,0,0.3);
+}
+
+.videos video {
+    margin-right: 5px;
+}
+
+#crop-modal .loading {
+    background-color: white;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#crop-modal .loading i {
+    font-size: 1.575rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#crop-container {
+    zoom: 0.5;
+}

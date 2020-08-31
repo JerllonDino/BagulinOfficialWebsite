@@ -59,6 +59,15 @@ Route::prefix('admin')->group(function () {
         Route::delete('/delete', 'Admin\Announcements@delete');
     });
 
+    Route::prefix('user')->group(function () {
+        Route::get('/', 'Admin\UserController@index');
+        Route::post('/get', 'Admin\UserController@get');
+        Route::post('/store', 'Admin\UserController@store');
+        Route::delete('/delete', 'Admin\UserController@delete');
+        Route::put('/update', 'Admin\UserController@update');
+    });
+
+
     Route::post('/upload-documents', 'Admin\OfficialDocuments@save');
     Route::delete('/delete-document', 'Admin\OfficialDocuments@delete');
     Route::put('/rename-document', 'Admin\OfficialDocuments@rename');
