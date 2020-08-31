@@ -17,7 +17,7 @@
   @yield('content')
   <script src="{{ asset('/js/jquery.js') }}"></script>
   <script src="{{ asset('/js/bootstrap.js') }}"></script>
-  {{-- <script src="{{ asset('js/admin/script.js') }}"></script> --}}
+  <script src="{{ asset('js/admin/script.js') }}"></script>
   @yield('auth-scripts')
 </body>
 
