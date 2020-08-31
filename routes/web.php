@@ -43,7 +43,22 @@ Route::view('/official-documents', 'pages/official_documents');
 
 Route::prefix('admin')->group(function () {
     Route::get('/documents/{category?}', 'Admin\OfficialDocuments@index');
+
+    Route::prefix('announcements')->group(function () {
+        Route::get('/', 'Admin\Announcements@index');
+        Route::get('/read/{slug}', 'Admin/Announcements@read');
+
+        Route::put('/update', 'Admin\Announcements@update');
+        Route::get('/edit/{id}', 'Admin\Announcements@edit');
+
+        Route::view('/add', 'admin/new-announcement');
+        Route::post('/save', 'Admin\Announcements@save');
+
+        Route::delete('/delete', 'Admin\Announcements@delete');
+    });
+
     Route::post('/upload-documents', 'Admin\OfficialDocuments@save');
     Route::delete('/delete-document', 'Admin\OfficialDocuments@delete');
     Route::put('/rename-document', 'Admin\OfficialDocuments@rename');
+    Route::post('/new-document-category', 'Admin\OfficialDocuments@addCategory');
 });

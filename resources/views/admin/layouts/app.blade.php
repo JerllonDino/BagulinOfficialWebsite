@@ -13,7 +13,34 @@
     </head>
     <body class="bg-body">
         @yield('content')
+
+
         <script src="{{asset('js/app.js')}}"></script>
+        <script>
+            $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            },
+            complete: function( res ) {
+                $('.is-invalid').removeClass('is-invalid');
+                console.log(res);
+                switch( res.status ) {
+                    //validation error
+                    case 422:
+                        errors = res.responseJSON.errors;
+                        for(i in errors) {
+                            $input = $('[name="' + i + '"]');
+                            $input.parent().find('.invalid-feedback').text(errors[i]);
+                            $input.addClass('is-invalid');
+                        }
+                        $('html,body').animate({'scrollTop':0}, 'slow');
+                        break;
+                    case 500:
+                        break;
+                }
+            }
+            });
+        </script>
         @yield('scripts')
     </body>
 </html>

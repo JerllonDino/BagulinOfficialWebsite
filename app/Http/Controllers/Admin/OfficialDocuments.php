@@ -27,6 +27,16 @@ class OfficialDocuments extends Controller
                 ->with('folder', $category_name == null ? 'All' : $category_name->category);
     }
 
+    public function addCategory(Request $request) {
+        $request->validate([
+            "new_category" => 'required'
+        ]);
+
+        $category = new DocumentCategory;
+        $category->category = $request->new_category;
+        $category->save();
+    }
+
     public function save(Request $request) {
         $request->validate([
             'category' => 'required'
@@ -43,11 +53,12 @@ class OfficialDocuments extends Controller
 
         $old_file = OfficialDocument::select('category_id', 'file_name')->where('id', $request->id)->first();
         $extension = explode('.',$old_file->file_name)[1];
+        $new_filename =  time() . rand(11, 99) . '_' . str_replace('_', '-', $request->rename_to) . ".$extension";
 
         Storage::disk('public')->move(
             $old_file->category_id. "/". $old_file->file_name,
-            $old_file->category_id. "/". $request->rename_to . ".$extension");
-        OfficialDocument::where('id', $request->id)->update(['file_name'=>$request->rename_to . ".$extension"]);
+            $old_file->category_id. "/". $new_filename);
+        OfficialDocument::where('id', $request->id)->update(['file_name'=>$new_filename]);
     }
 
     public function delete(Request $request) {

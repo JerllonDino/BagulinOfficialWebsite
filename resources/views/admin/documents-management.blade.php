@@ -47,14 +47,22 @@
 
 <div class="container my-5">
   <div class="row">
-
     <div class="col-4">
       <nav class="nav flex-column nav-pills">
         <a class="nav-link all" href="/admin/documents">All</a>
         @foreach ($categories as $category)
-      <a class="nav-link {{strtolower($category->category)}}" href="/admin/documents/{{$category->id}}">{{$category->category}}</a>
+        <a class="nav-link {{strtolower($category->category)}}" href="/admin/documents/{{$category->id}}">{{$category->category}}</a>
         @endforeach
       </nav>
+
+      <form action="" id="new-category-form">
+        <div class="form-group my-4">
+          <input type="text" class="form-control col-lg-6" placeholder="New category name" name="new_category">
+          <div class="invalid-feedback"></div>
+          <button type="submit" class="btn btn-sm btn-outline-secondary mt-3">Add Category</button>
+        </div>
+      </form>
+
     </div>
     <div class="col-8">
       <h1 class="mb-3">{{$folder}}</h1>
@@ -87,6 +95,42 @@
       </div>
     </div>
 
+  </div>
+</div>
+
+<div class="modal" id="loading-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Upload Documents</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="new-form">
+        <div class="modal-body">
+          <div class="form-group">
+              <input type="file" name="documents" multiple="true">
+              <ul class="list-group mt-3 small" id="uploaded-documents">
+
+              </ul>
+          </div>
+
+          <div class="form-group">
+            <label for="">Category</label>
+            <select name="category" class="form-control">
+              @foreach($categories as $category)
+              <option value="{{$category->id}}">{{$category->category}}</option>
+              @endforeach
+            </select>
+
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary"><i class="fas fa-spin fa-spinner" style="display:none;"></i> Upload</button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>
 
@@ -153,32 +197,6 @@
 
 @section('scripts')
 <script>
-  $(document).ready(function () {
-      $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        },
-        complete: function( res ) {
-            $('.is-invalid').removeClass('is-invalid');
-            console.log(res);
-            switch( res.status ) {
-                //validation error
-                case 422:
-                    errors = res.responseJSON.errors;
-                    for(i in errors) {
-                        $input = $('[name="' + i + '"]');
-                        $input.parent().find('.invalid-feedback').text(errors[i]);
-                        $input.addClass('is-invalid');
-                    }
-                    $('html,body').animate({'scrollTop':0}, 'slow');
-                    break;
-                case 500:
-                    break;
-            }
-        }
-      });
-
-
   // File upload
   $('[name="documents"]').change(function() {
       var file = $(this);
@@ -295,6 +313,19 @@
       }
     })
   });
-})
+
+  // New Category
+  $('#new-category-form').on('submit', function(e) {
+    e.preventDefault();
+    var vals = $(this).serializeArray();
+    $.ajax({
+      url: '/admin/new-document-category',
+      method: 'POST',
+      data: vals,
+      success:function(res) {
+        console.log(res);
+      }
+    });
+  })
 </script>
 @endsection
