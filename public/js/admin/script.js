@@ -46,7 +46,7 @@ $(document).ready(function() {
         len = $(this).val().length;
         $(this).parent().find('.counter').text(len);
     });
-})
+});
 
 $('[data-max]').on('input', function() {
     var inp = $(this).val();

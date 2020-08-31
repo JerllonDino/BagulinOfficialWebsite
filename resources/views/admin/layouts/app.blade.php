@@ -92,41 +92,9 @@
 
     </div>
   </div>
-
   <script src="{{ asset('/js/app.js') }}"></script>
-  {{-- <script src="{{ asset('/js/jquery.js') }}"></script> --}}
+  <script src="{{ asset('js/admin/script.js') }}"></script>
   @yield('scripts')
-  <script>
-    $(document).ready(function () {
-        $('#sidebarCollapse').on('click', function () {
-            $('#sidebar').toggleClass('active');
-        });
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            },
-            complete: function( res ) {
-                $('.is-invalid').removeClass('is-invalid');
-                console.log(res);
-                switch( res.status ) {
-                    //validation error
-                    case 422:
-                        errors = res.responseJSON.errors;
-                        for(i in errors) {
-                            $input = $('[name="' + i + '"]');
-                            $input.parent().find('.invalid-feedback').text(errors[i]);
-                            $input.addClass('is-invalid');
-                        }
-                        $('html,body').animate({'scrollTop':0}, 'slow');
-                        break;
-                    case 500:
-                        break;
-                }
-            }
-          });
-    });
-  </script>
 </body>
 
 </html>

@@ -232,6 +232,10 @@
       });
     });
 
+    $newModal.on('hidden.bs.modal', function () {
+        $(this).find('form').trigger('reset');
+    })
+
     $usersTable.on('click', 'tbody tr', function() {
       if (!$(this).find('td:eq(0)').hasClass('dataTables_empty')) {
         id = $(this).attr('data-id');

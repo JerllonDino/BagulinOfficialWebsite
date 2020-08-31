@@ -67,7 +67,6 @@ Route::prefix('admin')->group(function () {
         Route::put('/update', 'Admin\UserController@update');
     });
 
-
     Route::post('/upload-documents', 'Admin\OfficialDocuments@save');
     Route::delete('/delete-document', 'Admin\OfficialDocuments@delete');
     Route::put('/rename-document', 'Admin\OfficialDocuments@rename');
