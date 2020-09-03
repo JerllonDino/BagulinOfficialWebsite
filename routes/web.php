@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'home');
+Route::post('/views-counter', 'DailyPageViewsController@add');
 Route::prefix('municipality')->group(function () {
     Route::view('message', 'pages/municipality/message');
     Route::view('vision-mission', 'pages/municipality/general/vision-mission');
@@ -46,6 +47,9 @@ Route::get('/get-documents', 'DocumentsController@getFiles');
 Route::prefix('admin')->group(function () {
     Route::get('/documents/{category?}', 'Admin\OfficialDocuments@index');
 
+    Route::view('/dashboard', 'admin/dashboard');
+    Route::get('/page-views/get', 'Admin\AdminDailyPageViews@get');
+
     Route::prefix('announcements')->group(function () {
         Route::get('/', 'Admin\Announcements@index');
         Route::get('/read/{slug}', 'Admin/Announcements@read');
@@ -72,6 +76,7 @@ Route::prefix('admin')->group(function () {
     Route::put('/rename-document', 'Admin\OfficialDocuments@rename');
     Route::post('/new-document-category', 'Admin\OfficialDocuments@addCategory');
     Route::delete('/delete-document-category', 'Admin\OfficialDocuments@deleteCategory');
+    Route::put('/rename-document-category', 'Admin\OfficialDocuments@renameCategory');
 
     Route::get('/', 'Auth\LoginController@index');
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');

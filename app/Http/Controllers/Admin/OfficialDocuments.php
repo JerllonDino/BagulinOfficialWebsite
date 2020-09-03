@@ -12,7 +12,7 @@ use League\CommonMark\Block\Element\Document;
 class OfficialDocuments extends Controller
 {
     public function index($category = NULL) {
-        $category_name = DocumentCategory::select('category')->where('id', $category)->first();
+        $category_name = DocumentCategory::select('id', 'category')->where('id', $category)->first();
         $official_documents = OfficialDocument::select('id', 'category_id', 'file_name')
                                             ->when($category, function($query) use ($category) {
                                                 return $query->where('category_id', $category);
@@ -24,7 +24,8 @@ class OfficialDocuments extends Controller
         return view('admin/documents-management')
                 ->with('categories', $document_categories)
                 ->with('documents', $official_documents)
-                ->with('folder', $category_name == null ? 'All' : $category_name->category);
+                ->with('folder', $category_name == null ? 'All' : $category_name->category)
+                ->with('category_id', isset($category_name->id) ? $category_name->id : null);
     }
 
     public function addCategory(Request $request) {
@@ -122,5 +123,14 @@ class OfficialDocuments extends Controller
             }
             OfficialDocument::insert($data);
         }
+    }
+
+    public function renameCategory(Request $request) {
+        $request->validate([
+            'id' => 'required',
+            'rename_to' => 'required'
+        ]);
+
+        DocumentCategory::where('id', $request->id)->update(['category' => $request->rename_to]);
     }
 }

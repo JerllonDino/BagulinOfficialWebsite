@@ -85,7 +85,7 @@
 
     {{-- FILES --}}
     <div class="col-9">
-      <h1 class="mb-3">{{$folder}}</h1>
+    <h1 class="mb-3"><span id="category-name" data-id="{{$category_id}}">{{$folder}}</span> @if(strtolower($folder) != 'all') <button id="rename-category-btn" class="btn btn-light"><i class="fas fa-edit"></i></button> @endif</h1>
       <hr/>
       <button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#new-file-modal"><i class="fas fa-upload"></i> Upload Documents</button>
       <div class="row" id="docs">
@@ -170,6 +170,30 @@
         <div class="modal-body">
           <label for="">New File Name : </label>
           <input type="text" class="form-control" placeholder="New File Name" name="rename_to">
+          <input type="hidden" name="id">
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary"><i class="fas fa-spin fa-spinner" style="display:none;"></i> Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+{{-- Rename Category Modal --}}
+<div class="modal" tabindex="-1" role="dialog" id="rename-category-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Rename Category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="rename-category-form">
+        <div class="modal-body">
+          <label for="">New category name : </label>
+          <input type="text" class="form-control" name="rename_to">
           <input type="hidden" name="id">
         </div>
         <div class="modal-footer">
@@ -369,5 +393,44 @@
       });
     }
   })
+
+
+  // Rename Category
+  $('#rename-category-btn').click(function() {
+    $form = $('#rename-category-form');
+    $category = $('#category-name');
+
+    categoryName = $category.text();
+    id = $category.attr('data-id');
+    console.log(id);
+    $('#rename-category-modal').modal('show');
+    $form.find('[name="rename_to"]').val(categoryName);
+    $form.find('[name="id"]').val(id);
+  });
+
+  $('#rename-category-form').submit(function(e) {
+    e.preventDefault();
+
+    var vals = $(this).serializeArray();
+    $submitBtn = $(this).find('[type="submit"]');
+    $submitBtnSpinner = $submitBtn.find('.fa-spin');
+
+    $.ajax({
+      url: '/admin/rename-document-category',
+      method: 'PUT',
+      data: vals,
+      beforeSend: function() {
+        $submitBtn.attr('disabled', '');
+        $submitBtnSpinner.show();
+      },
+      success: function(res) {
+        $submitBtnSpinner.hide();
+        $submitBtn.removeClass('btn-primary').addClass('btn-success').html('<i class="fas fa-check-circle"></i>File name changed. Refreshing page...');
+
+        location.reload();
+      }
+    });
+
+  });
 </script>
 @endsection
