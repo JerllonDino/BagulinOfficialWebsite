@@ -95,8 +95,17 @@
       <!-- Anouncements -->
       <div class="bg-light" id="anouncements">
         <h6 class="p-2 text-white text-center mb-1 card-header">Announcements</h6>
-        <div class="list-group small">
-        </div>
+        <ul class="list-group">
+          @foreach($announcements as $announcement)
+          <li class="list-group-item">
+            <h5><a class="text-primary" href="/read/{{$announcement->slug}}">{{$announcement->title}}</a></h5>
+            <p class="text-secondary">{{$announcement->created_at}}</p>
+          </li>
+          @endforeach
+        </ul>
+        @if (count($announcements) > 0)
+         <a href="/announcements" class="btn btn-dark btn-block">More</a>
+        @endif
       </div>
 
       <!-- Quick Facts -->

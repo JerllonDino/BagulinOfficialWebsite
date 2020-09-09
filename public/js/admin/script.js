@@ -1,8 +1,31 @@
 $.ajaxSetup({
+    $btn: undefined,
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     },
+    showLoading: function() {
+        if (this.$btn !== undefined) {
+            this.$btn.attr('disabled', '');
+            this.$btn.find('.fa-spin').show();
+        }
+    },
+    hideLoading: function() {
+        if (this.$btn !== undefined) {
+            this.$btn.removeAttr('disabled');
+            this.$btn.find('.fa-spin').hide();
+        }
+    },
+    beforeSend: function() {
+        try {
+            this.$btn = $form.find('[type="submit"]');
+            this.showLoading();
+        }
+        catch (err) {
+            $form = undefined;
+        }
+    },
     complete: function( res ) {
+        // this.hideLoading();
         $('.is-invalid').removeClass('is-invalid');
         console.log(res);
         switch( res.status ) {

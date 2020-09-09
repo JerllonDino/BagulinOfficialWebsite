@@ -97,7 +97,7 @@
 	    		<a class="nav-link text-white" href="">Citizen's Charter</a>
 	    	</li>
 	    	<li class="nav-item active">
-	    		<a class="nav-link text-white" href="">Announcements</a>
+	    		<a class="nav-link text-white" href="/announcements">Announcements</a>
 	    	</li>
 
 	    </ul>

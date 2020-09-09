@@ -13,8 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'home');
+Route::get('/', 'HomeController@index');
 Route::post('/views-counter', 'DailyPageViewsController@add');
+Route::get('/read/{slug}', 'AnnouncementController@read');
+Route::get('/announcements', 'AnnouncementController@index');
+
 Route::prefix('municipality')->group(function () {
     Route::view('message', 'pages/municipality/message');
     Route::view('vision-mission', 'pages/municipality/general/vision-mission');
@@ -59,6 +62,9 @@ Route::prefix('admin')->group(function () {
 
         Route::view('/add', 'admin/new-announcement');
         Route::post('/save', 'Admin\Announcements@save');
+
+        Route::post('/get-images', 'Admin\Announcements@getImages');
+        Route::delete('/delete-image', 'Admin\Announcements@deleteImage');
 
         Route::delete('/delete', 'Admin\Announcements@delete');
     });
