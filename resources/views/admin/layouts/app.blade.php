@@ -50,6 +50,12 @@
             Documents
           </a>
         </li>
+        <li class="{{ $uri == 'admin/citizens-charter' ?  'active' : '' }}">
+          <a href="/admin/citizens-charter">
+            <i class="fas fa-file"></i>
+            Citizens Charter
+          </a>
+        </li>
         <li class="{{ $uri == 'admin/user' ?  'active' : '' }}">
             <a href="/admin/user">
               <i class="fas fa-user"></i>

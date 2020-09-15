@@ -57,7 +57,7 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-12">
-                <h3 class="mb-5 mt-1 card-header text-white text-center mx-auto d-block" style="max-width: 50% !important;">OFFICIAL DOCUMENTS</h3>
+                <h3 class="mb-5 mt-1 card-header text-white text-center mx-auto d-block" style="max-width: 50% !important;">Citizen's Charter</h3>
             </div>
         </div>
 
@@ -67,12 +67,11 @@
                 <div class="card">
                     <div class="card-header" role="tab" id="headingOne">
                         <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapse-{{$key}}" aria-expanded="false" aria-controls="collapseExample">
-                            <h3 class="mb-0 float-left">{{ucwords($category->category)}}</h3>
+                            <h3 class="mb-0 float-left">{{ucwords($category['category'])}}</h3>
                             <h3 class="mb-0 float-right"><i class="fas fa-plus"></i></h3>
                         </button>
                     </div>
-
-                    <div id="collapse-{{$key}}" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-id="{{$category->id}}">
+                    <div id="collapse-{{$key}}" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-id="{{$category['id']}}" data-category="{{$category['category']}}">
                         <div class="card-body bg-secondary">
                             <div class="row documents" data-loaded="false">
                                 <div class="col-12">
@@ -85,7 +84,6 @@
             </div>
             @endforeach
         </div>
-
     </div>
 @endsection
 
@@ -96,8 +94,10 @@ $('.collapse').on('show.bs.collapse', function () {
     $documents = $elem.find('.documents');
 
     if ($documents.attr('data-loaded') == 'false') {
+        category_name = $(this).attr('data-category');
+
         $.ajax({
-            url: '/get-documents',
+            url: '/citizens-charter/documents',
             data: {category: $(this).attr('data-id')},
             success: function(res) {
                 html = '';
@@ -108,7 +108,7 @@ $('.collapse').on('show.bs.collapse', function () {
                             <div class="card document h-100">
                                 <div class="card-body">
                                     <h1 class="text-center"><i class="fas fa-file-alt "></i></h1>
-                                    <a class="text-center d-block text-dark font-weight-bold" href="/storage/official-documents/${data.category_id}/${data.file_name}" target="_blank">${data.file_name.split('_')[1]}</a>
+                                    <a class="text-center d-block text-dark font-weight-bold" href="/storage/citizens-charter/${category_name}/${data.file_name}" target="_blank">${data.file_name.split('_')[1]}</a>
                                 </div>
                             </div>
                         </div>`;

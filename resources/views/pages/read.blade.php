@@ -30,7 +30,7 @@
                 <div class="carousel-inner">
                   @if (count($images) > 0)
                     @foreach($images as $key => $image)
-                        <div class="carousel-item @if($key == 0) active @endif" style="background-image: url('/storage/{{$image->src}}')"></div>
+                        <div class="carousel-item @if($key == 0) active @endif" style="background-image: url('/storage/announcements/{{$image->src}}')"></div>
                     @endforeach
                   @endif
 

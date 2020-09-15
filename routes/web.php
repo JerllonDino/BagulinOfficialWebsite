@@ -39,6 +39,9 @@ Route::prefix('municipality')->group(function () {
     Route::view('profile/population', 'pages/municipality/profile/population');
 });
 
+Route::get('/citizens-charter', 'CitizensCharter@index');
+Route::get('/citizens-charter/documents', 'CitizensCharter@getFiles');
+
 Route::prefix('agri-tour')->group(function () {
     Route::view('agriculture', 'pages/municipality/general/agriculture');
     Route::view('tourism', 'pages/municipality/general/tourism');
@@ -83,6 +86,13 @@ Route::prefix('admin')->group(function () {
     Route::post('/new-document-category', 'Admin\OfficialDocuments@addCategory');
     Route::delete('/delete-document-category', 'Admin\OfficialDocuments@deleteCategory');
     Route::put('/rename-document-category', 'Admin\OfficialDocuments@renameCategory');
+
+    Route::prefix('citizens-charter')->group(function() {
+        Route::get('/{category?}', 'Admin\CitizensCharterController@index');
+        Route::post('/upload', 'Admin\CitizensCharterController@save');
+        Route::delete('/delete', 'Admin\CitizensCharterController@delete');
+        Route::put('/rename', 'Admin\CitizensCharterController@rename');
+    });
 
     Route::get('/', 'Auth\LoginController@index');
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');

@@ -38,12 +38,6 @@
     left: 45%;
     transform: translate(-50%, -50%)
   }
-
-  .{{strtolower(str_replace(' ', '_', $folder))}} {
-    color: #fff;
-    background-color: #702323;
-  }
-
   #folders .nav-link{
     border: 1px solid #dee2e6;
     border-radius: 0 !important;
@@ -55,6 +49,12 @@
   #folders .nav-link:hover .delete-category{
     opacity: 1;
   }
+
+  .{{strtolower($category)}} {
+    color: #fff;
+    background-color: #702323;
+  }
+
 </style>
 
 <div class="container my-5">
@@ -63,43 +63,20 @@
     {{-- SIDE MENUS --}}
     <div class="col-3">
       <nav class="nav flex-column nav-pills" id="folders">
-        <a class="nav-link all" href="/admin/documents">All</a>
-        @foreach ($categories as $category)
-        <a class="nav-link {{strtolower(str_replace(' ', '_', $category->category))}}" href="/admin/documents/{{$category->id}}">
-          <span class="float-left">{{$category->category}}</span>
-          <span class="float-right"><i class="fas fa-times delete-category" data-id="{{$category->id}}"></i></span>
-        </a>
-        @endforeach
+        <a class="nav-link forms" href="/admin/citizens-charter/forms">Forms</a>
+        <a class="nav-link services" href="/admin/citizens-charter/services">Services</a>
       </nav>
-      <form class="bg-secondary p-2 my-3 border" action="" id="new-category-form">
-        <label>Add new category</label>
-        <div class="input-group">
-          <input type="text" class="form-control" name="new_category">
-          <div class="input-group-append">
-            <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-spinner fa-spin mr-1" style="display:none;"></i> Add</button>
-          </div>
-          <div class="invalid-feedback"></div>
-        </div>
-      </form>
     </div>
 
     {{-- FILES --}}
     <div class="col-9">
-      <h1 class="mb-3"><span id="category-name" data-id="{{$category_id}}">{{$folder}}</span> @if(strtolower($folder) != 'all') <button id="rename-category-btn" class="btn btn-light"><i class="fas fa-edit"></i></button> @endif</h1>
+      <h1>Citizens Charter | {{$category}}</h1>
       <hr/>
-
-      @if(count($categories) > 0)
-      <button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#new-file-modal"><i class="fas fa-upload"></i> Upload Documents</button>
-      @else
-      <div class="alert alert-warning">
-        Please add a new category to upload documents.
-      </div>
-      @endif
-
+      <button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#new-file-modal"><i class="fas fa-upload"></i> Upload Document</button>
       <div class="row" id="docs">
         @if(count($documents) == 0)
         <div class="alert alert-light mt-3">
-          <p class="h3">No documents.</p>
+          <p class="h3">No files.</p>
         </div>
         @else
         @foreach ($documents as $document)
@@ -119,13 +96,13 @@
 
 
           <p class="h2 text-primary"><i class="fas fa-file-pdf"></i><p>
-          <p class="small font-weight-bold"><a class="file-name" href="/storage/official-documents/{{$document->category_id}}/{{$document->file_name}}" target="_blank">{{$document->file_name}}</a></p>
+          <p class="small font-weight-bold"><a class="file-name" href="/storage/citizens-charter/{{$category}}/{{$document->file_name}}" target="_blank">{{$document->file_name}}</a></p>
         </div>
         @endforeach
         @endif
       </div>
       <div class="my-5">
-        {{$documents->links()}}
+
       </div>
     </div>
 
@@ -138,7 +115,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Upload Documents</h5>
+          <h5 class="modal-title">Upload Documents for {{$category}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -151,17 +128,9 @@
 
                 </ul>
             </div>
-
-            <div class="form-group">
-              <label for="">Category</label>
-              <select name="category" class="form-control">
-                @foreach($categories as $category)
-                <option value="{{$category->id}}">{{$category->category}}</option>
-                @endforeach
-              </select>
-            </div>
           </div>
           <div class="modal-footer">
+            <input type="hidden" name="category" value="{{$category}}">
             <button type="submit" class="btn btn-primary"><i class="fas fa-spin fa-spinner" style="display:none;"></i> Upload</button>
           </div>
         </form>
@@ -193,31 +162,6 @@
     </div>
   </div>
 </div>
-
-{{-- Rename Category Modal --}}
-<div class="modal" tabindex="-1" role="dialog" id="rename-category-modal">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Rename Category</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <form id="rename-category-form">
-        <div class="modal-body">
-          <label for="">New category name : </label>
-          <input type="text" class="form-control" name="rename_to">
-          <input type="hidden" name="id">
-        </div>
-        <div class="modal-footer">
-          <button type="submit" class="btn btn-primary"><i class="fas fa-spin fa-spinner" style="display:none;"></i> Save</button>
-        </div>
-      </form>
-    </div>
-  </div>
-</div>
-
 @endsection
 
 @section('scripts')
@@ -247,7 +191,6 @@
 
   // Delete Document
   $('#uploaded-documents').on('click', '.delete-document', function() {
-    console.log('yes');
     $(this).parent().parent().remove();
   })
 
@@ -258,7 +201,7 @@
     if (confirm('Are you sure?')) {
       id = $(this).attr('data-id');
       $.ajax({
-        url: '/admin/delete-document',
+        url: '/admin/citizens-charter/delete',
         method: 'DELETE',
         data: {id},
         beforeSend: function() {
@@ -267,6 +210,9 @@
         success: function() {
           $loading.hide();
           $elem.remove();
+        },
+        error: function() {
+          $loading.hide();
         }
       });
     }
@@ -294,7 +240,7 @@
 
     vals.push({name: 'uploads', value: JSON.stringify(uploadedDocuments)})
     $.ajax({
-      url: '/admin/upload-documents',
+      url: '/admin/citizens-charter/upload',
       method: 'POST',
       data:vals,
       beforeSend: function() {
@@ -309,7 +255,8 @@
         },1000);
       },
       error: function(res) {
-        console.log(res);
+        $submitBtn.removeAttr('disabled');
+        $submitBtnSpinner.hide();
       }
     })
   });
@@ -337,7 +284,7 @@
     $submitBtnSpinner = $submitBtn.find('.fa-spin');
 
     $.ajax({
-      url: '/admin/rename-document',
+      url: '/admin/citizens-charter/rename',
       data: vals,
       method: 'PUT',
       beforeSend: function() {
@@ -352,99 +299,11 @@
         },1000);
       },
       error: function(res) {
-        console.log(res);
+        $submitBtn.removeAttr('disabled');
+        $submitBtnSpinner.hide();
       }
     })
   });
 
-  // New Category
-  $('#new-category-form').on('submit', function(e) {
-    e.preventDefault();
-    $elem = $(this);
-    $submitBtn = $(this).find('[type="submit"]');
-    $submitBtnSpinner = $submitBtn.find('.fa-spin');
-    var vals = $(this).serializeArray();
-
-    $.ajax({
-      url: '/admin/new-document-category',
-      method: 'POST',
-      data: vals,
-      beforeSend: function() {
-        $submitBtn.attr('disabled', '');
-        $submitBtnSpinner.show();
-      },
-      success:function(res) {
-        $submitBtn.removeAttr('disabled');
-        $submitBtnSpinner.hide();
-        $elem.trigger('reset');
-
-        console.log(res.link);
-        location.href = "/admin/documents/" + res.link;
-      },
-      error: function() {
-        $submitBtn.removeAttr('disabled');
-        $submitBtnSpinner.hide();
-      }
-    });
-  })
-
-  // Delete Category
-  $('.delete-category').click(function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    if (confirm('Are you sure?All files from this folder will be deleted.')) {
-      id = $(this).attr('data-id');
-      $.ajax({
-        url: '/admin/delete-document-category',
-        method: 'DELETE',
-        data: {'category_id': id},
-        beforeSend: function() {
-
-        },
-        success: function() {
-          location.reload();
-        }
-      });
-    }
-  })
-
-
-  // Rename Category
-  $('#rename-category-btn').click(function() {
-    $form = $('#rename-category-form');
-    $category = $('#category-name');
-
-    categoryName = $category.text();
-    id = $category.attr('data-id');
-    console.log(id);
-    $('#rename-category-modal').modal('show');
-    $form.find('[name="rename_to"]').val(categoryName);
-    $form.find('[name="id"]').val(id);
-  });
-
-  $('#rename-category-form').submit(function(e) {
-    e.preventDefault();
-
-    var vals = $(this).serializeArray();
-    $submitBtn = $(this).find('[type="submit"]');
-    $submitBtnSpinner = $submitBtn.find('.fa-spin');
-
-    $.ajax({
-      url: '/admin/rename-document-category',
-      method: 'PUT',
-      data: vals,
-      beforeSend: function() {
-        $submitBtn.attr('disabled', '');
-        $submitBtnSpinner.show();
-      },
-      success: function(res) {
-        $submitBtnSpinner.hide();
-        $submitBtn.removeClass('btn-primary').addClass('btn-success').html('<i class="fas fa-check-circle"></i>File name changed. Refreshing page...');
-
-        location.reload();
-      }
-    });
-
-  });
 </script>
 @endsection

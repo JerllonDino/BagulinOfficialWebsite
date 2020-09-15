@@ -15,7 +15,7 @@ class DocumentsController extends Controller
 
     public function getFiles(Request $request) {
         if (!empty(trim($request->category))) {
-            $files = OfficialDocument::select('file_name')->where('category_id', $request->category)->get();
+            $files = OfficialDocument::select('file_name', 'category_id')->where('category_id', $request->category)->get();
             return response()->json($files);
         }
     }

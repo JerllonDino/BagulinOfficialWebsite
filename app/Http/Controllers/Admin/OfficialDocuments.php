@@ -49,7 +49,7 @@ class OfficialDocuments extends Controller
 
         $category = DocumentCategory::find($request->category_id);
         OfficialDocument::where('category_id', $request->category_id)->delete();
-        Storage::disk('public')->deleteDirectory("$request->category_id/");
+        Storage::disk('public')->deleteDirectory("official-documents/$request->category_id/");
         $category->delete();
     }
 
@@ -72,8 +72,8 @@ class OfficialDocuments extends Controller
         $new_filename =  time() . rand(11, 99) . '_' . str_replace('_', '-', $request->rename_to) . ".$extension";
 
         Storage::disk('public')->move(
-            $old_file->category_id. "/". $old_file->file_name,
-            $old_file->category_id. "/". $new_filename);
+            'official-documents/' . $old_file->category_id. "/". $old_file->file_name,
+            'official-documents/' . $old_file->category_id. "/". $new_filename);
         OfficialDocument::where('id', $request->id)->update(['file_name'=>$new_filename]);
     }
 
@@ -83,7 +83,7 @@ class OfficialDocuments extends Controller
         ]);
 
         $document = OfficialDocument::find($request->id);
-        if ( Storage::disk('public')->delete( $document->category_id . '/' . $document->file_name) ) {
+        if ( Storage::disk('public')->delete( 'official-documents/' . $document->category_id . '/' . $document->file_name) ) {
             $document->delete();
         }
     }
@@ -112,7 +112,7 @@ class OfficialDocuments extends Controller
                 $fileName =  time() . rand(11, 99) . '_' . str_replace('_', '-', $document['fileName']);
 
                 if ($decoded !== FALSE) {
-                    $result = Storage::disk('public')->put( $category . '/' . $fileName, $decoded['contents']);
+                    $result = Storage::disk('public')->put( 'official-documents/' . $category . '/' . $fileName, $decoded['contents']);
                     if ($result) {
                         $data[] = array(
                             'category_id' => $category,
