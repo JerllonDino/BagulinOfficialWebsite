@@ -19,15 +19,15 @@ Route::get('/read/{slug}', 'AnnouncementController@read');
 Route::get('/announcements', 'AnnouncementController@index');
 
 Route::prefix('municipality')->group(function () {
-    Route::view('message', 'pages/municipality/message');
+    Route::get('message', 'OfficialController@getWelcome');
     Route::view('vision-mission', 'pages/municipality/general/vision-mission');
     Route::view('history', 'pages/municipality/general/history');
     Route::view('hymns', 'pages/municipality/general/hymns');
-    Route::view('government/barangay/chairmans', 'pages/municipality/government/barangay/chairmans');
-    Route::view('government/barangay/skchairmans', 'pages/municipality/government/barangay/skchairmans');
-    Route::view('government/officials/councilors', 'pages/municipality/government/officials/councilors');
-    Route::view('government/officials/mayor', 'pages/municipality/government/officials/mayor');
-    Route::view('government/officials/vice-mayor', 'pages/municipality/government/officials/vice-mayor');
+    Route::get('government/barangay/{position}', 'OfficialController@getOfficial');
+    Route::get('government/barangay/{position}', 'OfficialController@getOfficial');
+    Route::get('government/officials/{position}', 'OfficialController@getOfficial');
+    Route::get('government/officials/{position}', 'OfficialController@getOfficial');
+    Route::get('government/officials/{position}', 'OfficialController@getOfficial');
     Route::view('government/past-executives', 'pages/municipality/government/past_executives/index');
     Route::view('government/past-executives', 'pages/municipality/government/past_executives/index');
     Route::view('profile/education', 'pages/municipality/profile/education');
@@ -92,6 +92,17 @@ Route::prefix('admin')->group(function () {
         Route::post('/upload', 'Admin\CitizensCharterController@save');
         Route::delete('/delete', 'Admin\CitizensCharterController@delete');
         Route::put('/rename', 'Admin\CitizensCharterController@rename');
+    });
+
+    Route::prefix('officials')->group(function () {
+        Route::get('/', 'Admin\OfficialController@index');
+        Route::post('/get', 'Admin\OfficialController@get');
+        Route::post('/get/position/{position}', 'Admin\OfficialController@getOfficialsByPosition');
+        Route::post('/get/official/{id}', 'Admin\OfficialController@getOfficialsById');
+        Route::post('/store/{count?}', 'Admin\OfficialController@saveOfficial');
+        Route::delete('/delete', 'Admin\OfficialController@delete');
+        Route::put('/update', 'Admin\OfficialController@saveOfficial');
+        Route::delete('/delete/official/{id}', 'Admin\OfficialController@deleteOfficial');
     });
 
     Route::get('/', 'Auth\LoginController@index');

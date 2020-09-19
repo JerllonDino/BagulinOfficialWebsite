@@ -1,6 +1,6 @@
 @extends('admin/layouts/app')
 
-@section('page-title', 'Events')
+@section('page-title', 'Users Management')
 
 @section('styles')
 <link rel="stylesheet" href="{{asset('css/datatables.min.css')}}">

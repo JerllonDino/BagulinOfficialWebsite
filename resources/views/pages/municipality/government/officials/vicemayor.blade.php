@@ -1,27 +1,5 @@
 @extends('layouts/app')
 
-@section('styles')
-<style type="text/css">
-	.mframe{
-		border:5px solid #B53A3A;
-		box-shadow: 0px 5px 10px rgba(0,0,0,0.5);
-		background-color: rgba(0,0,0,0.09);
-	}
-	.mbox{
-		width: 100%;
-		background-color: rgba(0,0,0,0.1);
-		box-shadow: 0px 5px 10px rgba(0,0,0,0.3);
-		padding: 20px;
-		margin: none;
-		border-collapse: collapse;
-	}
-	.mymargin{
-		text-indent: 50px;
-	}
-
-</style>
-@endsection
-
 @section('content')
 <div class="container mt-5 mb-5">
 	<div class="row">
@@ -44,7 +22,6 @@
                 proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             @endif
 		</div>
-
 	</div>
 </div>
 
