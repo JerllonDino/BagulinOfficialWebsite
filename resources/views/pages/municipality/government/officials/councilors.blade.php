@@ -16,7 +16,11 @@
 <div class=" container my-2">
 	<h3 class="mb-5 card-header text-white text-center mx-auto d-block" style="max-width: 50% !important;">COUNCILORS</h3>
 	<div class="row">
-		@if ($official)
+		@if (count($official) <= 0)
+            <div class="w-100 text-center">
+                <h2>Sorry, there's nothing here yet. :)</h2>
+            </div>
+        @else
             @foreach ($official as $councilor)
                 <div class="col-lg-3 mx-auto mt-5 mt-lg-0">
                     <img class="rounded-circle mx-auto d-block" src="{{ $councilor->about_image ? asset('storage/officials/'.$councilor->position.'/'.$councilor->about_image) : asset('img/official.png')}}" width="200"/>

@@ -24,9 +24,6 @@ Route::prefix('municipality')->group(function () {
     Route::view('history', 'pages/municipality/general/history');
     Route::view('hymns', 'pages/municipality/general/hymns');
     Route::get('government/barangay/{position}', 'OfficialController@getOfficial');
-    Route::get('government/barangay/{position}', 'OfficialController@getOfficial');
-    Route::get('government/officials/{position}', 'OfficialController@getOfficial');
-    Route::get('government/officials/{position}', 'OfficialController@getOfficial');
     Route::get('government/officials/{position}', 'OfficialController@getOfficial');
     Route::view('government/past-executives', 'pages/municipality/government/past_executives/index');
     Route::view('government/past-executives', 'pages/municipality/government/past_executives/index');

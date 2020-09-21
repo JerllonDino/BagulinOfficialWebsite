@@ -43,7 +43,7 @@
 									<a class="dropdown-item dropdown-toggle" href="#">Barangay Officials</a>
 									<ul class="dropdown-menu">
 										<li><a class="dropdown-item" href="{{url('municipality/government/barangay/chairmans')}}">Barangay Chairmans</a></li>
-										<li><a class="dropdown-item" href="municipality/government/barangay/skchairmans">Barangay SK Chairmans</a></li>
+										<li><a class="dropdown-item" href="{{url('municipality/government/barangay/skchairmans')}}">Barangay SK Chairmans</a></li>
 									</ul>
 								</li>
 							</ul>

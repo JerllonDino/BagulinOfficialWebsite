@@ -48,18 +48,26 @@
     <h4 class="text-center">Municipal Officers</h4>
     <div class="row justify-content-center mb-5">
         <div class="col col-sm-12 col-md-6 col-lg-4 col-12 text-center mx-auto mt-3">
-            <div class="card indi-officials" data-position="mayor" data-id="{{ $officials[0]->id }}">
+            <div class="card indi-officials" data-position="mayor" data-id="{{ $officials[0] ? $officials[0]->id : '' }}">
                 <div class="card-body">
-                    <img src="{{ $officials[0]->welcome_image ? asset('storage/officials/mayor/'.$officials[0]->welcome_image) : asset('img/official.png') }}"
-                         class="rounded-circle img-thumbnail " alt="">
+                    @if ($officials[0])
+                        <img src="{{ $officials[0]->welcome_image ? asset('storage/officials/mayor/'.$officials[0]->welcome_image) : asset('img/official.png') }}"
+                            class="rounded-circle img-thumbnail " alt="">
+                    @else
+                        <img src="{{ asset('img/official.png') }}" class="rounded-circle img-thumbnail" alt="">
+                    @endif
                     <h5 class="mt-4">Mayor</h5>
                 </div>
             </div>
         </div>
         <div class="col col-sm-12 col-md-6 col-lg-4 col-12 text-center mx-auto mt-3">
-            <div class="card indi-officials" data-position="vicemayor" data-id="{{ $officials[1]->id }}">
+            <div class="card indi-officials" data-position="vicemayor" data-id="{{ $officials[1] ? $officials[1]->id : '' }}">
                 <div class="card-body">
-                    <img src="{{ $officials[1]->welcome_image ? asset('storage/officials/vicemayor/'.$officials[1]->welcome_image) : asset('img/official.png') }}" class="rounded-circle img-thumbnail" alt="">
+                    @if ($officials[1])
+                        <img src="{{ $officials[1]->welcome_image ? asset('storage/officials/vicemayor/'.$officials[1]->welcome_image) : asset('img/official.png') }}" class="rounded-circle img-thumbnail" alt="">
+                    @else
+                        <img src="{{ asset('img/official.png') }}" class="rounded-circle img-thumbnail" alt="">
+                    @endif
                     <h5 class="mt-4">Vice Mayor</h5>
                 </div>
             </div>

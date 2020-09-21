@@ -14,9 +14,13 @@
 
 @section('content')
 <div class="container-fluid my-3">
-		<h3 class="mb-5 card-header text-white text-center mx-auto d-block" style="max-width: 50% !important;">Barangay SK skChairmans</h3>
+		<h3 class="mb-5 card-header text-white text-center mx-auto d-block" style="max-width: 50% !important;">Barangay SK Chairmans</h3>
 	<div class="row">
-        @if ($official)
+        @if (count($official) <= 0)
+            <div class="w-100 text-center">
+                <h2>Sorry, there's nothing here yet. :)</h2>
+            </div>
+        @else
             @foreach ($official as $skchairman)
                 <div class="col-lg-3 mx-auto mt-5 mt-lg-0">
                     <img class="rounded-circle mx-auto d-block" src="{{ $skchairman->about_image ? asset('storage/officials/'.$skchairman->position.'/'.$skchairman->about_image) : asset('img/official.png')}}" width="200"/>
