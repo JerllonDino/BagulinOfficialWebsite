@@ -35,7 +35,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-lg-4">
-                                <div class="image" style="background-image: url('/storage/announcements/{{$announcement->thumbnail}}')"></div>
+                                <div class="image" style="background-image: url('https://bagulin.s3-ap-southeast-1.amazonaws.com/announcements/{{$announcement->thumbnail}}')"></div>
                             </div>
                             <div class="col-lg-8">
                                 <h3><a href="/read/{{$announcement->slug}}">{{$announcement->title}}</a></h3>

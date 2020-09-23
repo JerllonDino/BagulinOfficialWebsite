@@ -56,13 +56,13 @@ class OfficialController extends Controller
         if ($welcomeBase) {
             $decodedWelcome = $this->decodeBase64($welcomeBase);
             $welcomeImageName = $count != null & $count >= 0 ? 2 . "welcome-" : "welcome-" . $request->position . ".png";
-            Storage::disk('public')->put( 'officials/' . $request->position . '/' . $welcomeImageName, $decodedWelcome['contents']);
+            Storage::disk('s3')->put( 'officials/' . $request->position . '/' . $welcomeImageName, $decodedWelcome['contents']);
         }
 
         if($aboutBase){
             $decodedAbout = $this->decodeBase64($aboutBase);
             $aboutImageName = $request->first_name . $request->position . ".png";
-            Storage::disk('public')->put( 'officials/' . $request->position . '/' . $aboutImageName, $decodedAbout['contents']);
+            Storage::disk('s3')->put( 'officials/' . $request->position . '/' . $aboutImageName, $decodedAbout['contents']);
         }
 
         $data = [

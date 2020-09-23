@@ -32,7 +32,7 @@
         @else
             <div class="col-lg-6 mt-5 mt-lg-0">
                 <!-- <h2 class="text-center">Vice Mayor Jaime A. Lictao</h2> -->
-                <img class=" mx-auto d-block w-100" src="{{ $official[0]->about_image ? asset('/storage/officials/'.$official[0]->position.'/'.$official[0]->about_image) : asset('img/official.png')}}" />
+                <img class=" mx-auto d-block w-100" src="{{ $official[0]->about_image ? 'https://bagulin.s3-ap-southeast-1.amazonaws.com/officials/'.$official[0]->position.'/'.$official[0]->about_image : asset('img/official.png')}}" />
             </div>
             <div class="col-lg-6 mt-5 mt-lg-0">
                 <h1 style="line-height: 25px">Hon. {{ $official[0]->first_name.' '.$official[0]->middle_name.' '.$official[0]->last_name }}</h1>

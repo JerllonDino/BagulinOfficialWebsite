@@ -73,7 +73,7 @@ class Announcements extends Controller
             // delete uploaded images
             $images = AnnouncementImage::select('src')->where('announcement_id', $announcement->id)->get();
             foreach ($images as $image) {
-                Storage::disk('public')->delete('announcements/' . $image->src);
+                Storage::disk('s3')->delete('announcements/' . $image->src);
             }
 
             AnnouncementImage::where('announcement_id', $announcement->id)->delete();
@@ -113,7 +113,7 @@ class Announcements extends Controller
            foreach ($images as $image) {
                $decoded = $this->decodeBase64($image);
                if ($decoded !== FALSE) {
-                   $result = Storage::disk('public')->put('announcements/' . $decoded['file_name'], $decoded['contents']);
+                   $result = Storage::disk('s3')->put('announcements/' . $decoded['file_name'], $decoded['contents']);
                    if ($result) {
                        $data[] = array(
                            'announcement_id' => $announcement_id,
@@ -137,7 +137,7 @@ class Announcements extends Controller
         ]);
 
         $image = AnnouncementImage::find($request->id);
-        Storage::disk('public')->delete('announcements/' . $image->src);
+        Storage::disk('s3')->delete('announcements/' . $image->src);
         $image->delete();
     }
 }

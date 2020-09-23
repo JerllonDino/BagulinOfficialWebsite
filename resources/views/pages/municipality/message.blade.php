@@ -5,7 +5,7 @@
 <div class=" container w-100 p-3" id="Introduction">
     <div class="row w-100"  id="intro">
         <div class="col-sm-4 mb-5">
-            <img class="m-frame rounded-circle" src="{{ $official && $official->welcome_image ? asset('/storage/officials/'.$official->position.'/'.$official->welcome_image) : asset('img/official.png')}}" width="100%">
+            <img class="m-frame rounded-circle" src="{{ $official && $official->welcome_image ? 'https://bagulin.s3-ap-southeast-1.amazonaws.com/officials/'.$official->position.'/'.$official->welcome_image : asset('img/official.png')}}" width="100%">
             <h4 class="text-center mt-2 mb-0">{{ $official ? $official->first_name.' '.$official->middle_name.' '.$official->last_name : 'No official yet :)' }}</h4>
             <center>
                 <span class="text-center"><i>Mayor</i></span>
