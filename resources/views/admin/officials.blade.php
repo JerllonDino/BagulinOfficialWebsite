@@ -269,6 +269,7 @@
 $('.modal').on('hidden.bs.modal', function () {
     aboutMessage.root.innerHTML = "";
     welcomeMessage.root.innerHTML = "";
+    $('.indi-officials').data('id', '');
     $(this).find('form').trigger('reset');
     $(this).find('img').attr('src', '{{ asset("img/official.png") }}');
 });

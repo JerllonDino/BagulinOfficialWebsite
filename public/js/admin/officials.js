@@ -118,7 +118,6 @@ $('.submit-official').submit(function (e) {
                 $submitBtnSpinner.removeClass('d-none');
             },
         }).done(function (response) {
-            $('.modal').modal('hide');
             showMessage('Official Successfully Saved!');
             if(position == "mayor" || position == "vicemayor"){
                 setTimeout(function(){ location.reload(); }, 1000);
@@ -140,7 +139,6 @@ $('.submit-official').submit(function (e) {
                 $submitBtnSpinner.removeClass('d-none');
             },
         }).done(function (response) {
-            $('.modal').modal('hide');
             showMessage('Official Successfully Updated!');
             if(position == "mayor" || position == "vicemayor"){
                 setTimeout(function(){ location.reload(); }, 1000);
