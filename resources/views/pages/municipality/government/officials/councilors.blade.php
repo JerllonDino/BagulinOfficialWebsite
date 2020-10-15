@@ -14,7 +14,7 @@
 
 @section('content')
 <div class=" container my-2">
-	<h3 class="mb-5 card-header text-white text-center mx-auto d-block" style="max-width: 50% !important;">COUNCILORS</h3>
+	<h3 class="mb-5 card-header text-white text-center mx-auto d-block" >COUNCILORS</h3>
 	<div class="row">
 		@if (count($official) <= 0)
             <div class="w-100 text-center">

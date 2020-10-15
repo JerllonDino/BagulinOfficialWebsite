@@ -30,7 +30,7 @@
 
 <div class="container small pt-3 pb-5">
   <div class="row">
-    <h3 class="mb-5 mt-5 card-header text-white text-center mx-auto d-block" style="max-width: 50% !important;">BAGULIN TOURIST DESTINATIONS</h3>
+    <h3 class="mb-5 mt-5 card-header text-white text-center mx-auto d-block" >BAGULIN TOURIST DESTINATIONS</h3>
     
   </div>
 

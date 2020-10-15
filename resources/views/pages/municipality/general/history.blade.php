@@ -46,7 +46,7 @@ html {
     <div class="row">
         <div class="col-12" id="content">
         <section>
-        <h3 class="mb-5 mt-5 card-header text-white text-center mx-auto d-block" style="max-width: 50% !important;">THE HISTORY OF BAGULIN, LA UNION</h3>
+        <h3 class="mb-5 mt-5 card-header text-white text-center mx-auto d-block" style="min-width: 50% !important;">THE HISTORY OF BAGULIN, LA UNION</h3>
         <h4 class="mb-5 mt-5 ">MYTHICAL ORIGIN</h4>
         <p>
         Its name “Bagulin” was coined from “Bago” and “Ulin”. It is said that during the early days, an Igorot named Bago wanted to find out what the bluish crystal part of the earth that he saw from the upland areas. One day, he set out towards the west and upon reaching the shores of China Sea, he found out it was a body of salty water. While he was day dreaming along the shore, he saw a beautiful lass drowning in the waves. Bago immediately went to rescue the girl. That was the first acquaintance of Bago, the young and daring highlander with Ulin, the lowlander lass. They fell in love with each other and air castles found their way in these young hearts. Plans for their wedding had been the subject for their whispers. Unfortunately, Bago was not welcomed by Ulin’s parents. However, love knew no bound, the two eloped and they settled in the place now called Bagulin, coined after their names.

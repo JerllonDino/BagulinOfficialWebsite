@@ -16,7 +16,7 @@
 <!-- Body -->
 <div class="container small pt-3 pb-5">
 	<div class="row">
-		<h3 class="card-header text-white text-center mx-auto d-block" style="max-width: 50% !important;">LOCAL INSTITUTIONAL CAPABILITY</h3>
+		<h3 class="card-header text-white text-center mx-auto d-block" >LOCAL INSTITUTIONAL CAPABILITY</h3>
 	</div>
 	<div class="row mt-3">
 		<div class="col-sm-12">

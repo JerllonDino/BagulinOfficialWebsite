@@ -4,11 +4,11 @@
 <style type="text/css">
 	th{
 		font-weight: bold;
-	}	
-	
+	}
+
 
 </style>
-	
+
 @endsection
 
 @section('content')
@@ -16,7 +16,7 @@
 <!-- Body -->
 <div class="container small pt-3 pb-5">
 	<div class="row">
-		<h3 class="card-header text-white text-center mx-auto d-block" style="max-width: 50% !important;">POPULATION AND SOCIAL PROFILE</h3>
+		<h3 class="card-header text-white text-center mx-auto d-block" >POPULATION AND SOCIAL PROFILE</h3>
 	</div>
 	<div class="row mt-3">
 		<div class="col-sm-12">
@@ -24,7 +24,7 @@
 				<!-- <h5 class="mb-1 mt-1">ROADS</h5> -->
 				<p>
 					Almost all residents in Bagulin are Filipinos. No data gathered but observation and interviews with barangay officials reflects only few are foreign citizenship permanently lives in Bagulin.
-				</p>				
+				</p>
 			</section>
 
 			<section>
@@ -147,7 +147,7 @@
 				<p>
 					Its past population prior to becoming a regular municipality was very low especially in 1918 where it had only 2,419 persons. From thereon, its population growth is still low compared to other towns of La Union. It had an annual percent change of 4.07% from 1970 to 1975; 1.82% by 1980; and 2.998% by 1990; 2.56% by 1995 and 2.86% by 2000; 0.18% in 2010. Low growth rate has been attributed to poor road conditions and poor facilities in Bagulin which do not attract migrant economic and social activities. PSA survey in 2015 shows an average growth rate is 1.27%. The 2010 NSO average family size in the Municipality of Bagulin, La Union is 5.2 members per household.
 
-				</p>				
+				</p>
 			</section>
 
 			<section>

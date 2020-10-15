@@ -10,13 +10,13 @@
     <div class="row">
         <div class="col-lg-12 text-center">
             <center>
-                <h3 class="mb-5 mt-1 card-header text-white text-center mx-auto d-block" style="max-width: 50% !important;">HYMNS</h3>
+                <h3 class="mb-5 mt-1 card-header text-white text-center mx-auto d-block" style="min-width: 50% !important;">HYMNS</h3>
             </center>
 
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-6 text-center">
+        <div class="col-lg-6 text-center mb-3 mb-md-0">
             <h3 class="mb-3 font-weight-bold text-primary">La Union Hymn</h3>
             <audio controls="" class="my-4">
                 <source src="{{asset('mp3/launion.mp3')}}" type="audio/mpeg">

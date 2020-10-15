@@ -57,7 +57,7 @@
     <div class="container my-5">
         <div class="row">
             <div class="col-12">
-                <h3 class="mb-5 mt-1 card-header text-white text-center mx-auto d-block" style="max-width: 50% !important;">OFFICIAL DOCUMENTS</h3>
+                <h3 class="mb-5 mt-1 card-header text-white text-center mx-auto d-block" style="min-width: 50% !important;">OFFICIAL DOCUMENTS</h3>
             </div>
         </div>
 
@@ -104,7 +104,7 @@ $('.collapse').on('show.bs.collapse', function () {
                 for (i = 0; i < res.length; i++) {
                     data = res[i];
                     html += `
-                        <div class="col-3 mb-4">
+                        <div class="col-lg-3 col-md-4 mb-4">
                             <div class="card document h-100">
                                 <div class="card-body">
                                     <h1 class="text-center"><i class="fas fa-file-alt "></i></h1>

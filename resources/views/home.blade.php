@@ -9,45 +9,45 @@
 
         </div>
         <!-- Carousel -->
-        <div class="container w-100" id="caro">
+        <div class="container col-12" id="caro">
           <div id="carouselExampleIndicators" class="carousel slide w-100" data-ride="carousel">
 
           <div class="carousel-inner">
             <div class="carousel-item active ">
-              <img class="w-100" src="img/1.jpg">
+              <img class="img-fluid" src="img/1.jpg">
             </div>
 
 
             <div class="carousel-item ">
-              <img class="w-100" src="img/2.jpg">
+              <img class="img-fluid" src="img/2.jpg">
             </div>
 
 
             <div class="carousel-item ">
-              <img class="w-100" src="img/3.jpg">
+              <img class="img-fluid" src="img/3.jpg">
             </div>
 
 
             <div class="carousel-item ">
-              <img class="w-100" src="img/4.jpg">
+              <img class="img-fluid" src="img/4.jpg">
             </div>
 
 
             <div class="carousel-item ">
-              <img class="w-100" src="img/5.jpg">
+              <img class="img-fluid" src="img/5.jpg">
             </div>
 
 
             <div class="carousel-item ">
-              <img class="w-100" src="img/6.jpg">
+              <img class="img-fluid" src="img/6.jpg">
             </div>
 
             <div class="carousel-item ">
-              <img class="w-100" src="img/7.jpg">
+              <img class="img-fluid" src="img/7.jpg">
             </div>
 
             <div class="carousel-item ">
-              <img class="w-100" src="img/8.jpg">
+              <img class="img-fluid" src="img/8.jpg">
             </div>
           </div>
           <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
@@ -64,19 +64,19 @@
 
   <div class="container mt-3">
     <div class="row">
-      <div class="col-6 col-md-4 my-1">
-        <a class="ch" href="municipality/general/bagulin_history.php">
+      <div class="col-12 col-md-4 my-1">
+        <a class="ch" href="/municipality/history">
           <img class="img-fluid" src="img/c-history.png" />
         </a>
 
       </div>
-      <div class="col-6 col-md-4 my-1">
-        <a class="ch" href="municipality/general/bagulin_tourism.php">
+      <div class="col-12 col-md-4 my-1">
+        <a class="ch" href="/agri-tour/tourism">
           <img class="img-fluid" src="img/c-tourism.png" />
         </a>
       </div>
-      <div class="col-6 col-md-4 my-1 mx-auto">
-        <a class="ch" href="municipality/general/bagulin_agriculture.php">
+      <div class="col-12 col-md-4 my-1 mx-auto">
+        <a class="ch" href="/agri-tour/agriculture">
           <img class="img-fluid" src="img/c-agriculture.png" />
         </a>
       </div>
@@ -95,6 +95,9 @@
       <!-- Anouncements -->
       <div class="bg-light" id="anouncements">
         <h6 class="p-2 text-white text-center mb-1 card-header">Announcements</h6>
+        @if (count($announcements) == 0)
+          <div class="alert alert-warning mt-2">No announcements yet.</div>
+        @endif
         <ul class="list-group">
           @foreach($announcements as $announcement)
           <li class="list-group-item">

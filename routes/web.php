@@ -102,6 +102,13 @@ Route::prefix('admin')->group(function () {
         Route::delete('/delete/official/{id}', 'Admin\OfficialController@deleteOfficial');
     });
 
+    Route::prefix('municipal-profile')->group(function() {
+        Route::get('/{category?}', 'Admin\MunicipalProfileController@index');
+        Route::post('/upload', 'Admin\MunicipalProfileController@save');
+        Route::delete('/delete', 'Admin\MunicipalProfileController@delete');
+        Route::put('/rename', 'Admin\MunicipalProfileController@rename');
+    });
+
     Route::get('/', 'Auth\LoginController@index');
     Route::get('/login', 'Auth\LoginController@showLoginForm')->name('login');
     Route::post('/login', 'Auth\LoginController@login');

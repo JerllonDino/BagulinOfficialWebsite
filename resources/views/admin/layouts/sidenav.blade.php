@@ -32,13 +32,18 @@ $uri = Route::current()->uri;
         Documents
       </a>
     </li>
+    <li class="{{ $uri == 'admin/municipal-profile/' ?  'active' : '' }}">
+      <a href="/admin/documents">
+        <i class="fas fa-file"></i>
+        Municipal Profile
+      </a>
+    </li>
     <li class="{{ $uri == 'admin/user' ?  'active' : '' }}">
         <a href="/admin/user">
           <i class="fas fa-user"></i>
           Users
         </a>
-      </li>
-
+    </li>
   </ul>
 
   <ul class="list-unstyled CTAs">
