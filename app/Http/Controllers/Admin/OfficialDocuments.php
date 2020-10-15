@@ -34,7 +34,7 @@ class OfficialDocuments extends Controller
         ]);
 
         $category = new DocumentCategory;
-        $category->category = $request->new_category;
+        $category->category = ucwords($request->new_category);
         $category->save();
 
         return response()->json([
