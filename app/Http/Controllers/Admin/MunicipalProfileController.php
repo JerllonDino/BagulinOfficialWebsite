@@ -11,6 +11,11 @@ class MunicipalProfileController extends Controller
 {
     protected $category_ids = array('population', 'infrastructure', 'health', 'educational', 'local-institutional');
 
+    public function __construct()
+    {
+      $this->middleware('auth');
+    }
+
     public function index($category = 'forms') {
         $category = strtolower($category);
         $id = $this->get_index($category);

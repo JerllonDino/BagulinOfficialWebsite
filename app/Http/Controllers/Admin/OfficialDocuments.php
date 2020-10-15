@@ -11,6 +11,11 @@ use League\CommonMark\Block\Element\Document;
 
 class OfficialDocuments extends Controller
 {
+    public function __construct()
+    {
+      $this->middleware('auth');
+    }
+
     public function index($category = NULL) {
         $category_name = DocumentCategory::select('id', 'category')->where('id', $category)->first();
         $official_documents = OfficialDocument::select('id', 'category_id', 'file_name')

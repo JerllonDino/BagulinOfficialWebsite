@@ -12,6 +12,11 @@ use Illuminate\Support\Facades\Storage;
 
 class Announcements extends Controller
 {
+    public function __construct()
+    {
+      $this->middleware('auth');
+    }
+
     public function index() {
         $announcements = Announcement::select('id', 'slug', 'title', 'created_at')->orderBy('created_at', 'desc')->paginate(5);
 

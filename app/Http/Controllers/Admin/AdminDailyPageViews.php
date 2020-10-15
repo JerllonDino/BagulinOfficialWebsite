@@ -10,6 +10,11 @@ use DailyViews;
 
 class AdminDailyPageViews extends Controller
 {
+    public function __construct()
+    {
+      $this->middleware('auth');
+    }
+
     public function get() {
         $months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
 
