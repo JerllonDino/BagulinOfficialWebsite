@@ -36,6 +36,14 @@
         width: 10%;
     }
 
+    .plus:after {
+        content: ' \002B';
+    }
+
+    .minus:after {
+        content: ' \002D';
+    }
+
     @media (max-width: 992px) {
         #seal{
             top:25%;
@@ -68,7 +76,7 @@
                     <div class="card-header" role="tab" id="headingOne">
                         <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapse-{{$key}}" aria-expanded="false" aria-controls="collapseExample">
                             <h3 class="mb-0 float-left">{{ucwords($category->category)}}</h3>
-                            <h3 class="mb-0 float-right"><i class="fas fa-plus"></i></h3>
+                            <h3 class="mb-0 float-right plus indicator"></h3>
                         </button>
                     </div>
 
@@ -91,7 +99,11 @@
 
 @section('scripts')
 <script>
+$('.collapse').on('hide.bs.collapse', function () {
+    $(this).parent().find('.indicator').removeClass('minus').addClass('plus');
+})
 $('.collapse').on('show.bs.collapse', function () {
+    $(this).parent().find('.indicator').removeClass('plus').addClass('minus');
     $elem = $(this);
     $documents = $elem.find('.documents');
 

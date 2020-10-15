@@ -156,7 +156,7 @@
               <label for="">Category</label>
               <select name="category" class="form-control">
                 @foreach($categories as $category)
-                <option value="{{$category->id}}">{{$category->category}}</option>
+                <option value="{{$category->id}}" @if(strtolower($category->category) == strtolower($folder)) selected="selected" @endif>{{$category->category}}</option>
                 @endforeach
               </select>
             </div>

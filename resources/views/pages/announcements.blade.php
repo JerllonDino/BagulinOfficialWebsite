@@ -29,6 +29,9 @@
 
                 <h1 class="my-5">Announcements</h1>
 
+                @if (count($announcements) == 0)
+                <div class="alert alert-warning mt-2">No announcements yet.</div>
+                @endif
                 <div class="row">
                     @foreach($announcements as $announcement)
                     <div class="col-md-6">
