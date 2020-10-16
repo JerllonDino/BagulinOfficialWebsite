@@ -39,7 +39,7 @@ class AdminDailyPageViews extends Controller
 
         $monthlyViews = DailyPageView::select(
             DB::raw('sum(views) as views'),
-            DB::raw("to_char( date, 'MM') as months")
+            DB::raw("to_char( date, 'Month') as months")
         )
         ->whereYear('date', date('Y'))
         ->groupBy('months')
