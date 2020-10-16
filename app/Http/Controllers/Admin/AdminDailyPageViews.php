@@ -47,7 +47,7 @@ class AdminDailyPageViews extends Controller
 
         $result = array();
         foreach($monthlyViews as $key => $view) {
-            $months[$view->months] = $view->views;
+            $months[trim($view->months)] = $view->views;
         }
 
         return response()->json(array(
