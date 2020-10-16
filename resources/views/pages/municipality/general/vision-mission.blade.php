@@ -8,7 +8,7 @@
             <img src="{{asset('img/mission.png')}}" id="mission" class="mx-auto d-block img-fluid">
         </div>
         <div class="col-md-6">
-            <img src="{{asset('img/vision.png')}}" id="vission" class="mx-auto d-block img-fluid">
+            <img src="{{asset('img/Vision.png')}}" id="vission" class="mx-auto d-block img-fluid">
         </div>
     </div>
 </div>
