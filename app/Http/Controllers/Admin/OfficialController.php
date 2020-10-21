@@ -105,11 +105,16 @@ class OfficialController extends Controller
 
     public function deleteOfficial($id)
     {
-        $official = Official::where('id', $id);
-        Storage::disk('s3')->delete('officials/'.$official->about_image);
-        Storage::disk('s3')->delete('officials/'.$official->welcome_image);
+        $official = Official::where('id', $id)->first();
+        if ($official->about_image) {
+            Storage::disk('s3')->delete('officials/'.$official->about_image);
+        }
+        if ($official->welcome_image) {
+            Storage::disk('s3')->delete('officials/'.$official->welcome_image);
+        }
+
         $official->delete();
-        return response()->json(['message' => 'Delete Successful'], 200);
+        return response()->json(['message' => $official], 200);
     }
 
 }

@@ -153,7 +153,7 @@
                             <div class="card" id="welcome-image">
                                 <div class="card-body text-center">
                                     <img src="{{ asset('img/official.png') }}" alt="" class="img-thumbnail rounded-circle mb-3">
-                                    <h5><i class="fas fa-image"></i> Image for Welcome Page: </h5>
+                                    <h5><i class="fas fa-image"></i> <span id="welcome-label"></span>: </h5>
                                     <input type="file" class="form-control" name="welcome_image">
                                     <input type="hidden" name="welcome_image_name">
                                 </div>
@@ -224,14 +224,20 @@
 <script>
     $('.modal, .container').on('click', '.indi-officials', function () {
     position = $(this).data('position');
-
+    $('#welcome-label').text('Image for Welcome Page');
     id = $(this).data('id');
 
     $modalIndividual.find('.modal-title').text(id ? 'Edit ' + position : 'Add ' + position);
-    if (position == "councilor" || position == "chairman" || position == "skchairman") {
+    if (position == "councilor" || position == "chairman" || position == "skchairman" ) {
         $('#about-message').addClass('d-none');
         $('#welcome-message').addClass('d-none');
         $('#about-image').addClass('d-none');
+        $('#welcome-label').text('Profile Image');
+    }
+    if(position == "vicemayor"){
+        $('#welcome-label').text('Profile Image');
+        $('#about-image').addClass('d-none');
+        $('#about-message').addClass('d-none');
     }
 
     if (id) {

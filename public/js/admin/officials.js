@@ -47,6 +47,7 @@ $modalDelete.on('click', '#confirm-delete', function(){
             $submitBtnSpinner.removeClass('d-none');
         }
     }).done(function (data) {
+        console.log(data);
         showMessage('Official Deleted!');
         $('.modal').modal('hide');
     }).fail(function (err) {
