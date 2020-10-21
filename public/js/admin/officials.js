@@ -40,7 +40,7 @@ $modalMultiple.on('click', '.delete-official', function (e) {
 $modalDelete.on('click', '#confirm-delete', function(){
     id = $(this).data('id');
     $.ajax({
-        url: '/admin/officials/delete/official' + id,
+        url: '/admin/officials/delete/official/' + id,
         method: 'DELETE',
         beforeSend: function () {
             $submitBtn.attr('disabled', '');
