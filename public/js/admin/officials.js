@@ -40,14 +40,13 @@ $modalMultiple.on('click', '.delete-official', function (e) {
 $modalDelete.on('click', '#confirm-delete', function(){
     id = $(this).data('id');
     $.ajax({
-        url: '/admin/officials/delete/official/' + id,
+        url: '/admin/officials/delete/official' + id,
         method: 'DELETE',
         beforeSend: function () {
             $submitBtn.attr('disabled', '');
             $submitBtnSpinner.removeClass('d-none');
         }
     }).done(function (data) {
-        console.log(data);
         showMessage('Official Deleted!');
         $('.modal').modal('hide');
     }).fail(function (err) {
@@ -111,7 +110,7 @@ $('.submit-official').submit(function (e) {
     console.log(id);
     if (!$id) {
         $.ajax({
-            url: '/admin/officials/store/',
+            url: '/admin/officials/store',
             method: 'POST',
             data: data,
             beforeSend: function () {

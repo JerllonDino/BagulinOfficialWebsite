@@ -244,7 +244,7 @@
 
         $modalIndividual.find('[name="id"]').val(id);
         $.ajax({
-            url: '/admin/officials/get/official/' + id,
+            url: '/admin/officials/get/official' + id,
             method: 'POST',
             beforeSend: function(){
                 $modalDisable.removeClass('d-none');
