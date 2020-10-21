@@ -92,7 +92,6 @@ $modalIndividual.on('change', '[name="welcome_image"]', function () {
 
 $('.submit-official').submit(function (e) {
     e.preventDefault();
-    count = $('.addOfficial').data('count');
     position = $(this).data('position');
     $id = $(this).find('input[name="id"]').val();
     data = $(this).serializeArray();
@@ -108,9 +107,10 @@ $('.submit-official').submit(function (e) {
         { name: 'welcome_message', value: welcomeMsg },
         { name: 'about_message', value: aboutMsg },
     );
+    console.log(id);
     if (!$id) {
         $.ajax({
-            url: '/admin/officials/store/' + count,
+            url: '/admin/officials/store/',
             method: 'POST',
             data: data,
             beforeSend: function () {
@@ -122,6 +122,7 @@ $('.submit-official').submit(function (e) {
             if(position == "mayor" || position == "vicemayor"){
                 setTimeout(function(){ location.reload(); }, 1000);
             }
+            $('.modal').modal('hide');
         }).fail(function (err) {
             console.log(err);
         }).always(function () {
@@ -143,6 +144,7 @@ $('.submit-official').submit(function (e) {
             if(position == "mayor" || position == "vicemayor"){
                 setTimeout(function(){ location.reload(); }, 1000);
             }
+            $('.modal').modal('hide');
         }).fail(function (err) {
             console.log(err);
         }).always(function () {

@@ -224,7 +224,9 @@
 <script>
     $('.modal, .container').on('click', '.indi-officials', function () {
     position = $(this).data('position');
+
     id = $(this).data('id');
+
     $modalIndividual.find('.modal-title').text(id ? 'Edit ' + position : 'Add ' + position);
     if (position == "councilor" || position == "chairman" || position == "skchairman") {
         $('#about-message').addClass('d-none');
@@ -233,6 +235,7 @@
     }
 
     if (id) {
+
         $modalIndividual.find('[name="id"]').val(id);
         $.ajax({
             url: '/admin/officials/get/official/' + id,
@@ -269,8 +272,9 @@
 $('.modal').on('hidden.bs.modal', function () {
     aboutMessage.root.innerHTML = "";
     welcomeMessage.root.innerHTML = "";
-    $('.indi-officials').data('id', '');
     $(this).find('form').trigger('reset');
+    $(this).find('form').find('input[name="id"]').val('');
+    $(this).find('form').find('input[name="position"]').val('');
     $(this).find('img').attr('src', '{{ asset("img/official.png") }}');
 });
 

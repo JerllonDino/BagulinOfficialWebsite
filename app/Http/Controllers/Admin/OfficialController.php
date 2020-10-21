@@ -53,15 +53,16 @@ class OfficialController extends Controller
         $aboutBase = json_decode($request->aboutBase, true);
         $welcomeImageName = $request->welcome_image_name;
         $aboutImageName = $request->about_image_name;
+        $addString = $request->id ? $request->id : Official::latest()->first()->id + 1;
         if ($welcomeBase) {
             $decodedWelcome = $this->decodeBase64($welcomeBase);
-            $welcomeImageName = $count != null & $count >= 0 ? 2 . "welcome-" : "welcome-" . $request->position . ".png";
+            $welcomeImageName = $addString . "welcome-" . $request->position . ".png";
             Storage::disk('s3')->put( 'officials/' . $request->position . '/' . $welcomeImageName, $decodedWelcome['contents']);
         }
 
         if($aboutBase){
             $decodedAbout = $this->decodeBase64($aboutBase);
-            $aboutImageName = $request->first_name . $request->position . ".png";
+            $aboutImageName = $addString . "about-" . $request->position . ".png";
             Storage::disk('s3')->put( 'officials/' . $request->position . '/' . $aboutImageName, $decodedAbout['contents']);
         }
 
@@ -77,12 +78,15 @@ class OfficialController extends Controller
             'about_image' => $aboutImageName,
         ];
 
-        if ($request->id) {
-            Official::where('id', $request->id)
-                        ->update($data);
+        $ifOfficialExist = Official::where('id', $request->id)->get();
+
+        if (count($ifOfficialExist) > 0) {
+            Official::where('id', $request->id)->update($data);
         }else{
             Official::insert($data);
         }
+
+        return response('Success!', 200);
 
     }
 
@@ -102,6 +106,8 @@ class OfficialController extends Controller
     public function deleteOfficial($id)
     {
         $official = Official::where('id', $id);
+        Storage::disk('s3')->delete('officials/'.$official->about_image);
+        Storage::disk('s3')->delete('officials/'.$official->welcome_image);
         $official->delete();
         return response()->json(['message' => 'Delete Successful'], 200);
     }
