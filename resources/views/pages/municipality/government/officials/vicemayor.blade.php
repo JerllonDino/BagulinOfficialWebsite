@@ -17,7 +17,9 @@
                 <i><i class="fas fa-user"></i> Vice Mayor of Bagulin, La Union</i>
                 <!-- <h2 class="mt-3">Biography</h2> -->
                 @if ($official[0]->welcome_message && $official[0]->welcome_message !== "<p><br></p>")
-                    {!! $official[0]->welcome_message !!}
+                    <div class="mt-3">
+                        {!! $official[0]->welcome_message !!}
+                    </div>
                 @else
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
