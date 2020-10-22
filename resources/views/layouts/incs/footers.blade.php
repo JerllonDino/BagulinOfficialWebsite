@@ -24,7 +24,7 @@
 
 					{{-- <div id="fb-root"></div>
 					<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v5.0&appId=456638428390540&autoLogAppEvents=1"></script> --}}
-					<a class="text-light" href="https://www.facebook.com/LGUBagulinLaUnion/"><i class="fab fa-facebook"></i></a>
+					<a class="text-light h2" href="https://www.facebook.com/LGUBagulinLaUnion/"><i class="fab fa-facebook"></i></a>
 				</div>
 			</div>
 			<div class="col-md-3">

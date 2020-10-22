@@ -16,8 +16,6 @@
             <div class="carousel-item active ">
               <img class="img-fluid" src="img/1.jpg">
             </div>
-
-
             <div class="carousel-item ">
               <img class="img-fluid" src="img/2.jpg">
             </div>
