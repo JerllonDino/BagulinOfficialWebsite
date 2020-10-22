@@ -136,17 +136,15 @@
                         <label>Location: </label>
                         <input type="text" name="location" id="location" class="form-control">
                     </div>
-                    <div class="form-group" id="about-message">
-                        <label>Message (About Page) : </label>
-                        <div id="about_message" style="min-height: 100px;">
-                        </div>
-                        {{-- <textarea name="updateMsg" class="updateMsg" style="display: none"></textarea> --}}
-                    </div>
                     <div class="form-group" id="welcome-message">
                         <label>Message (Welcome Page) : </label>
                         <div id="welcome_message" style="min-height: 100px;" name="welcome_message">
                         </div>
-                        {{-- <textarea name="updateMsg2" class="updateMsg2" style="display: none"></textarea> --}}
+                    </div>
+                    <div class="form-group" id="about-message">
+                        <label>Message (About Page) : </label>
+                        <div id="about_message" style="min-height: 100px;">
+                        </div>
                     </div>
                     <div class="row">
                         <div class="col col-12 col-lg-6">
