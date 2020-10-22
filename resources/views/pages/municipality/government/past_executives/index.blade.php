@@ -175,7 +175,7 @@
 @extends('layouts/app')
 
 @section('styles')
-
+<link rel="stylesheet" type="text/css" href="{{ asset('css/timeline-style.css') }}">
 <style type="text/css">
   .cd-timeline__date {
     color: #303f4a;
