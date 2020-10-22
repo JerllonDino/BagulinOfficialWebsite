@@ -26,7 +26,6 @@ Route::prefix('municipality')->group(function () {
     Route::get('government/barangay/{position}', 'OfficialController@getOfficial');
     Route::get('government/officials/{position}', 'OfficialController@getOfficial');
     Route::view('government/past-executives', 'pages/municipality/government/past_executives/index');
-    Route::view('government/past-executives', 'pages/municipality/government/past_executives/index');
     Route::view('profile/education', 'pages/municipality/profile/education');
     Route::view('profile/geophysical', 'pages/municipality/profile/geophysical');
     Route::view('profile/health', 'pages/municipality/profile/health');

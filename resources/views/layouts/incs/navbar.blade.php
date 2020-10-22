@@ -36,7 +36,7 @@
 										<li><a class="dropdown-item" href="{{url('municipality/government/officials/mayor')}}">Mayor</a></li>
 										<li><a class="dropdown-item" href="{{url('municipality/government/officials/vicemayor')}}">Vice Mayor</a></li>
 										<li><a class="dropdown-item" href="{{url('municipality/government/officials/councilors')}}">Councilors</a></li>
-										<li><a class="dropdown-item" href="{{url('municipality/government/past_executives')}}">Past Local Chief Officials</a></li>
+										<li><a class="dropdown-item" href="{{url('municipality/government/past-executives')}}">Past Local Chief Officials</a></li>
 									</ul>
 								</li>
 								<li class="dropdown-submenu">
