@@ -14,8 +14,8 @@
             </div>
             <div class="col-lg-6 mt-5 mt-lg-0">
                 <h1 style="line-height: 25px">Hon. {{ $official[0]->first_name.' '.$official[0]->middle_name.' '.$official[0]->last_name }}</h1>
-                <i><i class="fas fa-user"></i> Mayor of Bagulin, La Union</i>
-                <h2 class="mt-3">Biography</h2>
+                <i><i class="fas fa-user"></i> Vice Mayor of Bagulin, La Union</i>
+                <!-- <h2 class="mt-3">Biography</h2> -->
                 @if ($official[0]->welcome_message && $official[0]->welcome_message !== "<p><br></p>")
                     {!! $official[0]->welcome_message !!}
                 @else
