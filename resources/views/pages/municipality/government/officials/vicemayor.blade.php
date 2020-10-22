@@ -1,5 +1,13 @@
 @extends('layouts/app')
 
+@section('styles')
+<style>
+    #welcome_message p {
+        text-indent: 20px;
+    }
+</style>
+@endsection
+
 @section('content')
 <div class="container mt-5 mb-5">
 	<div class="row">
@@ -17,7 +25,7 @@
                 <i><i class="fas fa-user"></i> Vice Mayor of Bagulin, La Union</i>
                 <!-- <h2 class="mt-3">Biography</h2> -->
                 @if ($official[0]->welcome_message && $official[0]->welcome_message !== "<p><br></p>")
-                    <div class="mt-3">
+                    <div id="welcome_message" class="mt-3">
                         {!! $official[0]->welcome_message !!}
                     </div>
                 @else
