@@ -96,7 +96,7 @@ class MunicipalProfileController extends Controller
         ]);
 
         $document = MunicipalProfile::find($request->id);
-        if ( Storage::disk('public')->delete( 'municipal-profile/' . $this->category_ids[$document->category_id - 1] . '/' . $document->file_name) ) {
+        if ( Storage::disk('public')->delete( 'municipal-profile/' . $document->category_id . '/' . $document->file_name) ) {
             $document->delete();
         }
     }
@@ -112,8 +112,8 @@ class MunicipalProfileController extends Controller
         $new_filename =  time() . rand(11, 99) . '_' . str_replace('_', '-', $request->rename_to) . ".$extension";
 
         Storage::disk('public')->move(
-            'municipal-profile/' .  $this->category_ids[$old_file->category_id - 1] . "/" . $old_file->file_name,
-            'municipal-profile/' .  $this->category_ids[$old_file->category_id - 1] . "/" . $new_filename);
+            'municipal-profile/' . $old_file->category_id . "/" . $old_file->file_name,
+            'municipal-profile/' .  $old_file->category_id . "/" . $new_filename);
         MunicipalProfile::where('id', $request->id)->update(['file_name'=>$new_filename]);
     }
 

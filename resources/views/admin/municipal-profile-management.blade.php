@@ -115,7 +115,7 @@
 
 
           <p class="h2 text-primary"><i class="fas fa-file-pdf"></i><p>
-          <p class="small font-weight-bold"><a class="file-name" href="/storage/municipal-profile/{{$category_id}}/{{$document->file_name}}" target="_blank">{{$document->file_name}}</a></p>
+          <p class="small font-weight-bold" style="word-wrap: break-word;"><a class="file-name" href="/storage/municipal-profile/{{$category_id}}/{{$document->file_name}}" target="_blank">{{$document->file_name}}</a></p>
         </div>
         @endforeach
         @endif
