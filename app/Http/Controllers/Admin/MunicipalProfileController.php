@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\MunicipalProfile;
+use App\MunicipalProfileCategory;
 use Illuminate\Support\Facades\Storage;
 
 class MunicipalProfileController extends Controller
@@ -16,19 +17,21 @@ class MunicipalProfileController extends Controller
       $this->middleware('auth');
     }
 
-    public function index($category = 'forms') {
-        $category = strtolower($category);
-        $id = $this->get_index($category);
+    public function index($category = NULL) {
+        $category_name = MunicipalProfileCategory::select('id', 'category')->where('id', $category)->first();
+        $official_documents = MunicipalProfile::select('id', 'category_id', 'file_name')
+                                            ->when($category, function($query) use ($category) {
+                                                return $query->where('category_id', $category);
+                                            })
+                                            ->paginate(10);
 
-        if ( $id !== FALSE ) {
-            $documents = MunicipalProfile::select('id', 'file_name')->where('category_id', $id)->paginate();
-            return view('admin/municipal-profile-management')
-                    ->with('category', ucfirst($category))
-                    ->with('documents', $documents);
-        }
-        else {
-            return abort(404);
-        }
+        $document_categories = MunicipalProfileCategory::select('id','category')->get();
+
+        return view('admin/municipal-profile-management')
+                ->with('categories', $document_categories)
+                ->with('documents', $official_documents)
+                ->with('folder', $category_name == null ? 'All' : $category_name->category)
+                ->with('category_id', isset($category_name->id) ? $category_name->id : null);
     }
 
     public function get_index($category) {
@@ -41,10 +44,9 @@ class MunicipalProfileController extends Controller
             'category' => 'required'
         ]);
 
-        $category = strtolower($request->category);
-        $id = $this->get_index($category);
+        $id = $request->category;
         if ( $id !== FALSE ) {
-            $this->storeDocuments($request->uploads, $category, $id);
+            $this->storeDocuments($request->uploads, $id, $id);
         }
         else {
 
@@ -75,7 +77,7 @@ class MunicipalProfileController extends Controller
                 $fileName =  time() . rand(11, 99) . '_' . str_replace('_', '-', $document['fileName']);
 
                 if ($decoded !== FALSE) {
-                    $result = Storage::disk('s3')->put( 'municipal-profile/' . $category . '/' . $fileName, $decoded['contents']);
+                    $result = Storage::disk('public')->put( 'municipal-profile/' . $category . '/' . $fileName, $decoded['contents']);
                     if ($result) {
                         $data[] = array(
                             'category_id' => $id,
@@ -94,7 +96,7 @@ class MunicipalProfileController extends Controller
         ]);
 
         $document = MunicipalProfile::find($request->id);
-        if ( Storage::disk('s3')->delete( 'municipal-profile/' . $this->category_ids[$document->category_id - 1] . '/' . $document->file_name) ) {
+        if ( Storage::disk('public')->delete( 'municipal-profile/' . $this->category_ids[$document->category_id - 1] . '/' . $document->file_name) ) {
             $document->delete();
         }
     }
@@ -109,9 +111,43 @@ class MunicipalProfileController extends Controller
         $extension = explode('.',$old_file->file_name)[1];
         $new_filename =  time() . rand(11, 99) . '_' . str_replace('_', '-', $request->rename_to) . ".$extension";
 
-        Storage::disk('s3')->move(
+        Storage::disk('public')->move(
             'municipal-profile/' .  $this->category_ids[$old_file->category_id - 1] . "/" . $old_file->file_name,
             'municipal-profile/' .  $this->category_ids[$old_file->category_id - 1] . "/" . $new_filename);
         MunicipalProfile::where('id', $request->id)->update(['file_name'=>$new_filename]);
+    }
+
+    public function addCategory(Request $request) {
+        $request->validate([
+            "new_category" => 'required'
+        ]);
+
+        $category = new MunicipalProfileCategory;
+        $category->category = ucwords($request->new_category);
+        $category->save();
+
+        return response()->json([
+            "link" => $category->id
+        ]);
+    }
+
+    public function deleteCategory(Request $request) {
+        $request->validate([
+            'category_id' => 'required'
+        ]);
+
+        $category = MunicipalProfileCategory::find($request->category_id);
+        MunicipalProfile::where('category_id', $request->category_id)->delete();
+        Storage::disk('public')->deleteDirectory("municipal-profile/$request->category_id/");
+        $category->delete();
+    }
+    
+    public function renameCategory(Request $request) {
+        $request->validate([
+            'id' => 'required',
+            'rename_to' => 'required'
+        ]);
+
+        MunicipalProfileCategory::where('id', $request->id)->update(['category' => $request->rename_to]);
     }
 }

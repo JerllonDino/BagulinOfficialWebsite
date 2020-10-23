@@ -50,7 +50,7 @@
     opacity: 1;
   }
 
-  .{{strtolower($category)}} {
+  .{{strtolower($folder)}} {
     color: #fff;
     background-color: #702323;
   }
@@ -60,22 +60,38 @@
 <div class="container my-5">
   <div class="row">
 
-    {{-- SIDE MENUS --}}
-    <div class="col-3">
+     {{-- SIDE MENUS --}}
+     <div class="col-3">
       <nav class="nav flex-column nav-pills" id="folders">
-        <a class="nav-link forms" href="/admin/municipal-profile/population">Population and Social Profile</a>
-        <a class="nav-link services" href="/admin/municipal-profile/infrastructure">Infrastracture/Utilities/Facilities</a>
-        <a class="nav-link services" href="/admin/municipal-profile/health">Health</a>
-        <a class="nav-link services" href="/admin/municipal-profile/educational">Education</a>
-        <a class="nav-link services" href="/admin/municipal-profile/local-institutional">Local Institutional Capability</a>
+        <a class="nav-link all" href="/admin/municipal-profile">All</a>
+        @foreach ($categories as $category)
+        <a class="nav-link {{strtolower(str_replace(' ', '_', $category->category))}}" href="/admin/municipal-profile/{{$category->id}}">
+          <span class="float-left">{{$category->category}}</span>
+          <span class="float-right"><i class="fas fa-times delete-category" data-id="{{$category->id}}"></i></span>
+        </a>
+        @endforeach
       </nav>
+      <form class="bg-secondary p-2 my-3 border" action="" id="new-category-form">
+        <label>Add new category</label>
+        <div class="input-group">
+          <input type="text" class="form-control" name="new_category">
+          <div class="input-group-append">
+            <button type="submit" class="btn btn-sm btn-primary"><i class="fas fa-spinner fa-spin mr-1" style="display:none;"></i> Add</button>
+          </div>
+          <div class="invalid-feedback"></div>
+        </div>
+      </form>
     </div>
 
     {{-- FILES --}}
     <div class="col-9">
-      <h1>Municipal Profile | {{$category}}</h1>
+      <h1>Municipal Profile | <span id="category-name" data-id="{{$category_id}}">{{$folder}}</span> @if(strtolower($folder) != 'all') <button id="rename-category-btn" class="btn btn-light"><i class="fas fa-edit"></i></button> @endif</h1></h1>
       <hr/>
+      
+      @if(strtolower($folder) != 'all')
       <button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#new-file-modal"><i class="fas fa-upload"></i> Upload Document</button>
+      @endif
+
       <div class="row" id="docs">
         @if(count($documents) == 0)
         <div class="alert alert-light mt-3">
@@ -99,7 +115,7 @@
 
 
           <p class="h2 text-primary"><i class="fas fa-file-pdf"></i><p>
-          <p class="small font-weight-bold"><a class="file-name" href="/storage/municipal-profile/{{$category}}/{{$document->file_name}}" target="_blank">{{$document->file_name}}</a></p>
+          <p class="small font-weight-bold"><a class="file-name" href="/storage/municipal-profile/{{$category_id}}/{{$document->file_name}}" target="_blank">{{$document->file_name}}</a></p>
         </div>
         @endforeach
         @endif
@@ -118,7 +134,7 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Upload Documents for {{$category}}</h5>
+          <h5 class="modal-title">Upload Documents for {{$folder}}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -133,7 +149,7 @@
             </div>
           </div>
           <div class="modal-footer">
-            <input type="hidden" name="category" value="{{$category}}">
+            <input type="hidden" name="category" value="{{$category_id}}">
             <button type="submit" class="btn btn-primary"><i class="fas fa-spin fa-spinner" style="display:none;"></i> Upload</button>
           </div>
         </form>
@@ -165,10 +181,124 @@
     </div>
   </div>
 </div>
+
+{{-- Rename Category Modal --}}
+<div class="modal" tabindex="-1" role="dialog" id="rename-category-modal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Rename Category</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form id="rename-category-form">
+        <div class="modal-body">
+          <label for="">New category name : </label>
+          <input type="text" class="form-control" name="rename_to">
+          <input type="hidden" name="id">
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary"><i class="fas fa-spin fa-spinner" style="display:none;"></i> Save</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 @endsection
 
 @section('scripts')
 <script>
+  // Rename Category
+  $('#rename-category-btn').click(function() {
+    $form = $('#rename-category-form');
+    $category = $('#category-name');
+
+    categoryName = $category.text();
+    id = $category.attr('data-id');
+    console.log(id);
+    $('#rename-category-modal').modal('show');
+    $form.find('[name="rename_to"]').val(categoryName);
+    $form.find('[name="id"]').val(id);
+  });
+
+  $('#rename-category-form').submit(function(e) {
+    e.preventDefault();
+
+    var vals = $(this).serializeArray();
+    $submitBtn = $(this).find('[type="submit"]');
+    $submitBtnSpinner = $submitBtn.find('.fa-spin');
+
+    $.ajax({
+      url: '/admin/municipal-profile/rename-category',
+      method: 'PUT',
+      data: vals,
+      beforeSend: function() {
+        $submitBtn.attr('disabled', '');
+        $submitBtnSpinner.show();
+      },
+      success: function(res) {
+        $submitBtnSpinner.hide();
+        $submitBtn.removeClass('btn-primary').addClass('btn-success').html('<i class="fas fa-check-circle"></i>File name changed. Refreshing page...');
+
+        location.reload();
+      }
+    });
+  });
+
+  // New Category
+  $('#new-category-form').on('submit', function(e) {
+    e.preventDefault();
+    $elem = $(this);
+    $submitBtn = $(this).find('[type="submit"]');
+    $submitBtnSpinner = $submitBtn.find('.fa-spin');
+    var vals = $(this).serializeArray();
+
+    $.ajax({
+      url: '/admin/municipal-profile/new-category',
+      method: 'POST',
+      data: vals,
+      beforeSend: function() {
+        $submitBtn.attr('disabled', '');
+        $submitBtnSpinner.show();
+      },
+      success:function(res) {
+        $submitBtn.removeAttr('disabled');
+        $submitBtnSpinner.hide();
+        $elem.trigger('reset');
+
+        console.log(res.link);
+        location.href = "/admin/municipal-profile/" + res.link;
+      },
+      error: function() {
+        $submitBtn.removeAttr('disabled');
+        $submitBtnSpinner.hide();
+      }
+    });
+  })
+
+  // Delete Category
+  $('.delete-category').click(function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (confirm('Are you sure?All files from this folder will be deleted.')) {
+      id = $(this).attr('data-id');
+      $.ajax({
+        url: '/admin/municipal-profile/delete-category',
+        method: 'DELETE',
+        data: {'category_id': id},
+        beforeSend: function() {
+
+        },
+        success: function() {
+          location.reload();
+        }
+      });
+    }
+  })
+
+  
+
   // File upload
   $('[name="documents"]').change(function() {
       var file = $(this);

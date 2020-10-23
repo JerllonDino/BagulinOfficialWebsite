@@ -106,6 +106,9 @@ Route::prefix('admin')->group(function () {
         Route::post('/upload', 'Admin\MunicipalProfileController@save');
         Route::delete('/delete', 'Admin\MunicipalProfileController@delete');
         Route::put('/rename', 'Admin\MunicipalProfileController@rename');
+        Route::post('/new-category', 'Admin\MunicipalProfileController@addCategory');
+        Route::delete('/delete-category', 'Admin\MunicipalProfileController@deleteCategory');
+        Route::put('/rename-category', 'Admin\MunicipalProfileController@renameCategory');
     });
 
     Route::get('/', 'Auth\LoginController@index');
