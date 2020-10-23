@@ -5,10 +5,14 @@
     #images .carousel-item {
         widows: 100%;
         height: 400px;
-        background-size: 50%;
-        background-color: black;
-        background-position: center;
+        background-size: contain;
         background-repeat: no-repeat;
+        background-position: center;
+        background-color: white;
+    }
+    a.carousel-control-prev:hover,
+    a.carousel-control-next:hover {
+        text-decoration: none !important;
     }
     #content p {
         font-size: 1.125rem;
@@ -34,16 +38,16 @@
             @if (count($images) > 0)
             <div id="images" class="carousel slide my-5" data-ride="carousel">
                 <div class="carousel-inner">
-                    @foreach($images as $key => $image)
+                    @foreach($images as $key => $image) 
                         <div class="carousel-item @if($key == 0) active @endif" style="background-image: url('https://bagulin.s3-ap-southeast-1.amazonaws.com/announcements/{{$image->src}}')"></div>
                     @endforeach
                     @if (count($images) > 1)
                     <a class="carousel-control-prev" href="#images" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <i class="fas fa-arrow-left text-dark"></i>
                         <span class="sr-only">Previous</span>
                     </a>
                     <a class="carousel-control-next" href="#images" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <i class="fas fa-arrow-right text-dark"></i>
                         <span class="sr-only">Next</span>
                     </a>
                     @endif
