@@ -50,8 +50,8 @@
 						</li>
 
 						<li class="dropdown-submenu">
-							<a class="dropdown-item dropdown-toggle" href="#">Municipal Profile</a>
-							<ul class="dropdown-menu">
+							<a class="dropdown-item" href="/municipal-profile">Municipal Profile</a>
+							{{-- <ul class="dropdown-menu">
 								<li><a class="dropdown-item" href="{{url('municipality/profile/geophysical')}}">Geophysical Environment</a></li>
 								<li><a class="dropdown-item" href="{{url('municipality/profile/infrastructure')}}">Infrastracture/Utilities/Facilities</a></li>
 								<li><a class="dropdown-item" href="{{url('municipality/profile/population')}}">Population and Social Profile</a></li>
@@ -59,7 +59,7 @@
 								<li><a class="dropdown-item" href="{{url('municipality/profile/education')}}">Education</a></li>
 								<li><a class="dropdown-item" href="{{url('municipality/profile/local')}}">Local Institutional Capability</a></li>
 								<li><a class="dropdown-item" href="{{url('municipality/profile/local-economy')}}">Local Economy</a></li>
-							</ul>
+							</ul> --}}
 						</li>
 					</ul>
 				</li>

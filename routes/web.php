@@ -18,6 +18,9 @@ Route::post('/views-counter', 'DailyPageViewsController@add');
 Route::get('/read/{slug}', 'AnnouncementController@read');
 Route::get('/announcements', 'AnnouncementController@index');
 
+Route::get('/municipal-profile', 'MunicipalProfileController@index');
+Route::get('/municipal-profile/get', 'MunicipalProfileController@getFiles');
+
 Route::prefix('municipality')->group(function () {
     Route::get('message', 'OfficialController@getWelcome');
     Route::view('vision-mission', 'pages/municipality/general/vision-mission');
