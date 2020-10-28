@@ -5,7 +5,7 @@
 <style>
     .rounded-circle{
             width: 200px;
-            height: 210px;
+            height: 200px;
             object-fit: cover;
         }
 </style>
