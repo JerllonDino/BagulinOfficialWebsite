@@ -105,6 +105,11 @@
       <script src="{{ asset('/js/app.js') }}"></script>
       <script src="{{ asset('js/admin/script.js') }}"></script>
       @yield('scripts')
+      <script>
+        $('#sidebarCollapse').on('click', function () {
+            $('#sidebar').toggleClass('active');
+        });
+      </script>
     </body>
 
     </html>
