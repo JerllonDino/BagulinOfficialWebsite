@@ -92,7 +92,7 @@ $modalIndividual.on('change', '[name="welcome_image"]', function () {
 
 $('.submit-official').submit(function (e) {
     e.preventDefault();
-    position = $(this).find('input[name="position"]').val();
+    position = $(this).find("input[name='position']").val();
     $id = $(this).find('input[name="id"]').val();
     data = $(this).serializeArray();
 
