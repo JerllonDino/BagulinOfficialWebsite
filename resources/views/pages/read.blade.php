@@ -38,8 +38,8 @@
             @if (count($images) > 0)
             <div id="images" class="carousel slide my-5" data-ride="carousel">
                 <div class="carousel-inner">
-                    @foreach($images as $key => $image) 
-                        <div class="carousel-item @if($key == 0) active @endif" style="background-image: url('https://bagulin.s3-ap-southeast-1.amazonaws.com/announcements/{{$image->src}}')"></div>
+                    @foreach($images as $key => $image)
+                        <div class="carousel-item @if($key == 0) active @endif" style="background-image: url('/storage/announcements/{{$image->src}}')"></div>
                     @endforeach
                     @if (count($images) > 1)
                     <a class="carousel-control-prev" href="#images" role="button" data-slide="prev">

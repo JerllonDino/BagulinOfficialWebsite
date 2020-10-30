@@ -36,7 +36,7 @@
                         <input type="file" name="pictures" multiple="">
                         <div class="row my-3" id="images">
                             @foreach ($images as $image)
-                                <div class="col-4 db" style="background-image:url('https://bagulin.s3-ap-southeast-1.amazonaws.com/announcements/{{$image->src}}');">
+                                <div class="col-4 db" style="background-image:url('/storage/announcements/{{$image->src}}');">
                                     <div class="delete-photo-db" data-id="{{$image->id}}"   >
                                         <i class="fas fa-times"></i>
                                     </div>

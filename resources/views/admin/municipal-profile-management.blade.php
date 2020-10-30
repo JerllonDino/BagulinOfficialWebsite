@@ -87,7 +87,7 @@
     <div class="col-9">
       <h1>Municipal Profile | <span id="category-name" data-id="{{$category_id}}">{{$folder}}</span> @if(strtolower($folder) != 'all') <button id="rename-category-btn" class="btn btn-light"><i class="fas fa-edit"></i></button> @endif</h1></h1>
       <hr/>
-      
+
       @if(strtolower($folder) != 'all')
       <button class="btn btn-sm btn-primary mb-3" data-toggle="modal" data-target="#new-file-modal"><i class="fas fa-upload"></i> Upload Document</button>
       @endif
@@ -115,7 +115,7 @@
 
 
           <p class="h2 text-primary"><i class="fas fa-file-pdf"></i><p>
-          <p class="small font-weight-bold" style="word-wrap: break-word;"><a class="file-name" href="https://bagulin.s3-ap-southeast-1.amazonaws.com/municipal-profile/{{$category_id}}/{{$document->file_name}}" target="_blank">{{$document->file_name}}</a></p>
+          <p class="small font-weight-bold" style="word-wrap: break-word;"><a class="file-name" href="/storage/municipal-profile/{{$category_id}}/{{$document->file_name}}" target="_blank">{{$document->file_name}}</a></p>
         </div>
         @endforeach
         @endif
@@ -297,7 +297,7 @@
     }
   })
 
-  
+
 
   // File upload
   $('[name="documents"]').change(function() {

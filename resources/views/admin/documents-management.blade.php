@@ -119,7 +119,7 @@
 
 
           <p class="h2 text-primary"><i class="fas fa-file-pdf"></i><p>
-          <p class="small font-weight-bold"><a class="file-name" href="https://bagulin.s3-ap-southeast-1.amazonaws.com/official-documents/{{$document->category_id}}/{{$document->file_name}}" target="_blank">{{$document->file_name}}</a></p>
+          <p class="small font-weight-bold"><a class="file-name" href="/storage/official-documents/{{$document->category_id}}/{{$document->file_name}}" target="_blank">{{$document->file_name}}</a></p>
         </div>
         @endforeach
         @endif

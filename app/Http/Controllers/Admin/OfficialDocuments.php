@@ -54,7 +54,7 @@ class OfficialDocuments extends Controller
 
         $category = DocumentCategory::find($request->category_id);
         OfficialDocument::where('category_id', $request->category_id)->delete();
-        Storage::disk('s3')->deleteDirectory("official-documents/$request->category_id/");
+        Storage::disk('public')->deleteDirectory("official-documents/$request->category_id/");
         $category->delete();
     }
 
@@ -76,7 +76,7 @@ class OfficialDocuments extends Controller
         $extension = explode('.',$old_file->file_name)[1];
         $new_filename =  time() . rand(11, 99) . '_' . str_replace('_', '-', $request->rename_to) . ".$extension";
 
-        Storage::disk('s3')->move(
+        Storage::disk('public')->move(
             'official-documents/' . $old_file->category_id. "/". $old_file->file_name,
             'official-documents/' . $old_file->category_id. "/". $new_filename);
         OfficialDocument::where('id', $request->id)->update(['file_name'=>$new_filename]);
@@ -88,7 +88,7 @@ class OfficialDocuments extends Controller
         ]);
 
         $document = OfficialDocument::find($request->id);
-        if ( Storage::disk('s3')->delete( 'official-documents/' . $document->category_id . '/' . $document->file_name) ) {
+        if ( Storage::disk('public')->delete( 'official-documents/' . $document->category_id . '/' . $document->file_name) ) {
             $document->delete();
         }
     }
@@ -117,7 +117,7 @@ class OfficialDocuments extends Controller
                 $fileName =  time() . rand(11, 99) . '_' . str_replace('_', '-', $document['fileName']);
 
                 if ($decoded !== FALSE) {
-                    $result = Storage::disk('s3')->put( 'official-documents/' . $category . '/' . $fileName, $decoded['contents']);
+                    $result = Storage::disk('public')->put( 'official-documents/' . $category . '/' . $fileName, $decoded['contents']);
                     if ($result) {
                         $data[] = array(
                             'category_id' => $category,

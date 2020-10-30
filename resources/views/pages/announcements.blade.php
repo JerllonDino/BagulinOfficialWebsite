@@ -37,7 +37,7 @@
                     <div class="col-md-6">
                         <div class="card mb-5">
                             <div class="card-body">
-                                <div class="image mb-3" style="background-image: url('https://bagulin.s3-ap-southeast-1.amazonaws.com/announcements/{{$announcement->thumbnail}}')"></div>
+                                <div class="image mb-3" style="background-image: url('/storage/announcements/{{$announcement->thumbnail}}')"></div>
                                 <h3><a href="/read/{{$announcement->slug}}">{{$announcement->title}}</a></h3>
                                 <p class="text-secondary">{{ date('M d, Y', strtotime($announcement->created_at)) }}</p>
                             </div>
