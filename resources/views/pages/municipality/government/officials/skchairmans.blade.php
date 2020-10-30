@@ -23,7 +23,7 @@
         @else
             @foreach ($official as $skchairman)
                 <div class="col-lg-3 mx-auto mt-5 mt-lg-0">
-                    <img class="rounded-circle mx-auto d-block" src="{{ $skchairman->welcome_image ? 'https://bagulin.s3-ap-southeast-1.amazonaws.com/officials/'.$skchairman->position.'/'.$skchairman->welcome_image : asset('img/official.png')}}" width="200"/>
+                    <img class="rounded-circle mx-auto d-block" src="{{ $skchairman->welcome_image ? '/storage/officials/'.$skchairman->position.'/'.$skchairman->welcome_image : asset('img/official.png')}}" width="200"/>
                     <h5 class="text-center mt-2"> Hon. {{ $skchairman->first_name.' '.$skchairman->middle_name.' '.$skchairman->last_name }}</h5>
                     <p class="text-center">{{ $skchairman->location }}</p>
                 </div>

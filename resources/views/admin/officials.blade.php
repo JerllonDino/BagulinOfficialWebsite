@@ -51,7 +51,7 @@
             <div class="card indi-officials" data-position="mayor" data-id="{{ $officials[0] ? $officials[0]->id : '' }}">
                 <div class="card-body">
                     @if ($officials[0])
-                        <img src="{{ $officials[0]->welcome_image ? 'https://bagulin.s3-ap-southeast-1.amazonaws.com/officials/mayor/'.$officials[0]->welcome_image : asset('img/official.png') }}"
+                        <img src="{{ $officials[0]->welcome_image ? '/storage/officials/mayor/'.$officials[0]->welcome_image : asset('img/official.png') }}"
                             class="rounded-circle img-thumbnail " alt="">
                     @else
                         <img src="{{ asset('img/official.png') }}" class="rounded-circle img-thumbnail" alt="">
@@ -64,7 +64,7 @@
             <div class="card indi-officials" data-position="vicemayor" data-id="{{ $officials[1] ? $officials[1]->id : '' }}">
                 <div class="card-body">
                     @if ($officials[1])
-                        <img src="{{ $officials[1]->welcome_image ? 'https://bagulin.s3-ap-southeast-1.amazonaws.com/officials/vicemayor/'.$officials[1]->welcome_image : asset('img/official.png') }}" class="rounded-circle img-thumbnail" alt="">
+                        <img src="{{ $officials[1]->welcome_image ? '/storage/officials/vicemayor/'.$officials[1]->welcome_image : asset('img/official.png') }}" class="rounded-circle img-thumbnail" alt="">
                     @else
                         <img src="{{ asset('img/official.png') }}" class="rounded-circle img-thumbnail" alt="">
                     @endif
@@ -224,6 +224,7 @@
     position = $(this).data('position');
     $('#welcome-label').text('Image for Welcome Page');
     id = $(this).data('id');
+    console.log(position);
 
     $modalIndividual.find('.modal-title').text(id ? 'Edit ' + position : 'Add ' + position);
     if (position == "councilor" || position == "chairman" || position == "skchairman" ) {
@@ -254,11 +255,11 @@
             $modalIndividual.find('[name="location"]').val(data.location);
             $modalIndividual.find('[name="welcome_image_name"]').val(data.welcome_image);
             $modalIndividual.find('[name="about_image_name"]').val(data.about_image);
-            $modalIndividual.find('form').data('position', position);
+            $modalIndividual.find('[name="position"]').val(position);
             aboutMessage.root.innerHTML = data.about_message;
             welcomeMessage.root.innerHTML = data.welcome_message;
-            aboutImageUrl = data.about_image ? 'https://bagulin.s3-ap-southeast-1.amazonaws.com/officials/position/officialImage'.replace('position', data.position).replace('officialImage', data.about_image) : "{{ asset('img/official.png') }}";
-            welcomeImageUrl = data.welcome_image ? "https://bagulin.s3-ap-southeast-1.amazonaws.com/officials/position/officialImage".replace('position', data.position).replace('officialImage', data.welcome_image) : "{{ asset('img/official.png') }}";
+            aboutImageUrl = data.about_image ? '/storage/officials/position/officialImage'.replace('position', data.position).replace('officialImage', data.about_image) : "{{ asset('img/official.png') }}";
+            welcomeImageUrl = data.welcome_image ? "/storage/officials/position/officialImage".replace('position', data.position).replace('officialImage', data.welcome_image) : "{{ asset('img/official.png') }}";
             $('#welcome-image').find('img').attr('src', welcomeImageUrl);
             $('#about-image').find('img').attr('src', aboutImageUrl);
         }).fail(function(){

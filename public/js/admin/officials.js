@@ -92,7 +92,7 @@ $modalIndividual.on('change', '[name="welcome_image"]', function () {
 
 $('.submit-official').submit(function (e) {
     e.preventDefault();
-    position = $(this).data('position');
+    position = $(this).find('input[name="position"]').val();
     $id = $(this).find('input[name="id"]').val();
     data = $(this).serializeArray();
 
@@ -107,7 +107,6 @@ $('.submit-official').submit(function (e) {
         { name: 'welcome_message', value: welcomeMsg },
         { name: 'about_message', value: aboutMsg },
     );
-    console.log(id);
     if (!$id) {
         $.ajax({
             url: '/admin/officials/store',
@@ -118,9 +117,10 @@ $('.submit-official').submit(function (e) {
                 $submitBtnSpinner.removeClass('d-none');
             },
         }).done(function (response) {
+            console.log(position);
             showMessage('Official Successfully Saved!');
             if(position == "mayor" || position == "vicemayor"){
-                setTimeout(function(){ location.reload(); }, 1000);
+                setTimeout(function(){ location.reload(); }, 500);
             }
             $('.modal').modal('hide');
         }).fail(function (err) {
@@ -142,7 +142,7 @@ $('.submit-official').submit(function (e) {
         }).done(function (response) {
             showMessage('Official Successfully Updated!');
             if(position == "mayor" || position == "vicemayor"){
-                setTimeout(function(){ location.reload(); }, 1000);
+                setTimeout(function(){ location.reload(); }, 500);
             }
             $('.modal').modal('hide');
         }).fail(function (err) {
