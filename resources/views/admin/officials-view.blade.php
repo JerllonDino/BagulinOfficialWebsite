@@ -17,7 +17,7 @@
                              class="rounded-circle img-thumbnail multiple" alt="">
                         <h6 class="mt-3 small">
                             {{ $official->first_name." ".$official->middle_name." ".$official->last_name }}</h6>
-                            <p>{{$official->location}}</p>
+                            <i class="small">{{$official->location}}</i>
                     </div>
                 </div>
             </div>
