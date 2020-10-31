@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Official;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class OfficialController extends Controller
@@ -53,8 +54,10 @@ class OfficialController extends Controller
         $aboutBase = json_decode($request->aboutBase, true);
         $welcomeImageName = $request->welcome_image_name;
         $aboutImageName = $request->about_image_name;
-        $latestId = Official::max('id') + 1;
-        $addString = $request->id ? $request->id : $latestId;
+        $statement = DB::select("SHOW TABLE STATUS LIKE 'officials'");
+        $nextId = $statement[0]->Auto_increment;
+        // $latestId = Official::max('id') + 1;
+        $addString = $request->id ? $request->id : $nextId;
         if ($welcomeBase) {
             $decodedWelcome = $this->decodeBase64($welcomeBase);
             $welcomeImageName = $addString . "welcome-" . $request->position . ".png";
