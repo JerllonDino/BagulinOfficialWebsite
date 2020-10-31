@@ -2,7 +2,7 @@
     @php
     $count = $officials ? count($officials) : 0;
     @endphp
-    @if ($count <= $max)
+    @if ($count < $max)
     <button class="btn btn-primary indi-officials" id="add-official">Add Official</button>
     @endif
         <div class="row">

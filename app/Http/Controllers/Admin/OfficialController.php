@@ -93,7 +93,7 @@ class OfficialController extends Controller
     public function getOfficialsByPosition($position)
     {
         $official = Official::where('position', $position)->get();
-        $html = view('admin/officials-view', ['officials' => $official, 'max' => $position == 'councilor' ? 8 : 12 ]);
+        $html = view('admin/officials-view', ['officials' => $official, 'max' => $position == 'councilor' ? 8 : 10 ]);
         return response()->json(['html' => $html->render()]);
     }
 
