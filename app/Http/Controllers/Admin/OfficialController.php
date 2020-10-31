@@ -107,10 +107,10 @@ class OfficialController extends Controller
     {
         $official = Official::where('id', $id)->first();
         if ($official->about_image) {
-            Storage::disk('public')->delete('public/officials/'.$official->about_image);
+            Storage::disk('public')->delete('officials/'.$official->position.'/'.$official->about_image);
         }
         if ($official->welcome_image) {
-            Storage::disk('public')->delete('public/officials/'.$official->welcome_image);
+            Storage::disk('public')->delete('officials/'.$official->position.'/'.$official->welcome_image);
         }
 
         $official->delete();
