@@ -96,6 +96,7 @@ $('.submit-official').submit(function (e) {
     $id = $(this).find('input[name="id"]').val();
     data = $(this).serializeArray();
 
+
     welcomeBase = $('#welcome-image').find('img').data('base64');
     aboutBase = $('#about-image').find('img').data('base64');
     welcomeMsg = welcomeMessage.root.innerHTML;
