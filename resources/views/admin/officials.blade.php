@@ -218,7 +218,7 @@
 <!-- Main Quill library -->
 <script src="//cdn.quilljs.com/1.3.6/quill.js"></script>
 <script src="//cdn.quilljs.com/1.3.6/quill.min.js"></script>
-<script src="{{ asset('js/admin/officials.js') }}"></script>
+<script src="{{ asset('/js/admin/officials.js') }}"></script>
 <script>
     $('.modal, .container').on('click', '.indi-officials', function () {
     position = $(this).data('position');
