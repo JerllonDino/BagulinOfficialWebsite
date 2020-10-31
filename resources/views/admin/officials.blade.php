@@ -281,6 +281,8 @@ $('.modal').on('hidden.bs.modal', function () {
     $(this).find('form').find('input[name="id"]').val('');
     $(this).find('form').find('input[name="position"]').val('');
     $(this).find('img').attr('src', '{{ asset("img/official.png") }}');
+    $(this).find('[name="welcome_image"]').val(null);
+    $(this).find('[name="about_image"]').val(null);
 });
 
 </script>
