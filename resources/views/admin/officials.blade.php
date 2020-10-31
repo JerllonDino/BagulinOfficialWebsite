@@ -240,7 +240,6 @@
     }
 
     if (id) {
-
         $modalIndividual.find('[name="id"]').val(id);
         $.ajax({
             url: '/admin/officials/get/official/' + id,
