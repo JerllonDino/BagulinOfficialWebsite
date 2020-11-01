@@ -13,7 +13,7 @@ $modalDisable = $modalIndividual.find('#disable-modal');
 
 $(document).on('click', '.multi-officials', function (e) {
     position = $(this).data('position');
-    console.log();
+    console.log('test');
     $.ajax({
         url: '/admin/officials/get/position/' + position,
         method: 'POST',
