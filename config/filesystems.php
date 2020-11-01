@@ -72,7 +72,7 @@ return [
             'password' => 'jkgcreatives_2K19',
 
             // Optional FTP Settings...
-            'port' => 21,
+            // 'port' => 21,
             // 'root' => '',
             // 'passive' => true,
             // 'ssl' => true,
