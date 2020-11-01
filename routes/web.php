@@ -128,7 +128,3 @@ Route::prefix('admin')->group(function () {
     Route::get('/register', 'Auth\RegisterController@showRegistrationForm')->name('register');
 });
 // Auth::routes();
-
-Route::get('/storage/{extra}', function ($extra) {
-    return redirect('/public/storage/$extra');
-    })->where('extra', '.*');

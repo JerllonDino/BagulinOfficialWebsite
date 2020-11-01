@@ -120,7 +120,7 @@ $('.collapse').on('show.bs.collapse', function () {
                             <div class="card document h-100">
                                 <div class="card-body">
                                     <h1 class="text-center"><i class="fas fa-file-alt "></i></h1>
-                                    <a class="text-center d-block text-dark font-weight-bold" href="/storage/official-documents/${data.category_id}/${data.file_name}" target="_blank">${data.file_name.split('_')[1]}</a>
+                                    <a class="text-center d-block text-dark font-weight-bold" href="https://bagulin.s3-ap-southeast-1.amazonaws.com/official-documents/${data.category_id}/${data.file_name}" target="_blank">${data.file_name.split('_')[1]}</a>
                                 </div>
                             </div>
                         </div>`;
