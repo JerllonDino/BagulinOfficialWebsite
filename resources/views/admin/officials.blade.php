@@ -51,7 +51,7 @@
             <div class="card indi-officials" data-position="mayor" data-id="{{ $officials[0] ? $officials[0]->id : '' }}">
                 <div class="card-body">
                     @if ($officials[0])
-                        <img src="{{ $officials[0]->welcome_image ? asset('/storage/officials/mayor/'.$officials[0]->welcome_image) : asset('img/official.png') }}"
+                        <img src="{{ $officials[0]->welcome_image ? url('/public/storage/officials/mayor/'.$officials[0]->welcome_image) : asset('img/official.png') }}"
                             class="rounded-circle img-thumbnail " alt="">
                     @else
                         <img src="{{ asset('img/official.png') }}" class="rounded-circle img-thumbnail" alt="">
@@ -64,7 +64,7 @@
             <div class="card indi-officials" data-position="vicemayor" data-id="{{ $officials[1] ? $officials[1]->id : '' }}">
                 <div class="card-body">
                     @if ($officials[1])
-                        <img src="{{ $officials[1]->welcome_image ? url('/storage/officials/vicemayor/'.$officials[1]->welcome_image) : asset('img/official.png') }}" class="rounded-circle img-thumbnail" alt="">
+                        <img src="{{ $officials[1]->welcome_image ? url('/public/storage/officials/vicemayor/'.$officials[1]->welcome_image) : asset('img/official.png') }}" class="rounded-circle img-thumbnail" alt="">
                     @else
                         <img src="{{ asset('img/official.png') }}" class="rounded-circle img-thumbnail" alt="">
                     @endif

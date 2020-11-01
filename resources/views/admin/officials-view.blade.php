@@ -13,7 +13,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                     <div class="card-body text-center">
-                        <img src="{{ $official->welcome_image ? url('/storage/officials/'.$official->position.'/'.$official->welcome_image) : asset('img/official.png') }}"
+                        <img src="{{ $official->welcome_image ? url('/public/storage/officials/'.$official->position.'/'.$official->welcome_image) : asset('img/official.png') }}"
                              class="rounded-circle img-thumbnail multiple" alt="">
                         <h6 class="mt-3 small">
                             {{ $official->first_name." ".$official->middle_name." ".$official->last_name }}</h6>
