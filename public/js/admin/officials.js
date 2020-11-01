@@ -118,14 +118,12 @@ $('.submit-official').submit(function (e) {
                 $submitBtnSpinner.removeClass('d-none');
             },
         }).done(function (response) {
-            console.log(response);
             showMessage('Official Successfully Saved!');
             if(position == "mayor" || position == "vicemayor"){
                 setTimeout(function(){ location.reload(); }, 500);
             }
             $('.modal').modal('hide');
         }).fail(function (err) {
-            console.log(err);
         }).always(function () {
             $submitBtn.removeAttr('disabled');
             $submitBtnSpinner.addClass('d-none');
@@ -141,14 +139,13 @@ $('.submit-official').submit(function (e) {
                 $submitBtnSpinner.removeClass('d-none');
             },
         }).done(function (response) {
-            console.log(response);
             showMessage('Official Successfully Updated!');
             if(position == "mayor" || position == "vicemayor"){
                 setTimeout(function(){ location.reload(); }, 500);
             }
             $('.modal').modal('hide');
         }).fail(function (err) {
-            console.log(err);
+
         }).always(function () {
             $submitBtn.removeAttr('disabled');
             $submitBtnSpinner.addClass('d-none');

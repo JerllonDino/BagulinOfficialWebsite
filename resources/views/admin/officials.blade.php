@@ -224,7 +224,6 @@
     position = $(this).data('position');
     $('#welcome-label').text('Image for Welcome Page');
     id = $(this).data('id');
-    console.log(position);
 
     $modalIndividual.find('.modal-title').text(id ? 'Edit ' + position : 'Add ' + position);
     if (position == "councilor" || position == "chairman" || position == "skchairman" ) {
