@@ -11,8 +11,9 @@ $modalIndividual = $('#modalIndi');
 $modalMultiple = $('#modalMulti');
 $modalDisable = $modalIndividual.find('#disable-modal');
 
-$('.multi-officials').click(function (e) {
+$(document).on('click', '.multi-officials', function (e) {
     position = $(this).data('position');
+    console.log();
     $.ajax({
         url: '/admin/officials/get/position/' + position,
         method: 'POST',
@@ -22,6 +23,7 @@ $('.multi-officials').click(function (e) {
             $modalMultiple.modal('show');
         }
     }).done(function (html) {
+        console.log('inserts');
         $('.officials').html(html.html);
         $modalMultiple.find('#add-official').data('position', position);
     });
@@ -90,7 +92,7 @@ $modalIndividual.on('change', '[name="welcome_image"]', function () {
     reader.readAsDataURL(file[0].files[0]);
 });
 
-$('.submit-official').submit(function (e) {
+$modalIndividual.on('submit', '.submit-official', function (e) {
     e.preventDefault();
     position = $(this).find("input[name='position']").val();
     $id = $(this).find('input[name="id"]').val();
