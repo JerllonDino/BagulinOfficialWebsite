@@ -61,14 +61,14 @@ class OfficialController extends Controller
         if ($welcomeBase) {
             $decodedWelcome = $this->decodeBase64($welcomeBase);
             $welcomeImageName = $addString . "welcome-" . $request->position . ".png";
-            Storage::disk('public')->put( 'officials/' . $request->position . '/' . $welcomeImageName, $decodedWelcome['contents']);
+            Storage::disk('ftp')->put( 'officials/' . $request->position . '/' . $welcomeImageName, $decodedWelcome['contents']);
 
         }
 
         if($aboutBase){
             $decodedAbout = $this->decodeBase64($aboutBase);
             $aboutImageName = $addString . "about-" . $request->position . ".png";
-            Storage::disk('public')->put( 'officials/' . $request->position . '/' . $aboutImageName, $decodedAbout['contents']);
+            Storage::disk('ftp')->put( 'officials/' . $request->position . '/' . $aboutImageName, $decodedAbout['contents']);
         }
 
         $data = [
@@ -111,10 +111,10 @@ class OfficialController extends Controller
     {
         $official = Official::where('id', $id)->first();
         if ($official->about_image) {
-            Storage::disk('public')->delete('officials/'.$official->position.'/'.$official->about_image);
+            Storage::disk('ftp')->delete('officials/'.$official->position.'/'.$official->about_image);
         }
         if ($official->welcome_image) {
-            Storage::disk('public')->delete('officials/'.$official->position.'/'.$official->welcome_image);
+            Storage::disk('ftp')->delete('officials/'.$official->position.'/'.$official->welcome_image);
         }
 
         $official->delete();

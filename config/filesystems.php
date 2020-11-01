@@ -65,6 +65,20 @@ return [
             'endpoint' => env('AWS_ENDPOINT'),
         ],
 
+        'ftp' => [
+            'driver' => 'ftp',
+            'host' => '	ftp://municipalityofbagulinlaunion.com',
+            'username' => 'u762846669',
+            'password' => 'jkgcreatives_2K19',
+
+            // Optional FTP Settings...
+            'port' => 21,
+            // 'root' => '',
+            // 'passive' => true,
+            // 'ssl' => true,
+            // 'timeout' => 30,
+        ],
+
     ],
 
     /*
