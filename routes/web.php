@@ -129,4 +129,6 @@ Route::prefix('admin')->group(function () {
 });
 // Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/storage/{extra}', function ($extra) {
+    return redirect('/public/storage/$extra');
+    })->where('extra', '.*');
