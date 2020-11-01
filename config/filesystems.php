@@ -65,20 +65,6 @@ return [
             'endpoint' => env('AWS_ENDPOINT'),
         ],
 
-        'ftp' => [
-            'driver' => 'ftp',
-            'host' => 'ftp://156.67.222.2',
-            'username' => 'u762846669',
-            'password' => 'jkgcreatives_2K19',
-
-            // Optional FTP Settings...
-            // 'port' => 21,
-            // 'root' => '',
-            // 'passive' => true,
-            // 'ssl' => true,
-            // 'timeout' => 30,
-        ],
-
     ],
 
     /*
