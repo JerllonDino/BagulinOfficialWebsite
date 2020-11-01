@@ -258,7 +258,7 @@
             aboutMessage.root.innerHTML = data.about_message;
             welcomeMessage.root.innerHTML = data.welcome_message;
             aboutImageUrl = data.about_image ? '{{Storage::get("public/officials/position/officialImage")}}'.replace('position', data.position).replace('officialImage', data.about_image) : "{{ asset('img/official.png') }}";
-            welcomeImageUrl = data.welcome_image ? '{{Storage::get("publicstorage/officials/position/officialImage")}}'.replace('position', data.position).replace('officialImage', data.welcome_image) : "{{ asset('img/official.png') }}";
+            welcomeImageUrl = data.welcome_image ? '{{Storage::get("public//officials/position/officialImage")}}'.replace('position', data.position).replace('officialImage', data.welcome_image) : "{{ asset('img/official.png') }}";
             $('#welcome-image').find('img').attr('src', welcomeImageUrl);
             $('#about-image').find('img').attr('src', aboutImageUrl);
         }).fail(function(){
