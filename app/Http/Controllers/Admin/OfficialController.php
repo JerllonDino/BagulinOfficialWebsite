@@ -62,7 +62,7 @@ class OfficialController extends Controller
             $decodedWelcome = $this->decodeBase64($welcomeBase);
             $welcomeImageName = $addString . "welcome-" . $request->position . ".png";
             Storage::disk('public')->put( 'officials/' . $request->position . '/' . $welcomeImageName, $decodedWelcome['contents']);
-
+            $url = Storage::url('officials/' . $request->position . '/' . $welcomeImageName);
         }
 
         if($aboutBase){
@@ -90,7 +90,7 @@ class OfficialController extends Controller
             Official::insert($data);
         }
 
-        return response('Success!', 200);
+        return response(['message' => $url], 200);
 
     }
 
