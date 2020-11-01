@@ -67,7 +67,7 @@ return [
 
         'ftp' => [
             'driver' => 'ftp',
-            'host' => '	ftp://municipalityofbagulinlaunion.com',
+            'host' => 'ftp://municipalityofbagulinlaunion.com',
             'username' => 'u762846669',
             'password' => 'jkgcreatives_2K19',
 
