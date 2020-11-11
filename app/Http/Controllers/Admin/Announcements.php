@@ -35,6 +35,7 @@ class Announcements extends Controller
         $announcement->content = $this->dataready($request->announcement_content);
         $announcement->save();
 
+        $this->insertVideos($request->videos, $announcement->id);
         $this->storeImages($request->images, $announcement->id);
     }
 
@@ -45,8 +46,12 @@ class Announcements extends Controller
 
     public function edit($id) {
         $announcement = Announcement::select('id', 'title', 'content')->where('id', $id)->first();
+        $videos = AnnouncementImage::select('id', 'src')->where('announcement_id', $id)->where('file_type', 2)->get();
         $images = $this->getImages($id);
-        return view('admin/update-announcement')->with('announcement', $announcement)->with('images', $images);
+        return view('admin/update-announcement')
+                ->with('announcement', $announcement)
+                ->with('images', $images)
+                ->with('videos', $videos);
     }
 
     public function update(Request $request) {
@@ -64,7 +69,8 @@ class Announcements extends Controller
         $announcement->slug =  $prefix . '_' . str_replace(' ', '-', $announcement->title);
         $announcement->content = $this->dataready($request->update_content);
         $announcement->save();
-
+        
+        $this->insertVideos($request->videos, $announcement->id);
         $this->storeImages($request->images, $announcement->id);
     }
 
@@ -84,6 +90,14 @@ class Announcements extends Controller
             AnnouncementImage::where('announcement_id', $announcement->id)->delete();
             $announcement->delete();
         }
+    }
+
+    public function deleteVideo(Request $request) {
+        $request->validate([
+            'id' => 'required'
+        ]);
+
+        AnnouncementImage::find($request->id)->delete();
     }
 
     public function dataready($data) {
@@ -122,13 +136,29 @@ class Announcements extends Controller
                    if ($result) {
                        $data[] = array(
                            'announcement_id' => $announcement_id,
-                           'src' => $decoded['file_name']
+                           'src' => $decoded['file_name'],
+                           'file_type' => 1
                        );
                    }
                }
            }
            AnnouncementImage::insert($data);
        }
+    }
+
+    public function insertVideos($videos, $id) {
+        $videos = json_decode($videos);
+        $data = array();
+        if (!empty($videos)) {
+            foreach($videos as $video) {
+                $data[] = array(
+                    'announcement_id' => $id,
+                    'src' => $video,
+                    'file_type' => 2
+                );
+            }
+        }
+        AnnouncementImage::insert($data);
     }
 
     public function getImages($announcement_id) {

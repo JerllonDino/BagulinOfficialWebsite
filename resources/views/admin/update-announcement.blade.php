@@ -47,6 +47,32 @@
                 </div>
             </div>
 
+            <div class="mb-3">
+                <div>
+                    <label for="pictures">Add Videos : </label>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                       <div class="row">
+                            <div class="col-lg-6">
+                                <input class="form-control" type="text" name="link" id="youtube_url" placeholder="Youtube URL">
+                            </div>
+                            <div class="col-lg-1">
+                                <button class="btn btn-primary h-100 btn-block" id="add_video"><i class="fas fa-plus"></i></button>
+                            </div>
+                       </div>
+                    </div>
+                    <div class="card-body row" id="youtube-videos">
+                        @foreach ($videos as $video)
+                        <div class="col-lg-4 border p-2 db-video">
+                            <button class="btn btn-danger mb-1 d-block delete-db-video" data-id="{{$video->id}}"><i class="fas fa-times"></i></button>
+                            <iframe width="200" height="200" src="https://www.youtube.com/embed/{{$video->src}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+            </div>
+
             <form id="update-form">
                 <div class="form-group">
                     <input class="form-control col-lg-5" type="text" placeholder="Title" name="title" value="{{$announcement->title}}">
@@ -70,6 +96,59 @@
 <script>
     CKEDITOR.replace('update_content');
     $(document).ready(function() {
+        // Youtube Videos
+        function YouTubeGetID(url){
+            var ID = '';
+            url = url.replace(/(>|<)/gi,'').split(/(vi\/|v=|\/v\/|youtu\.be\/|\/embed\/)/);
+            if(url[2] !== undefined) {
+            ID = url[2].split(/[^0-9a-z_\-]/i);
+            ID = ID[0];
+            }
+            else {
+            ID = url;
+            }
+            return ID;
+        }
+
+        $('#add_video').click(function() {
+            url = $('#youtube_url').val();
+            id = YouTubeGetID(url);
+            
+            if (typeof id == 'string') {
+                html = `
+                    <div class="col-lg-4 border p-2" data-id="${id}">
+                        <button class="btn btn-danger mb-1 d-block delete-video"><i class="fas fa-times"></i></button>
+                        <iframe width="200" height="200" src="https://www.youtube.com/embed/${id}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                `;
+                
+                $('#youtube-videos').append(html);
+            }
+            else {
+                alert('Not a valid youtube link.');
+            }
+
+            $('#youtube_url').val('');
+        });
+
+        $('#youtube-videos').on('click', '.delete-video', function() {
+            $(this).parent().remove();
+        });
+
+        $('.delete-db-video').on('click', function() {
+            id = $(this).attr('data-id');
+            $elem = $(this).parent();
+
+            $.ajax({
+                url: '/admin/announcements/delete-video',
+                data: {id: id},
+                method: 'DELETE',
+                success: function(res) {
+                    $elem.remove();
+                }
+            })
+        })
+
         $('#update-form').on('submit', function(e) {
             e.preventDefault();
 
@@ -87,6 +166,17 @@
             vals.push({
                 name: 'images',
                 value: JSON.stringify(images)
+            });
+
+            // get youtube videos
+            videos = [];
+            $videos = $('#youtube-videos > div:not(.db-video)');
+            for (i = 0; i < $videos.length; i++) {
+                videos.push($videos.eq(i).attr('data-id'));
+            }
+            vals.push({
+                name: 'videos',
+                value: JSON.stringify(videos)
             });
 
             $.ajax({

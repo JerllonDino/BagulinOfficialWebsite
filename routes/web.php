@@ -68,6 +68,8 @@ Route::prefix('admin')->group(function () {
         Route::post('/get-images', 'Admin\Announcements@getImages');
         Route::delete('/delete-image', 'Admin\Announcements@deleteImage');
 
+        Route::delete('/delete-video', 'Admin\Announcements@deleteVideo');
+
         Route::delete('/delete', 'Admin\Announcements@delete');
     });
 
