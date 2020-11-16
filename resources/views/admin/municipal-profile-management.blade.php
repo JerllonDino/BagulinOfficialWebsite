@@ -230,7 +230,7 @@
     $submitBtnSpinner = $submitBtn.find('.fa-spin');
 
     $.ajax({
-      url: '/admin/municipal-profile/rename-category',
+      url: '/bagulinDeLaunion/admin/municipal-profile/rename-category',
       method: 'PUT',
       data: vals,
       beforeSend: function() {
@@ -255,7 +255,7 @@
     var vals = $(this).serializeArray();
 
     $.ajax({
-      url: '/admin/municipal-profile/new-category',
+      url: '/bagulinDeLaunion/admin/municipal-profile/new-category',
       method: 'POST',
       data: vals,
       beforeSend: function() {
@@ -284,7 +284,7 @@
     if (confirm('Are you sure?All files from this folder will be deleted.')) {
       id = $(this).attr('data-id');
       $.ajax({
-        url: '/admin/municipal-profile/delete-category',
+        url: '/bagulinDeLaunion/admin/municipal-profile/delete-category',
         method: 'DELETE',
         data: {'category_id': id},
         beforeSend: function() {
@@ -334,7 +334,7 @@
     if (confirm('Are you sure?')) {
       id = $(this).attr('data-id');
       $.ajax({
-        url: '/admin/municipal-profile/delete',
+        url: '/bagulinDeLaunion/admin/municipal-profile/delete',
         method: 'DELETE',
         data: {id},
         beforeSend: function() {
@@ -373,7 +373,7 @@
 
     vals.push({name: 'uploads', value: JSON.stringify(uploadedDocuments)})
     $.ajax({
-      url: '/admin/municipal-profile/upload',
+      url: '/bagulinDeLaunion/admin/municipal-profile/upload',
       method: 'POST',
       data:vals,
       beforeSend: function() {
@@ -417,7 +417,7 @@
     $submitBtnSpinner = $submitBtn.find('.fa-spin');
 
     $.ajax({
-      url: '/admin/municipal-profile/rename',
+      url: '/bagulinDeLaunion/admin/municipal-profile/rename',
       data: vals,
       method: 'PUT',
       beforeSend: function() {

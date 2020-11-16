@@ -19,7 +19,7 @@
         <div class="col-lg-10 mx-auto">
             <h1 class="mb-4">New Announcement</h1>
             <a class="btn btn-sm btn-primary mr-2" href="/admin/announcements"><i class="fas fa-arrow-left"></i> Go Back</a>
-            
+
             <div class="mt-5 mb-3">
                 <div>
                     <label for="pictures">Upload Pictures : </label>
@@ -95,7 +95,7 @@
         $('#add_video').click(function() {
             url = $('#youtube_url').val();
             id = YouTubeGetID(url);
-            
+
             if (typeof id == 'string') {
                 html = `
                     <div class="col-lg-4 border p-2" data-id="${id}">
@@ -103,7 +103,7 @@
                         <iframe width="200" height="200" src="https://www.youtube.com/embed/${id}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 `;
-                
+
                 $('#youtube-videos').append(html);
             }
             else {
@@ -112,7 +112,7 @@
 
             $('#youtube_url').val('');
         });
-        
+
         $('#youtube-videos').on('click', '.delete-video', function() {
             $(this).parent().remove();
         });
@@ -150,7 +150,7 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
                 data: vals,
-                url: '/admin/announcements/save',
+                url: '/bagulinDeLaunion/admin/announcements/save',
                 method: 'POST',
                 success: function(res) {
                     $form.find('[type="submit"]').attr('disabled', '');

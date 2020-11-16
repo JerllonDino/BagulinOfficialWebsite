@@ -33,7 +33,7 @@ $('.delete-photo-db').click(function() {
 
     if (confirm('Are you sure?')) {
         $.ajax({
-            url: '/admin/announcements/delete-image',
+            url: '/bagulinDeLaunion/admin/announcements/delete-image',
             method: 'DELETE',
             data: {id},
             beforeSend: function() {

@@ -14,7 +14,7 @@ $modalDisable = $modalIndividual.find('#disable-modal');
 $(document).on('click', '.multi-officials', function (e) {
     position = $(this).data('position');
     $.ajax({
-        url: '/admin/officials/get/position/' + position,
+        url: '/bagulinDeLaunion/admin/officials/get/position/' + position,
         method: 'POST',
         beforeSend: function () {
             $('#official-position').html('<i class="fas fa-users mx-auto"></i> ' + position + 's');
@@ -41,7 +41,7 @@ $modalMultiple.on('click', '.delete-official', function (e) {
 $modalDelete.on('click', '#confirm-delete', function(){
     id = $(this).data('id');
     $.ajax({
-        url: '/admin/officials/delete/official/' + id,
+        url: '/bagulinDeLaunion/admin/officials/delete/official/' + id,
         method: 'DELETE',
         beforeSend: function () {
             $submitBtn.attr('disabled', '');
@@ -111,7 +111,7 @@ $modalIndividual.on('submit', '.submit-official', function (e) {
     );
     if (!$id) {
         $.ajax({
-            url: '/admin/officials/store',
+            url: '/bagulinDeLaunion/admin/officials/store',
             method: 'POST',
             data: data,
             beforeSend: function () {
@@ -132,7 +132,7 @@ $modalIndividual.on('submit', '.submit-official', function (e) {
     }
     else {
         $.ajax({
-            url: '/admin/officials/update',
+            url: '/bagulinDeLaunion/admin/officials/update',
             method: 'PUT',
             data: data,
             beforeSend: function () {

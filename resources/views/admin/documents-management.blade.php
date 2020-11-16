@@ -258,7 +258,7 @@
     if (confirm('Are you sure?')) {
       id = $(this).attr('data-id');
       $.ajax({
-        url: '/admin/delete-document',
+        url: '/bagulinDeLaunion/admin/delete-document',
         method: 'DELETE',
         data: {id},
         beforeSend: function() {
@@ -294,7 +294,7 @@
 
     vals.push({name: 'uploads', value: JSON.stringify(uploadedDocuments)})
     $.ajax({
-      url: '/admin/upload-documents',
+      url: '/bagulinDeLaunion/admin/upload-documents',
       method: 'POST',
       data:vals,
       beforeSend: function() {
@@ -337,7 +337,7 @@
     $submitBtnSpinner = $submitBtn.find('.fa-spin');
 
     $.ajax({
-      url: '/admin/rename-document',
+      url: '/bagulinDeLaunion/admin/rename-document',
       data: vals,
       method: 'PUT',
       beforeSend: function() {
@@ -366,7 +366,7 @@
     var vals = $(this).serializeArray();
 
     $.ajax({
-      url: '/admin/new-document-category',
+      url: '/bagulinDeLaunion/admin/new-document-category',
       method: 'POST',
       data: vals,
       beforeSend: function() {
@@ -395,7 +395,7 @@
     if (confirm('Are you sure?All files from this folder will be deleted.')) {
       id = $(this).attr('data-id');
       $.ajax({
-        url: '/admin/delete-document-category',
+        url: '/bagulinDeLaunion/admin/delete-document-category',
         method: 'DELETE',
         data: {'category_id': id},
         beforeSend: function() {
@@ -430,7 +430,7 @@
     $submitBtnSpinner = $submitBtn.find('.fa-spin');
 
     $.ajax({
-      url: '/admin/rename-document-category',
+      url: '/bagulinDeLaunion/admin/rename-document-category',
       method: 'PUT',
       data: vals,
       beforeSend: function() {

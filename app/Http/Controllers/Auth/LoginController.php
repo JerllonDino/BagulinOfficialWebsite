@@ -44,11 +44,11 @@ class LoginController extends Controller
 
     public function index()
     {
-        return redirect('admin/login');
+        return redirect('/bagulinDeLaunion/admin/login');
     }
 
     public function logout(Request $request) {
         Auth::logout();
-        return redirect('/admin');
+        return redirect('/bagulinDeLaunion/admin');
     }
 }

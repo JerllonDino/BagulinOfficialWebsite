@@ -49,7 +49,7 @@ Route::prefix('agri-tour')->group(function () {
 Route::get('/official-documents', 'DocumentsController@index');
 Route::get('/get-documents', 'DocumentsController@getFiles');
 
-Route::prefix('admin')->group(function () {
+Route::prefix('bagulinDeLaunion/admin')->group(function () {
     Route::get('/documents/{category?}', 'Admin\OfficialDocuments@index');
 
     Route::view('/dashboard', 'admin/dashboard');

@@ -92,7 +92,7 @@ $(document).ready(function() {
 
         if (confirm('Are you sure?')) {
             $.ajax({
-                url: '/admin/announcements/delete',
+                url: '/bagulinDeLaunion/admin/announcements/delete',
                 method: 'DELETE',
                 data: {id},
                 beforeSend: function() {

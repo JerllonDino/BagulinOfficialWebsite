@@ -214,7 +214,7 @@
       vals = $(this).serializeArray();
       $loading = $(this).find('.fa-spin');
       $.ajax({
-        url: '/admin/user/store',
+        url: '/bagulinDeLaunion/admin/user/store',
         method: 'POST',
         data:vals,
         beforeSend: function() {
@@ -255,7 +255,7 @@
       vals = $(this).serializeArray();
       $loading = $(this).find('.fa-spin');
       $.ajax({
-        url: '/admin/user/update',
+        url: '/bagulinDeLaunion/admin/user/update',
         method: 'PUT',
         data: vals,
         beforeSend: function() {
@@ -283,7 +283,7 @@
             }
         }
         $.ajax({
-            url: '/admin/user/delete',
+            url: '/bagulinDeLaunion/admin/user/delete',
             method: 'DELETE',
             data: { ids: checks },
             beforeSend: function() {

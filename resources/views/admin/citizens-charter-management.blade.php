@@ -201,7 +201,7 @@
     if (confirm('Are you sure?')) {
       id = $(this).attr('data-id');
       $.ajax({
-        url: '/admin/citizens-charter/delete',
+        url: '/bagulinDeLaunion/admin/citizens-charter/delete',
         method: 'DELETE',
         data: {id},
         beforeSend: function() {
@@ -240,7 +240,7 @@
 
     vals.push({name: 'uploads', value: JSON.stringify(uploadedDocuments)})
     $.ajax({
-      url: '/admin/citizens-charter/upload',
+      url: '/bagulinDeLaunion/admin/citizens-charter/upload',
       method: 'POST',
       data:vals,
       beforeSend: function() {
@@ -284,7 +284,7 @@
     $submitBtnSpinner = $submitBtn.find('.fa-spin');
 
     $.ajax({
-      url: '/admin/citizens-charter/rename',
+      url: '/bagulinDeLaunion/admin/citizens-charter/rename',
       data: vals,
       method: 'PUT',
       beforeSend: function() {

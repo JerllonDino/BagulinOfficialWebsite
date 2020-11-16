@@ -113,7 +113,7 @@
         $('#add_video').click(function() {
             url = $('#youtube_url').val();
             id = YouTubeGetID(url);
-            
+
             if (typeof id == 'string') {
                 html = `
                     <div class="col-lg-4 border p-2" data-id="${id}">
@@ -121,7 +121,7 @@
                         <iframe width="200" height="200" src="https://www.youtube.com/embed/${id}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 `;
-                
+
                 $('#youtube-videos').append(html);
             }
             else {
@@ -140,7 +140,7 @@
             $elem = $(this).parent();
 
             $.ajax({
-                url: '/admin/announcements/delete-video',
+                url: '/bagulinDeLaunion/admin/announcements/delete-video',
                 data: {id: id},
                 method: 'DELETE',
                 success: function(res) {
@@ -181,7 +181,7 @@
 
             $.ajax({
                 data: vals,
-                url: '/admin/announcements/update',
+                url: '/bagulinDeLaunion/admin/announcements/update',
                 method: 'PUT',
                 success: function(res) {
                     $form.find('[type="submit"]').attr('disabled', '');
