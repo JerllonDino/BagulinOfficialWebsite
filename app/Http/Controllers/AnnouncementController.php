@@ -25,7 +25,7 @@ class AnnouncementController extends Controller
     public function read($slug) {
         $announcement = Announcement::select('id', 'title', 'created_at', 'content')->where('slug', $slug)->first();
         if ($announcement) {
-            $images = AnnouncementImage::select('src')->where('announcement_id', $announcement->id)->get();
+            $images = AnnouncementImage::select('src', 'file_type')->where('announcement_id', $announcement->id)->get();
             return view('pages/read')
                     ->with('announcement', $announcement)
                     ->with('images', $images);

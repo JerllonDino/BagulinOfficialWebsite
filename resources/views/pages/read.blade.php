@@ -23,6 +23,11 @@
             font-size: 3rem !important;
         }
     }
+
+    #images .carousel-item > iframe{
+        min-width: 100%;
+        min-height: 100%;
+    }
 </style>
 @endsection
 
@@ -39,7 +44,13 @@
             <div id="images" class="carousel slide my-5" data-ride="carousel">
                 <div class="carousel-inner">
                     @foreach($images as $key => $image)
-                        <div class="carousel-item @if($key == 0) active @endif" style="background-image: url('https://bagulin.s3-ap-southeast-1.amazonaws.com/announcements/{{$image->src}}')"></div>
+                        @if($image->file_type == 1)
+                           <div class="carousel-item @if($key == 0) active @endif" style="background-image: url('https://bagulin.s3-ap-southeast-1.amazonaws.com/announcements/{{$image->src}}')"></div>
+                        @else
+                            <div class="carousel-item  @if($key == 0) active @endif">
+                                <iframe  src="https://www.youtube.com/embed/{{$image->src}}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                            </div>
+                        @endif
                     @endforeach
                     @if (count($images) > 1)
                     <a class="carousel-control-prev" href="#images" role="button" data-slide="prev">
