@@ -162,7 +162,7 @@ class Announcements extends Controller
     }
 
     public function getImages($announcement_id) {
-        $images = AnnouncementImage::select('src', 'id')->where('announcement_id', $announcement_id)->get();
+        $images = AnnouncementImage::select('src', 'id')->where('announcement_id', $announcement_id)->where('file_type', 1)->get();
         return $images;
     }
 
