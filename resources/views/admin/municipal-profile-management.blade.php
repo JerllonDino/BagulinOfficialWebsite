@@ -63,7 +63,7 @@
      {{-- SIDE MENUS --}}
      <div class="col-3">
       <nav class="nav flex-column nav-pills" id="folders">
-        <a class="nav-link all" href="/admin/municipal-profile">All</a>
+        <a class="nav-link all" href="/bagulinDeLaunion/admin/municipal-profile">All</a>
         @foreach ($categories as $category)
         <a class="nav-link {{strtolower(str_replace(' ', '_', $category->category))}}" href="/admin/municipal-profile/{{$category->id}}">
           <span class="float-left">{{$category->category}}</span>
@@ -268,7 +268,7 @@
         $elem.trigger('reset');
 
         console.log(res.link);
-        location.href = "/admin/municipal-profile/" + res.link;
+        location.href = "/bagulinDeLaunion/admin/municipal-profile/" + res.link;
       },
       error: function() {
         $submitBtn.removeAttr('disabled');

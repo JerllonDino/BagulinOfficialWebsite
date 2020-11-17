@@ -153,7 +153,7 @@
       processing: true,
       serverSide: true,
       ajax: {
-        url: "/admin/user/get",
+        url: "/bagulinDeLaunion/admin/user/get",
         method: 'POST',
         complete: function(res) {
             console.log(res);
