@@ -65,7 +65,7 @@
       <nav class="nav flex-column nav-pills" id="folders">
         <a class="nav-link all" href="/bagulinDeLaunion/admin/municipal-profile">All</a>
         @foreach ($categories as $category)
-        <a class="nav-link {{strtolower(str_replace(' ', '_', $category->category))}}" href="/admin/municipal-profile/{{$category->id}}">
+        <a class="nav-link {{strtolower(str_replace(' ', '_', $category->category))}}" href="/bagulinDeLaunion/admin/municipal-profile/{{$category->id}}">
           <span class="float-left">{{$category->category}}</span>
           <span class="float-right"><i class="fas fa-times delete-category" data-id="{{$category->id}}"></i></span>
         </a>

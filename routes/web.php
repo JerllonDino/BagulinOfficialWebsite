@@ -51,6 +51,8 @@ Route::get('/get-documents', 'DocumentsController@getFiles');
 
 Route::prefix('bagulinDeLaunion/admin')->group(function () {
     Route::get('/documents/{category?}', 'Admin\OfficialDocuments@index');
+    Route::get('/change-password', 'Admin\ChangePasswordController@index');
+    Route::post('/update-password', 'Admin\ChangePasswordController@changePassword');
 
     Route::view('/dashboard', 'admin/dashboard');
     Route::get('/page-views/get', 'Admin\AdminDailyPageViews@get');
