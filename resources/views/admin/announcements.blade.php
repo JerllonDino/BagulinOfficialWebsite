@@ -65,7 +65,7 @@
                         <h5 class="text-center font-weight-bold text-secondary">Deleting...</h5>
                     </div>
                     <i class="fas fa-times float-right delete-announcement" data-id="{{$announcement->id}}"></i>
-                    <h1 class="h4"><a href="/admin/announcements/edit/{{$announcement->id}}">{{$announcement->title}}</a></h1>
+                    <h1 class="h4"><a href="/bagulinDeLaunion/admin/announcements/edit/{{$announcement->id}}">{{$announcement->title}}</a></h1>
                     <p class="small">Created at : {{$announcement->created_at}}</p>
                 </li>
             </ul>
@@ -83,7 +83,7 @@
 $(document).ready(function() {
 
     $('.add-announcement').click(function() {
-        location.href="/admin/announcements/add";
+        location.href="/bagulinDeLaunion/admin/announcements/add";
     });
 
     $('.delete-announcement').click(function() {

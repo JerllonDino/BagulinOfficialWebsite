@@ -63,9 +63,9 @@
     {{-- SIDE MENUS --}}
     <div class="col-3">
       <nav class="nav flex-column nav-pills" id="folders">
-        <a class="nav-link all" href="/admin/documents">All</a>
+        <a class="nav-link all" href="/bagulinDeLaunion/admin/documents">All</a>
         @foreach ($categories as $category)
-        <a class="nav-link {{strtolower(str_replace(' ', '_', $category->category))}}" href="/admin/documents/{{$category->id}}">
+        <a class="nav-link {{strtolower(str_replace(' ', '_', $category->category))}}" href="/bagulinDeLaunion/admin/documents/{{$category->id}}">
           <span class="float-left">{{$category->category}}</span>
           <span class="float-right"><i class="fas fa-times delete-category" data-id="{{$category->id}}"></i></span>
         </a>
@@ -379,7 +379,7 @@
         $elem.trigger('reset');
 
         console.log(res.link);
-        location.href = "/admin/documents/" + res.link;
+        location.href = "/bagulinDeLaunion/admin/documents/" + res.link;
       },
       error: function() {
         $submitBtn.removeAttr('disabled');

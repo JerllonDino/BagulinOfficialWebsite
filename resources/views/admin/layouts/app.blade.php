@@ -33,6 +33,7 @@
                   <div class="dropdown-menu dropdown-menu-right px-3" aria-labelledby="navbarDropdown">
                     <a href="{{ route('logout') }}" class="dropdown-item"
                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                    <a href="/bagulinDeLaunion/admin/change-password" class="dropdown-item">Change Password</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                       {{ csrf_field() }}</form>
                   </div>

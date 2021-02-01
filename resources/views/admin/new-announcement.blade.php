@@ -18,7 +18,7 @@
     <div class="row">
         <div class="col-lg-10 mx-auto">
             <h1 class="mb-4">New Announcement</h1>
-            <a class="btn btn-sm btn-primary mr-2" href="/admin/announcements"><i class="fas fa-arrow-left"></i> Go Back</a>
+            <a class="btn btn-sm btn-primary mr-2" href="/bagulinDeLaunion/admin/announcements"><i class="fas fa-arrow-left"></i> Go Back</a>
 
             <div class="mt-5 mb-3">
                 <div>
@@ -156,7 +156,7 @@
                     $form.find('[type="submit"]').attr('disabled', '');
                     showMessage('Announcement posted. Redirecting to homepage...');
                     setTimeout(function(){
-                        location.href="/admin/announcements";
+                        location.href="/bagulinDeLaunion/admin/announcements";
                     },1000);
                 },
                 error: function(res) {

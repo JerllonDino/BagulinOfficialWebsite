@@ -63,8 +63,8 @@
     {{-- SIDE MENUS --}}
     <div class="col-3">
       <nav class="nav flex-column nav-pills" id="folders">
-        <a class="nav-link forms" href="/admin/citizens-charter/forms">Forms</a>
-        <a class="nav-link services" href="/admin/citizens-charter/services">Services</a>
+        <a class="nav-link forms" href="/bagulinDeLaunion/admin/citizens-charter/forms">Forms</a>
+        <a class="nav-link services" href="/bagulinDeLaunion/admin/citizens-charter/services">Services</a>
       </nav>
     </div>
 
