@@ -1,7 +1,28 @@
 @php
 $uri = Route::current()->uri;
 @endphp
-<nav id="sidebar">
+
+<style>
+.scrollbar::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: #F5F5F5;
+}
+
+.scrollbar::-webkit-scrollbar
+{
+  width: 3px;
+  background-color: #F5F5F5;
+}
+
+.scrollbar::-webkit-scrollbar-thumb
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+  background-color: #555;
+}
+
+</style>
+<nav id="sidebar" class="scrollbar" style="overflow-y: scroll; overflow-x: hidden">
   <div class="sidebar-header">
     <h3><img src="{{ asset('img/bagulin.png') }}" alt="bagulin" style="width:100%" class="mx-auto"></h3>
     <strong><img src="{{ asset('img/logo-2.png') }}" alt="bagulin" style="width:100%" class="mx-auto"></strong>
@@ -44,12 +65,25 @@ $uri = Route::current()->uri;
           Citizens Charter
         </a>
       </li>
+    <li class="{{ $uri == 'bagulinDeLaunion/admin/tourism' ?  'active' : '' }}">
+      <a href="{{ route('tourism.index') }}">
+        <i class="fas fa-map-marker-alt"></i>
+        Tourism
+      </a>
+    </li>
+    <li class="{{ $uri == 'bagulinDeLaunion/admin/agriculture' ?  'active' : '' }}">
+      <a href="{{ route('agriculture.index') }}">
+        <i class="fas fa-map-marker-alt"></i>
+        Agriculture
+      </a>
+    </li>
     <li class="{{ $uri == 'bagulinDeLaunion/admin/user' ?  'active' : '' }}">
         <a href="/bagulinDeLaunion/admin/user">
           <i class="fas fa-user"></i>
           Users
         </a>
       </li>
+
 
   </ul>
 
