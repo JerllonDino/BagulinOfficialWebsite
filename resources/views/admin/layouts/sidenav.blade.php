@@ -73,7 +73,7 @@ $uri = Route::current()->uri;
     </li>
     <li class="{{ $uri == 'bagulinDeLaunion/admin/agriculture' ?  'active' : '' }}">
       <a href="{{ route('agriculture.index') }}">
-        <i class="fas fa-map-marker-alt"></i>
+        <i class="fas fa-seedling"></i>
         Agriculture
       </a>
     </li>
