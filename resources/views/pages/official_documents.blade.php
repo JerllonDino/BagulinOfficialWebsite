@@ -30,10 +30,7 @@
     }
 
     #seal{
-        position: absolute;
-        top: 24%;
-        right: 2%;
-        width: 10%;
+        width: 50%;
     }
 
     .plus:after {
@@ -44,28 +41,21 @@
         content: ' \002D';
     }
 
-    @media (max-width: 992px) {
-        #seal{
-            top:25%;
-            width: 13%;
-        }
-
-    }
-    @media (max-width: 768px) {
-        #seal{
-            top:10%;
-            width: 15%;
-        }
-    }
 </style>
 @endsection
 
 @section('content')
-    <img src="img/transparency-seal.png" id="seal">
+    
     <div class="container my-5">
-        <div class="row">
-            <div class="col-12">
-                <h3 class="mb-5 mt-1 card-header text-white text-center mx-auto d-block" style="min-width: 50% !important;">OFFICIAL DOCUMENTS</h3>
+        <div class="row align-items-center">
+            <div class="col-lg-4 col-md-4 col-sm-12 my-3">
+                <img src="img/transparency-seal.png" id="seal" class="mx-auto d-block">
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 my-3">
+                <h3 class="card-header text-white text-center mx-auto d-block" style="min-width: 100% !important;">OFFICIAL DOCUMENTS</h3>
+            </div>
+            <div class="col-lg-4 col-md-4 col-sm-12 my-3 d-none d-md-block">
+                <img src="img/transparency-seal.png" id="seal" class="mx-auto d-block">
             </div>
         </div>
 

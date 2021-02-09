@@ -42,7 +42,7 @@ Route::get('/citizens-charter', 'CitizensCharter@index');
 Route::get('/citizens-charter/documents', 'CitizensCharter@getFiles');
 
 Route::prefix('agri-tour')->group(function () {
-    Route::view('agriculture', 'pages/municipality/general/agriculture');
+    Route::get('agriculture', 'AgricultureController@index')->name('agricuture.home_index');
     Route::get('tourism', 'TourismController@index')->name('tourism.home_index');
 });
 
@@ -113,11 +113,18 @@ Route::prefix('bagulinDeLaunion/admin')->group(function () {
         Route::post('/store', 'Admin\TourismController@store')->name('tourism.store');
         Route::post('/get', 'Admin\TourismController@getDatatables')->name('tourism.get');
         Route::post('/get-spot', 'Admin\TourismController@getSpot')->name('tourism.get_spot');
-        Route::delete('/delete', 'Admin\TourismController@deleteSpot')->name('tourism.deleteSpot');
-        Route::delete('/delete/image', 'Admin\TourismController@deleteImage')->name('tourism.deleteImage');
+        Route::delete('/delete', 'Admin\TourismController@deleteSpot')->name('tourism.delete_spot');
+        Route::delete('/delete/image', 'Admin\TourismController@deleteImage')->name('tourism.delete_image');
     });
 
-    Route::resource('agriculture', 'Admin\AgricultureController');
+    Route::prefix('agriculture')->group(function(){
+        Route::get('/', 'Admin\AgricultureController@index')->name('agriculture.index');
+        Route::post('/store', 'Admin\AgricultureController@store')->name('agriculture.store');
+        Route::post('/get', 'Admin\AgricultureController@getDatatables')->name('agriculture.get');
+        Route::post('/get-product', 'Admin\AgricultureController@getProduct')->name('agriculture.get_product');
+        Route::delete('/delete', 'Admin\AgricultureController@deleteProduct')->name('agriculture.delete_product');
+        Route::delete('/delete/image', 'Admin\AgricultureController@deleteImage')->name('agriculture.delete_image');
+    });
 
     Route::prefix('municipal-profile')->group(function() {
         Route::get('/{category?}', 'Admin\MunicipalProfileController@index');

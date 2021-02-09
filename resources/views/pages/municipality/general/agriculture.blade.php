@@ -35,236 +35,50 @@
 
   <!-- <hr> -->
 
+  @foreach ($agricultures as $index => $agriculture)
+  @php
+      $counter = $index + 1;
+  @endphp
   <div class="row">
-    <div class="col-sm-6" id="content">
-     <section>
-
-      <h4 class="mb-0">Bagulin Quality Softbrooms</h4>
-      <h6 class="mb-3"><small>Bagulin, La Union</small></h6>
-      <p>
-       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis arcu purus. Ut id congue turpis, ut venenatis sem. Fusce semper dui ut elit semper tincidunt. Integer mattis eleifend volutpat. Vestibulum sit amet diam pharetra, fermentum lectus in, vehicula nisl. Aenean ut placerat dolor, eget ultrices nulla. In in lectus lobortis, accumsan ex vitae, dictum arcu. Duis interdum in ipsum in sodales. Vestibulum quam ante, maximus sed ultricies nec, malesuada sed quam. Praesent scelerisque iaculis sapien, quis placerat felis facilisis a. In dictum et odio a condimentum. Nunc at nisl non turpis sollicitudin iaculis in quis felis. Mauris sagittis magna vitae varius aliquam. Donec quis feugiat eros.
-     </p>
-
-
-   </section>
-
- </div>
- <div class="col-sm-6">
-   <div class="container w-100" id="caro">
-    <div id="carouselExampleIndicators" class="carousel slide w-100" data-ride="carousel">
-
-      <div class="carousel-inner">
-        <div class="carousel-item active ">
-          <img class="w-100" src="{{asset('img/products/sb1.png')}}">          
-        </div>
-
-
-        <div class="carousel-item ">
-          <img class="w-100" src="{{asset('img/products/sb2.png')}}">        
-        </div>
-
-
-        <div class="carousel-item ">
-          <img class="w-100" src="{{asset('img/products/sb3.png')}}">        
-        </div>
-
-
-        <div class="carousel-item ">
-          <img class="w-100" src="{{asset('img/products/sb4.png')}}">        
-        </div>
-
-        <div class="carousel-item ">
-          <img class="w-100" src="{{asset('img/products/sb5.png')}}">        
-        </div>
-
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-  </div>
-</div>
-</div>
-
-<hr>
-
-<div class="row mt-5">
-
-  <div class="col-sm-6">
-   <div class="container w-100" id="caro">
-    <div id="carouselExampleIndicators1" class="carousel slide w-100" data-ride="carousel">
-
-      <div class="carousel-inner">
-        <div class="carousel-item active ">
-          <img class="w-100" src="{{asset('img/products/ubh1.png')}}">          
-        </div>
-
-      </div>
-      <!-- <a class="carousel-control-prev" href="#carouselExampleIndicators1" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators1" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a> -->
-    </div>
-  </div>
-</div>
-
-<div class="col-sm-6" id="content">
- <section>
-
-  <h4 class="mb-0">Ube Halaya</h4>
-  <h6 class="mb-3"><small>Bagulin, La Union</small></h6>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis arcu purus. Ut id congue turpis, ut venenatis sem. Fusce semper dui ut elit semper tincidunt. Integer mattis eleifend volutpat. Vestibulum sit amet diam pharetra, fermentum lectus in, vehicula nisl. Aenean ut placerat dolor, eget ultrices nulla. In in lectus lobortis, accumsan ex vitae, dictum arcu. Duis interdum in ipsum in sodales. Vestibulum quam ante, maximus sed ultricies nec, malesuada sed quam. Praesent scelerisque iaculis sapien, quis placerat felis facilisis a. In dictum et odio a condimentum. Nunc at nisl non turpis sollicitudin iaculis in quis felis. Mauris sagittis magna vitae varius aliquam. Donec quis feugiat eros.
-  </p>
-
-
-</section>
-
-</div>
-
-<hr>
-
-<div class="row mt-5">
-  <div class="col-sm-6" id="content">
-   <section>
-
-    <h4 class="mb-0">Ube Puto</h4>
-    <h6 class="mb-3"><small>Bagulin, La Union</small></h6>
-    <p>
-     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis arcu purus. Ut id congue turpis, ut venenatis sem. Fusce semper dui ut elit semper tincidunt. Integer mattis eleifend volutpat. Vestibulum sit amet diam pharetra, fermentum lectus in, vehicula nisl. Aenean ut placerat dolor, eget ultrices nulla. In in lectus lobortis, accumsan ex vitae, dictum arcu. Duis interdum in ipsum in sodales. Vestibulum quam ante, maximus sed ultricies nec, malesuada sed quam. Praesent scelerisque iaculis sapien, quis placerat felis facilisis a. In dictum et odio a condimentum. Nunc at nisl non turpis sollicitudin iaculis in quis felis. Mauris sagittis magna vitae varius aliquam. Donec quis feugiat eros.
-   </p>
-
-
- </section>
-
-</div>
-<div class="col-sm-6">
- <div class="container w-100" id="caro">
-  <div id="carouselExampleIndicators2" class="carousel slide w-100" data-ride="carousel">
-
-    <div class="carousel-inner">
-      <div class="carousel-item active ">
-        <img class="w-100" src="{{asset('img/products/ubp1.png')}}">          
-      </div>
-      
-
-    </div>
-   <!--  <a class="carousel-control-prev" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators2" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a> -->
-  </div>
-</div>
-</div>
-</div>
-
-<hr>
-
-<div class="row mt-5">
-
-  <div class="col-sm-6">
-   <div class="container w-100" id="caro">
-    <div id="carouselExampleIndicators3" class="carousel slide w-100" data-ride="carousel">
-
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img class="w-100" src="{{asset('img/products/ubc1.png')}}">          
-        </div>
-        <div class="carousel-item">
-          <img class="w-100" src="{{asset('img/products/ubc2.png')}}">          
-        </div>
-
-      </div>
-      <a class="carousel-control-prev" href="#carouselExampleIndicators3" role="button" data-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
-      </a>
-      <a class="carousel-control-next" href="#carouselExampleIndicators3" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
-      </a>
-    </div>
-  </div>
-</div>
-
-<div class="col-sm-6" id="content">
- <section>
-
-  <h4 class="mb-0">Ube Chips</h4>
-  <h6 class="mb-3"><small>Bagulin, La Union</small></h6>
-  <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis arcu purus. Ut id congue turpis, ut venenatis sem. Fusce semper dui ut elit semper tincidunt. Integer mattis eleifend volutpat. Vestibulum sit amet diam pharetra, fermentum lectus in, vehicula nisl. Aenean ut placerat dolor, eget ultrices nulla. In in lectus lobortis, accumsan ex vitae, dictum arcu. Duis interdum in ipsum in sodales. Vestibulum quam ante, maximus sed ultricies nec, malesuada sed quam. Praesent scelerisque iaculis sapien, quis placerat felis facilisis a. In dictum et odio a condimentum. Nunc at nisl non turpis sollicitudin iaculis in quis felis. Mauris sagittis magna vitae varius aliquam. Donec quis feugiat eros.
-  </p>
-</section>
-
-</div>
-
-</div>
-
-<hr>
-
-<div class="row mt-5">
-  <div class="col-sm-6" id="content">
-   <section>
-
-    <h4 class="mb-0">Bugnay Wine</h4>
-    <h6 class="mb-3"><small>Bagulin, La Union</small></h6>
-    <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur quis arcu purus. Ut id congue turpis, ut venenatis sem. Fusce semper dui ut elit semper tincidunt. Integer mattis eleifend volutpat. Vestibulum sit amet diam pharetra, fermentum lectus in, vehicula nisl. Aenean ut placerat dolor, eget ultrices nulla. In in lectus lobortis, accumsan ex vitae, dictum arcu. Duis interdum in ipsum in sodales. Vestibulum quam ante, maximus sed ultricies nec, malesuada sed quam. Praesent scelerisque iaculis sapien, quis placerat felis facilisis a. In dictum et odio a condimentum. Nunc at nisl non turpis sollicitudin iaculis in quis felis. Mauris sagittis magna vitae varius aliquam. Donec quis feugiat eros.
-    </p>
-
-
-  </section>
-
-</div>
-<div class="col-sm-6">
- <div class="container w-100" id="caro">
-  <div id="carouselExampleIndicators4" class="carousel slide w-100" data-ride="carousel">
-
-    <div class="carousel-inner">
-      <div class="carousel-item active ">
-        <img class="w-100" src="{{asset('img/products/bw1.png')}}">        
-      </div>
-      <div class="carousel-item ">
-        <img class="w-100" src="{{asset('img/products/bw2.png')}}">        
+      <div class="col-sm-6 {{ $counter == 1 || $counter%2 == 1 ? '' : 'order-sm-12' }}" id="content">
+        <section>
+            <h4 class="mb-0">{{ $agriculture->product_name }}</h4>
+            <h6 class="mb-3"><small>{{ $agriculture->product_location }}</small></h6>
+            <p>
+              {{ $agriculture->product_description }}
+            </p>
+        </section>
       </div>
 
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators4" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators4" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
-</div>
+      <div class="col-sm-6 {{ $counter == 1 || $counter%2 == 1 ? '' : 'order-sm-1' }}">
+        <div class="w-100" id="caro">
+          <div id="carousel-{{ $index }}" class="carousel slide w-100" data-ride="carousel">
+            <div class="carousel-inner">
+              @foreach ($agriculture->agriproduct_images as $key => $image)
+                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                  <img class="w-100" src="/storage/{{ $agriculture->directory }}/{{ $image->file_name }}">          
+                </div>  
+              @endforeach
+            </div>
+            <a class="carousel-control-prev" href="#carousel-{{ $index }}" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-{{ $index }}" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
 </div>
 
+<br>
+<br>
+<br>
+<br>
+@endforeach
 
-
-
-</section>
-
-</div>
-</div>
-
-</div>
 </div>
 
     

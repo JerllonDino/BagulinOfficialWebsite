@@ -20,6 +20,7 @@ class CreateTourismAndAgriculture extends Migration
             $table->text('spot_description');
             $table->string('spot_location');
             $table->text('spot_geolocation');
+            $table->string('directory');
             $table->timestamps();
         });
 
@@ -28,7 +29,6 @@ class CreateTourismAndAgriculture extends Migration
             $table->foreignId('tourism_id')->constrained()->onDelete('cascade');
             $table->integer('order')->default(0);
             $table->text('file_name');
-            $table->string('directory');
             $table->timestamps();
         });
 
@@ -36,7 +36,9 @@ class CreateTourismAndAgriculture extends Migration
             $table->id();
             $table->integer('order')->default(0);
             $table->string('product_name');
+            $table->string('product_location');
             $table->text('product_description');
+            $table->string('directory');
             $table->timestamps();
         });
 
@@ -45,7 +47,6 @@ class CreateTourismAndAgriculture extends Migration
             $table->foreignId('agriculture_id')->constrained()->onDelete('cascade');
             $table->integer('order')->default(0);
             $table->text('file_name');
-            $table->string('directory');
             $table->timestamps();
         });
     }

@@ -67,13 +67,13 @@
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="form-group">
-                            <label for="spot_description">Description</label>
-                            <textarea name="spot_description" class="form-control" cols="30" rows="10"></textarea>
-                        </div>
-                        <div class="form-group">
                             <label for="spot_location">Location</label>
                             <input type="text" class="form-control" name="spot_location" required>
                             <div class="invalid-feedback"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="spot_description">Description</label>
+                            <textarea name="spot_description" class="form-control" cols="30" rows="10"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="spot_geolocation">Geolocation</label>
@@ -166,7 +166,7 @@ $('#uploaded-images').on('click', '.delete-image', function() {
     if (confirm('Are you sure?')) {
       id = $(this).attr('data-id');
       $.ajax({
-        url: '{{ route("tourism.deleteImage") }}',
+        url: '{{ route("tourism.delete_image") }}',
         method: 'DELETE',
         data: {id},
         beforeSend: function() {
@@ -245,7 +245,7 @@ $('#uploaded-images').on('click', '.delete-image', function() {
                 html = `
                     <li class="list-group-item" data-filename="${element.file_name}">
                         <div class="float-right"><i class="fas fa-times mr-2 delete-images-db" data-id="`+element.id+`"></i></div>
-                        <div class="float-left"><img src="/storage/`+ element.directory +`/`+ element.file_name +`" alt="img" style="width: 100%"></img>${element.file_name}</div>
+                        <div class="float-left"><img src="/storage/`+ response.directory +`/`+ element.file_name +`" alt="img" style="width: 100%"></img>${element.file_name}</div>
                     </li>
                 `;
                 $('#uploaded-images').append(html);
@@ -275,7 +275,7 @@ $('#uploaded-images').on('click', '.delete-image', function() {
             }
         }
         $.ajax({
-            url: '{{ route("tourism.deleteSpot") }}',
+            url: '{{ route("tourism.delete_spot") }}',
             method: 'DELETE',
             data: { ids: checks },
             beforeSend: function() {

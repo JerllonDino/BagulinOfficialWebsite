@@ -34,54 +34,53 @@
     
   </div>
 
-  <!-- <hr> -->
-@foreach ($tourisms as $tourism)
-    
-
+@foreach ($tourisms as $index => $tourism)
+  @php
+      $counter = $index + 1;
+  @endphp
   <div class="row">
-    <div class="col-sm-6" id="content">
-     <section>
-
-      <h4 class="mb-0">{{ $tourism->spot_name }}</h4>
-      <h6 class="mb-3"><small>{{ $tourism->spot_location }}</small></h6>
-      <p>
-       {{ $tourism->spot_description }}
-     </p>
-   </section>
-    <div class="row-fluid">
-      <div class="span8">
-        {!! $tourism->spot_geolocation !!}     
+      <div class="col-sm-6 {{ $counter == 1 || $counter%2 == 1 ? '' : 'order-sm-12' }}" id="content">
+        <section>
+            <h4 class="mb-0">{{ $tourism->spot_name }}</h4>
+            <h6 class="mb-3"><small>{{ $tourism->spot_location }}</small></h6>
+            <p>
+              {{ $tourism->spot_description }}
+            </p>
+        </section>
+        <div class="row-fluid">
+          <div class="span8">
+            {!! $tourism->spot_geolocation !!}     
+          </div>
+        </div>
       </div>
-    </div>
-  
 
-
-</div>
-<div class="col-sm-6">
- <div class="container w-100" id="caro">
-  <div id="carouselExampleIndicators" class="carousel slide w-100" data-ride="carousel">
-
-    <div class="carousel-inner">
-      @foreach ($tourism->tourism_images as $key => $image)
-        <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-          <img class="w-100" src="/storage/{{ $image->directory }}/{{ $image->file_name }}">          
-        </div>  
-      @endforeach
-    </div>
-    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-  </div>
-</div>
-</div>
+      <div class="col-sm-6 {{ $counter == 1 || $counter%2 == 1 ? '' : 'order-sm-1' }}">
+        <div class="w-100" id="caro">
+          <div id="carousel-{{ $index }}" class="carousel slide w-100" data-ride="carousel">
+            <div class="carousel-inner">
+              @foreach ($tourism->tourism_images as $key => $image)
+                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                  <img class="w-100" src="/storage/{{ $tourism->directory }}/{{ $image->file_name }}">          
+                </div>  
+              @endforeach
+            </div>
+            <a class="carousel-control-prev" href="#carousel-{{ $index }}" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-{{ $index }}" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+          </div>
+        </div>
+      </div>
 </div>
 
-<hr>
+<br>
+<br>
+<br>
+<br>
 @endforeach
 </div>
     

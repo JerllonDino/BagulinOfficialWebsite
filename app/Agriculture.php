@@ -11,7 +11,9 @@ class Agriculture extends Model
     protected $fillable = [
         'order',
         'product_name',
+        'product_location',
         'product_description',
+        'directory'
     ];
     
     public function agriproduct_images()

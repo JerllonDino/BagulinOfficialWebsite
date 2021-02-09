@@ -13,7 +13,8 @@ class Tourism extends Model
         'spot_name',
         'spot_description',
         'spot_location',
-        'spot_geolocation'
+        'spot_geolocation',
+        'directory'
     ];
 
     public function tourism_images()

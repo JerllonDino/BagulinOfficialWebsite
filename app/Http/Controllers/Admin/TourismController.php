@@ -27,8 +27,12 @@ class TourismController extends Controller
             'spot_geolocation' => 'required'
         ]);
 
-        // dd($request->spot_images);
+        $directory = 'touristSpotImages/' . preg_replace('/\s+/', '', $request->spot_name);
+        $spot = Tourism::find($request->id);
 
+        if ($spot) {
+            $directory = $spot->directory;
+        }
 
         $tourism = Tourism::updateOrCreate(
             [
@@ -39,7 +43,7 @@ class TourismController extends Controller
             'spot_description' => $request->spot_description,
             'spot_location' => $request->spot_location,
             'spot_geolocation' => $request->spot_geolocation,
-            'order' => 0
+            'directory' => $directory
         ]);
         
         if($request->spot_images){
@@ -51,18 +55,12 @@ class TourismController extends Controller
                 // dd($image);
                 $decoded = $this->decodeBase64($image['base64']);
                 $fileName =  time() . rand(11, 99) . '_' . str_replace('_', '-', $image['fileName']);
-                $image = TourismImages::where('tourism_id', $tourism->id)->first();
-                $directory = 'touristSpotImages/' . preg_replace('/\s+/', '', $request->spot_name);;
-                if ($image) {
-                    $directory = $image->directory;
-                }
 
                 if ($decoded !== FALSE) {
                     $tourismImages = TourismImages::insert([
                         'tourism_id' => $tourism->id,
                         'order' => $key,
-                        'file_name' => $fileName,
-                        'directory' => $directory
+                        'file_name' => $fileName
                     ]);
                     $result = Storage::disk('public')->put($directory . '/' . $fileName, $decoded['contents']);
                 }
@@ -115,9 +113,8 @@ class TourismController extends Controller
     {
         if (!empty($request->ids)) {
             foreach ($request->ids as $id) {
-                $tourism = Tourism::where('id', $id)->with('tourism_images')->first();
-                $image = $tourism->tourism_images;
-                Storage::deleteDirectory("/public/". $image[0]->directory);
+                $tourism = Tourism::find($id);
+                Storage::deleteDirectory("/public/". $tourism->directory);
                 $tourism->delete();
             }
         }
@@ -127,7 +124,7 @@ class TourismController extends Controller
     {
         if ($request->id) {
             $image = TourismImages::where('id', $request->id)->with('tourisms')->first();
-            Storage::disk('public')->delete($image->directory."/".$image->file_name);
+            Storage::disk('public')->delete($image->tourisms->directory."/".$image->file_name);
             $image->delete();
         }
     }
