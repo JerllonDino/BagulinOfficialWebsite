@@ -32,7 +32,7 @@
 <div class="container">
     <div class="row">
         <div class="col mx-auto">
-            <h2><i class="fas fa-user"></i> Tourist Spots</h2>
+            <h2><i class="fas fa-map-marker-alt"></i> Tourist Spots</h2>
             <hr />
             <button class="btn btn-primary mb-3" data-toggle="modal" data-target="#save-modal">Add new tourist spot</button>
             <table class="table small table-bordered table-hover" id="spot-table">
