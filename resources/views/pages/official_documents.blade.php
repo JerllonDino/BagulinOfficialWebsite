@@ -30,7 +30,7 @@
     }
 
     #seal{
-        width: 50%;
+        width: 100%;
     }
 
     .plus:after {
@@ -47,15 +47,14 @@
 @section('content')
     
     <div class="container my-5">
-        <div class="row align-items-center">
-            <div class="col-lg-4 col-md-4 col-sm-12 my-3">
+        <div class="row justify-content-center">
+            <div class="col-lg-2 col-md-4 col-sm-4 col-4 my-3">
                 <img src="img/transparency-seal.png" id="seal" class="mx-auto d-block">
             </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 my-3">
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-sm-12 my-3">
                 <h3 class="card-header text-white text-center mx-auto d-block" style="min-width: 100% !important;">OFFICIAL DOCUMENTS</h3>
-            </div>
-            <div class="col-lg-4 col-md-4 col-sm-12 my-3 d-none d-md-block">
-                <img src="img/transparency-seal.png" id="seal" class="mx-auto d-block">
             </div>
         </div>
 

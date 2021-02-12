@@ -23,8 +23,7 @@ class TourismController extends Controller
         $request->validate([
             'spot_name' => 'required',
             'spot_description' => 'required',
-            'spot_location' => 'required',
-            'spot_geolocation' => 'required'
+            'spot_location' => 'required'
         ]);
 
         $directory = 'touristSpotImages/' . preg_replace('/\s+/', '', $request->spot_name);

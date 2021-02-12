@@ -30,34 +30,22 @@
     }
 
     #seal{
-        position: absolute;
-        top: 24%;
-        right: 2%;
-        width: 10%;
+        width: 100%;
     }
 
-    @media (max-width: 992px) {
-        #seal{
-            top:25%;
-            width: 13%;
-        }
-
-    }
-    @media (max-width: 768px) {
-        #seal{
-            top:10%;
-            width: 15%;
-        }
-    }
 </style>
 @endsection
 
 @section('content')
-    <img src="img/transparency-seal.png" id="seal">
     <div class="container my-5">
-        <div class="row">
-            <div class="col-12">
-                <h3 class="mb-5 mt-1 card-header text-white text-center mx-auto d-block" >Citizen's Charter</h3>
+        <div class="row justify-content-center">
+            <div class="col-lg-2 col-md-4 col-sm-4 col-4 my-3">
+                <img src="img/transparency-seal.png" id="seal" class="mx-auto d-block">
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-sm-12 my-3">
+                <h3 class="card-header text-white text-center mx-auto d-block" style="min-width: 100% !important;">Citizen's Charter</h3>
             </div>
         </div>
 

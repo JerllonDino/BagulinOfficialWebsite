@@ -77,7 +77,7 @@
                         </div>
                         <div class="form-group">
                             <label for="spot_geolocation">Geolocation</label>
-                            <textarea class="form-control" name="spot_geolocation" cols="30" rows="10" required></textarea>
+                            <textarea class="form-control" name="spot_geolocation" cols="30" rows="10"></textarea>
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="form-group">

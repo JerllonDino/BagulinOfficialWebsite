@@ -49,7 +49,7 @@
         </section>
         <div class="row-fluid">
           <div class="span8">
-            {!! $tourism->spot_geolocation !!}     
+            {!! $tourism->spot_geolocation ? $tourism->spot_geolocation : '' !!}     
           </div>
         </div>
       </div>

@@ -20,6 +20,12 @@
                     <i class="fas fa-eye mr-2"></i><span id="page-views-today">0</span>
                 </h2>
             </div>
+            {{-- <div class="alert alert-light fit-content float-right">
+                <p>Edit Home Group Photo </p>
+                <h2 class="text-primary text-center">
+                    <i class="fas fa-edit mr-2"></i>
+                </h2>
+            </div> --}}
             <canvas id="canvas"></canvas>
         </div>
     </div>

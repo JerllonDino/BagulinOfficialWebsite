@@ -19,7 +19,7 @@ class CreateTourismAndAgriculture extends Migration
             $table->string('spot_name');
             $table->text('spot_description');
             $table->string('spot_location');
-            $table->text('spot_geolocation');
+            $table->text('spot_geolocation')->nullable();
             $table->string('directory');
             $table->timestamps();
         });
