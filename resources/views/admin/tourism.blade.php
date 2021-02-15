@@ -77,7 +77,8 @@
                         </div>
                         <div class="form-group">
                             <label for="spot_geolocation">Geolocation</label>
-                            <textarea class="form-control" name="spot_geolocation" cols="30" rows="10"></textarea>
+                            <textarea class="form-control" id="geolocation" cols="30" rows="10"></textarea>
+                            <input type="hidden" name="spot_geolocation">
                             <div class="invalid-feedback"></div>
                         </div>
                         <div class="form-group">
@@ -240,7 +241,6 @@ $('#uploaded-images').on('click', '.delete-image', function() {
 
             },
         }).done(function(response){
-            console.log(response);
             response.tourism_images.forEach(element => {
                 html = `
                     <li class="list-group-item" data-filename="${element.file_name}">
@@ -252,6 +252,9 @@ $('#uploaded-images').on('click', '.delete-image', function() {
             });
             $saveForm.find("[name='input_images']");
             $.each(response, function( index, value ) {
+                if(index == "spot_geolocation"){
+                    $('#geolocation').val('<iframe src="'+value+'" width="100%" height="150" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>');
+                }
                 $saveForm.find("[name='"+index+"']").val(value);
             });
 
@@ -263,6 +266,13 @@ $('#uploaded-images').on('click', '.delete-image', function() {
         });
 
       }
+    });
+
+    $saveForm.submit(function(e){
+        e.preventDefault();
+        var geo_url = $($("#geolocation").val()).attr('src');
+        $(this).find('[name="spot_geolocation"]').val(geo_url);
+        $saveForm[0].submit();
     });
 
     $('#delete').click(function() {

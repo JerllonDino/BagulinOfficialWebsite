@@ -49,7 +49,9 @@
         </section>
         <div class="row-fluid">
           <div class="span8">
-            {!! $tourism->spot_geolocation ? $tourism->spot_geolocation : '' !!}     
+            @if ($tourism->spot_geolocation)
+              <iframe src="{{ $tourism->spot_geolocation }}" width="100%" height="150" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+            @endif
           </div>
         </div>
       </div>
