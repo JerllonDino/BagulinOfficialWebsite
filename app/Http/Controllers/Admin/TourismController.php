@@ -85,7 +85,7 @@ class TourismController extends Controller
         $pos = strpos($base64, ';');
         // dd($pos);
         $extension = explode('/', substr($base64, 0, $pos));
-        $extension = $extension[1];
+        $extension = isset($extension[1]) ? $extension[1] : 'wala';
         // dd(explode('/', substr($base64, 0, $pos)));
 
         if (in_array($extension, $allowed_extensions)) {
