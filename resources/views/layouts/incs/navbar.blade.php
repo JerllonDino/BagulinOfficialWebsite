@@ -86,7 +86,7 @@
 			</ul>
 			</li>
 			<li class="nav-item">
-				<a class="nav-link text-white" href="/official-documents">
+				<a class="nav-link text-white" href="/transparency">
 					Transparency
 				</a>
 			</li>

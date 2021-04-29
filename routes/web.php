@@ -46,7 +46,7 @@ Route::prefix('agri-tour')->group(function () {
     Route::get('tourism', 'TourismController@index')->name('tourism.home_index');
 });
 
-Route::get('/official-documents', 'DocumentsController@index');
+Route::get('/transparency', 'DocumentsController@index');
 Route::get('/get-documents', 'DocumentsController@getFiles');
 
 Route::prefix('bagulinDeLaunion/admin')->group(function () {
@@ -90,7 +90,7 @@ Route::prefix('bagulinDeLaunion/admin')->group(function () {
     Route::delete('/delete-document-category', 'Admin\OfficialDocuments@deleteCategory');
     Route::put('/rename-document-category', 'Admin\OfficialDocuments@renameCategory');
 
-    Route::prefix('citizens-charter')->group(function() {
+    Route::prefix('citizens-charter')->group(function () {
         Route::get('/{category?}', 'Admin\CitizensCharterController@index');
         Route::post('/upload', 'Admin\CitizensCharterController@save');
         Route::delete('/delete', 'Admin\CitizensCharterController@delete');
@@ -108,7 +108,7 @@ Route::prefix('bagulinDeLaunion/admin')->group(function () {
         Route::delete('/delete/official/{id}', 'Admin\OfficialController@deleteOfficial');
     });
 
-    Route::prefix('tourism')->group(function(){
+    Route::prefix('tourism')->group(function () {
         Route::get('/', 'Admin\TourismController@index')->name('tourism.index');
         Route::post('/store', 'Admin\TourismController@store')->name('tourism.store');
         Route::post('/get', 'Admin\TourismController@getDatatables')->name('tourism.get');
@@ -117,7 +117,7 @@ Route::prefix('bagulinDeLaunion/admin')->group(function () {
         Route::delete('/delete/image', 'Admin\TourismController@deleteImage')->name('tourism.delete_image');
     });
 
-    Route::prefix('agriculture')->group(function(){
+    Route::prefix('agriculture')->group(function () {
         Route::get('/', 'Admin\AgricultureController@index')->name('agriculture.index');
         Route::post('/store', 'Admin\AgricultureController@store')->name('agriculture.store');
         Route::post('/get', 'Admin\AgricultureController@getDatatables')->name('agriculture.get');
@@ -126,7 +126,7 @@ Route::prefix('bagulinDeLaunion/admin')->group(function () {
         Route::delete('/delete/image', 'Admin\AgricultureController@deleteImage')->name('agriculture.delete_image');
     });
 
-    Route::prefix('municipal-profile')->group(function() {
+    Route::prefix('municipal-profile')->group(function () {
         Route::get('/{category?}', 'Admin\MunicipalProfileController@index');
         Route::post('/upload', 'Admin\MunicipalProfileController@save');
         Route::delete('/delete', 'Admin\MunicipalProfileController@delete');

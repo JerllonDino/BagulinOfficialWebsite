@@ -2,7 +2,7 @@
 
 @section('styles')
 <style>
-    #accordion .card-header{
+    #accordion .card-header {
         background: none;
         border: none;
         padding: 0 !important;
@@ -11,7 +11,7 @@
     }
 
     #accordion .document {
-        box-shadow: 0px 0px 5px rgba(0,0,0,1);
+        box-shadow: 0px 0px 5px rgba(0, 0, 0, 1);
     }
 
     #accordion .btn {
@@ -19,6 +19,7 @@
         background: #dc4646 !important;
         border-color: #dc4646 !important;
     }
+
     #accordion .btn:hover {
         border-radius: 0 !important;
         background: #b93c3c !important;
@@ -29,7 +30,7 @@
         margin-bottom: 0 !important;
     }
 
-    #seal{
+    #seal {
         width: 100%;
     }
 
@@ -40,55 +41,57 @@
     .minus:after {
         content: ' \002D';
     }
-
 </style>
 @endsection
 
 @section('content')
-    
-    <div class="container my-5">
-        <div class="row justify-content-center">
-            <div class="col-lg-2 col-md-4 col-sm-4 col-4 my-3">
-                <img src="img/transparency-seal.png" id="seal" class="mx-auto d-block">
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-6 col-sm-12 my-3">
-                <h3 class="card-header text-white text-center mx-auto d-block" style="min-width: 100% !important;">OFFICIAL DOCUMENTS</h3>
-            </div>
-        </div>
 
-        <div class="row" id="accordion" role="tablist">
-            @foreach ($categories as $key => $category)
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header" role="tab" id="headingOne">
-                        <button class="btn btn-primary btn-block" type="button" data-toggle="collapse" data-target="#collapse-{{$key}}" aria-expanded="false" aria-controls="collapseExample">
-                            <h3 class="mb-0 float-left">{{ucwords($category->category)}}</h3>
-                            <h3 class="mb-0 float-right plus indicator"></h3>
-                        </button>
-                    </div>
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-2 col-md-4 col-sm-4 col-4 my-3">
+            <img src="img/transparency-seal.png" id="seal" class="mx-auto d-block">
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-sm-12 my-3">
+            <h3 class="card-header text-white text-center mx-auto d-block" style="min-width: 100% !important;">
+                Transparency</h3>
+        </div>
+    </div>
 
-                    <div id="collapse-{{$key}}" class="collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#accordion" data-id="{{$category->id}}">
-                        <div class="card-body bg-secondary">
-                            <div class="row documents" data-loaded="false">
-                                <div class="col-12">
-                                    <h3 class="text-secondary text-center my-5"><i class="fas fa-spin fa-spinner"></i></h3>
-                                </div>
+    <div class="row" id="accordion" role="tablist">
+        @foreach ($categories as $key => $category)
+        <div class="col-12">
+            <div class="card">
+                <div class="card-header" role="tab" id="headingOne">
+                    <button class="btn btn-primary btn-block" type="button" data-toggle="collapse"
+                        data-target="#collapse-{{$key}}" aria-expanded="false" aria-controls="collapseExample">
+                        <h3 class="mb-0 float-left">{{ucwords($category->category)}}</h3>
+                        <h3 class="mb-0 float-right plus indicator"></h3>
+                    </button>
+                </div>
+
+                <div id="collapse-{{$key}}" class="collapse" role="tabpanel" aria-labelledby="headingOne"
+                    data-parent="#accordion" data-id="{{$category->id}}">
+                    <div class="card-body bg-secondary">
+                        <div class="row documents" data-loaded="false">
+                            <div class="col-12">
+                                <h3 class="text-secondary text-center my-5"><i class="fas fa-spin fa-spinner"></i></h3>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            @endforeach
         </div>
-
+        @endforeach
     </div>
+
+</div>
 @endsection
 
 @section('scripts')
 <script>
-$('.collapse').on('hide.bs.collapse', function () {
+    $('.collapse').on('hide.bs.collapse', function () {
     $(this).parent().find('.indicator').removeClass('minus').addClass('plus');
 })
 $('.collapse').on('show.bs.collapse', function () {
