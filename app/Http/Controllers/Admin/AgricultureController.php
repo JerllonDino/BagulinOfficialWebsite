@@ -38,17 +38,18 @@ class AgricultureController extends Controller
                 'id' => $request->id
             ],
             [
-            'product_name' => $request->product_name,
-            'product_location' => $request->product_location,
-            'product_description' => $request->product_description,
-            'directory' => $directory
-        ]);
-        
-        if($request->product_images){
+                'product_name' => $request->product_name,
+                'product_location' => $request->product_location,
+                'product_description' => $request->product_description,
+                'directory' => $directory
+            ]
+        );
+
+        if ($request->product_images) {
 
             $images = $request->product_images;
 
-            foreach($images as $key => $image) {
+            foreach ($images as $key => $image) {
                 $image = json_decode($image, true);
                 $decoded = $this->decodeBase64($image['base64']);
                 $fileName =  time() . rand(11, 99) . '_' . str_replace('_', '-', $image['fileName']);
@@ -64,7 +65,6 @@ class AgricultureController extends Controller
             }
         }
         return redirect()->route('agriculture.index');
-        
     }
 
     public function getDatatables()
@@ -78,7 +78,7 @@ class AgricultureController extends Controller
     {
         // dd($base64);
         $allowed_extensions = ['png', 'jpeg', 'jpg'];
-        
+
         // get file type
         $pos = strpos($base64, ';');
         // dd($pos);
@@ -90,7 +90,7 @@ class AgricultureController extends Controller
             // decode base64
             $base64_str = substr($base64, strpos($base64, ',') +  1);
             $image = base64_decode($base64_str);
-        }else{
+        } else {
             Session::put('error', 'The file you uploaded is not a valid image.');
             return redirect()->route('agriculture.index');
         }
@@ -111,7 +111,7 @@ class AgricultureController extends Controller
         if (!empty($request->ids)) {
             foreach ($request->ids as $id) {
                 $agriculture = Agriculture::find($id);
-                Storage::deleteDirectory("/public/". $agriculture->directory);
+                Storage::deleteDirectory("/public/" . $agriculture->directory);
                 $agriculture->delete();
             }
         }
@@ -121,7 +121,7 @@ class AgricultureController extends Controller
     {
         if ($request->id) {
             $image = AgriProductImages::where('id', $request->id)->with('agriculture')->first();
-            Storage::disk('public')->delete($image->agriculture->directory."/".$image->file_name);
+            Storage::disk('public')->delete($image->agriculture->directory . "/" . $image->file_name);
             $image->delete();
         }
     }
