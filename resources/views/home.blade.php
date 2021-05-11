@@ -53,7 +53,7 @@
               <img class="img-fluid" src="img/8.jpg">
             </div> --}}
             @foreach ($tourism as $image)
-            @if (count($image->tourism_images > 0))
+            @if (count($image->tourism_images) > 0)
             <div class="carousel-item ">
               <img class="img-fluid"
                    src="/storage/{{ $image->directory }}/{{ $image->tourism_images[0]->file_name }}">
