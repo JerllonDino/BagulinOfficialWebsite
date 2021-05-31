@@ -13,7 +13,7 @@ class OfficialController extends Controller
 {
     public function __construct()
     {
-      $this->middleware('auth');
+        $this->middleware('auth');
     }
 
     public function index()
@@ -39,7 +39,8 @@ class OfficialController extends Controller
         );
     }
 
-    public function saveOfficial(Request $request, $count = null) {
+    public function saveOfficial(Request $request, $count = null)
+    {
         $request->validate([
             'first_name' => 'required|string',
             'middle_name' => 'required|string',
@@ -62,18 +63,18 @@ class OfficialController extends Controller
             $decodedWelcome = $this->decodeBase64($welcomeBase);
             $welcomeImageName = $addString . "welcome-" . $request->position . ".png";
             if ($request->id) {
-                Storage::disk('s3')->delete( 'officials/' . $request->position . '/' . $welcomeImageName);
+                Storage::disk('s3')->delete('officials/' . $request->position . '/' . $welcomeImageName);
             }
-            Storage::disk('s3')->put( 'officials/' . $request->position . '/' . $welcomeImageName, $decodedWelcome['contents']);
+            Storage::disk('s3')->put('officials/' . $request->position . '/' . $welcomeImageName, $decodedWelcome['contents']);
         }
 
-        if($aboutBase){
+        if ($aboutBase) {
             $decodedAbout = $this->decodeBase64($aboutBase);
             $aboutImageName = $addString . "about-" . $request->position . ".png";
             if ($request->id) {
-                Storage::disk('s3')->delete( 'officials/' . $request->position . '/' . $aboutImageName);
+                Storage::disk('s3')->delete('officials/' . $request->position . '/' . $aboutImageName);
             }
-            Storage::disk('s3')->put( 'officials/' . $request->position . '/' . $aboutImageName, $decodedAbout['contents']);
+            Storage::disk('s3')->put('officials/' . $request->position . '/' . $aboutImageName, $decodedAbout['contents']);
         }
 
         $data = [
@@ -91,18 +92,17 @@ class OfficialController extends Controller
 
         if (isset($request->id)) {
             Official::where('id', $request->id)->update($data);
-        }else{
+        } else {
             Official::insert($data);
         }
 
         return response(200);
-
     }
 
     public function getOfficialsByPosition($position)
     {
         $official = Official::where('position', $position)->get();
-        $html = view('admin/officials-view', ['officials' => $official, 'max' => $position == 'councilor' ? 8 : 10 ]);
+        $html = view('admin/officials-view', ['officials' => $official, 'max' => $position == 'councilor' ? 11 : 10]);
         return response()->json(['html' => $html->render()]);
     }
 
@@ -116,14 +116,13 @@ class OfficialController extends Controller
     {
         $official = Official::where('id', $id)->first();
         if ($official->about_image) {
-            Storage::disk('s3')->delete('officials/'.$official->position.'/'.$official->about_image);
+            Storage::disk('s3')->delete('officials/' . $official->position . '/' . $official->about_image);
         }
         if ($official->welcome_image) {
-            Storage::disk('s3')->delete('officials/'.$official->position.'/'.$official->welcome_image);
+            Storage::disk('s3')->delete('officials/' . $official->position . '/' . $official->welcome_image);
         }
 
         $official->delete();
         return response()->json(['message' => $official], 200);
     }
-
 }
