@@ -29,6 +29,9 @@
 
       </div>
     </div>
+    <div class="col-md-3 align-self-center">
+      <a href="/transparency"><img class="img-fluid mx-auto " style="" src="{{asset('img/transparency-seal.png')}}" alt=""></a>
+    </div>
   </div>
   <div class="row">
     <div class="col-md-9">
@@ -141,8 +144,8 @@
     </div>
     <!--Left-->
 
-    <div class="col-md-3 pt-3 pt-lg-0">
-      <div class="sticky-top">
+    <div class="col-md-3 pt-lg-0">
+      <div>
         <!-- Anouncements -->
         {{-- <div class="bg-light" id="anouncements">
           <h6 class="p-2 text-white text-center mb-1 card-header">Announcements</h6>
@@ -156,7 +159,7 @@
         </div> --}}
 
         <!-- Quick Facts -->
-        <div class="bg-light mt-3">
+        <div class="bg-light">
           <h6 class="p-2 text-white text-center mb-0 mb-3 card-header">Quick Facts</h6>
           <div class=""
                id="facts">
