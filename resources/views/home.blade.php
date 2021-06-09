@@ -39,8 +39,7 @@
 
       </div>
       <!-- Carousel -->
-      <div class="container col-12"
-           id="caro">
+      <div id="caro">
         <div id="carouselExampleIndicators"
              class="carousel slide w-100"
              data-ride="carousel">
