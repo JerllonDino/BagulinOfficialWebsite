@@ -10,7 +10,6 @@
           @foreach($announcements as $key => $announcement)
           <div class="carousel-item @if($key == 0) active @endif" style="background-image: url('https://bagulin.s3-ap-southeast-1.amazonaws.com/announcements/{{$announcement->image}}')">
             <div class="carousel-caption d-block mx-auto">
-              {{count($announcements)}}
               <h5><a class="text-light" href="read/{{$announcement->slug}}">{{$announcement->title}}</h5>
             </div>
           </div>
