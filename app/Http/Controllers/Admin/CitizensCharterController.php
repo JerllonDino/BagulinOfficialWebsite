@@ -16,12 +16,26 @@ class CitizensCharterController extends Controller
       $this->middleware('auth');
     }
 
-    public function index($category = 'forms') {
+    public function index(Request $request, $category = 'forms') {
         $category = strtolower($category);
         $id = $this->get_index($category);
 
+        $orderBy = 'date';
+        if ($request->get('order_by')) {
+            $orderBy = $request->get('order_by');
+        }
+        
+
+        if ($orderBy == 'date') {
+            $orderBy = 'created_at';
+        } else if ($orderBy == 'name') {
+            $orderBy = 'file_name';
+        } else {
+            $orderBy = 'created_at';
+        }
+
         if ( $id !== FALSE ) {
-            $documents = CitizensCharterFile::select('id', 'file_name')->where('category_id', $id)->paginate();
+            $documents = CitizensCharterFile::select('id', 'file_name')->where('category_id', $id)->orderBy($orderBy)->paginate();
             return view('admin/citizens-charter-management')
                     ->with('category', ucfirst($category))
                     ->with('documents', $documents);

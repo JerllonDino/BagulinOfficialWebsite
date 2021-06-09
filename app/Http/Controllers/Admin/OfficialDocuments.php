@@ -16,14 +16,30 @@ class OfficialDocuments extends Controller
       $this->middleware('auth');
     }
 
-    public function index($category = NULL) {
+    public function index(Request $request, $category = NULL) {
         $category_name = DocumentCategory::select('id', 'category')->where('id', $category)->first();
+        
+        $orderBy = 'date';
+        if ($request->get('order_by')) {
+            $orderBy = $request->get('order_by');
+        }
+        
+
+        if ($orderBy == 'date') {
+            $orderBy = 'created_at';
+        } else if ($orderBy == 'name') {
+            $orderBy = 'file_name';
+        } else {
+            $orderBy = 'created_at';
+        }
+
         $official_documents = OfficialDocument::select('id', 'category_id', 'file_name')
                                             ->when($category, function($query) use ($category) {
                                                 return $query->where('category_id', $category);
                                             })
+                                            ->orderBy($orderBy)
                                             ->paginate(10);
-
+        
         $document_categories = DocumentCategory::select('id','category')->get();
 
         return view('admin/documents-management')

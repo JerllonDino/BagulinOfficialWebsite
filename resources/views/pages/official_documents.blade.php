@@ -144,7 +144,7 @@ $('.collapse').on('show.bs.collapse', function () {
                 for (i = 0; i < res.length; i++) {
                     data = res[i];
                     html += `
-                        <div class="col-lg-3 col-md-4 mb-4">
+                        <div class="col-lg-3 col-md-4 mb-4 ${data.file_name.split('_')[1]}">
                             <div class="card document h-100">
                                 <div class="card-body">
                                     <h1 class="text-center"><i class="fas fa-file-alt "></i></h1>

@@ -2,8 +2,35 @@
 
 @section('content')
 <!-- Body -->
-<div id="body"
-     class="container pt-3 pb-5 small">
+<div id="body" class="container pt-3 pb-5 small">
+  <div class="row">
+    <div class="col-md-9">
+      <div id="announcementsCarousel" class="carousel slide my-4" data-ride="carousel">
+        <div class="carousel-inner">
+          @foreach($announcements as $key => $announcement)
+          <div class="carousel-item @if($key == 0) active @endif" style="background-image: url('https://bagulin.s3-ap-southeast-1.amazonaws.com/announcements/{{$announcement->image}}')">
+            <div class="carousel-caption d-block mx-auto">
+              {{count($announcements)}}
+              <h5><a class="text-light" href="read/{{$announcement->slug}}">{{$announcement->title}}</h5>
+            </div>
+          </div>
+          @endforeach
+        </div>
+        
+        @if(count($announcements) >  1)
+        <a class="carousel-control-prev" href="#announcementsCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#announcementsCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+        @endif
+
+      </div>
+    </div>
+  </div>
   <div class="row">
     <div class="col-md-9">
       <div>
@@ -117,28 +144,17 @@
 
     <div class="col-md-3 pt-3 pt-lg-0">
       <div class="sticky-top">
-
         <!-- Anouncements -->
-        <div class="bg-light"
-             id="anouncements">
+        {{-- <div class="bg-light" id="anouncements">
           <h6 class="p-2 text-white text-center mb-1 card-header">Announcements</h6>
           @if (count($announcements) == 0)
           <div class="alert alert-warning mt-2">No announcements yet.</div>
           @endif
-          <ul class="list-group">
-            @foreach($announcements as $announcement)
-            <li class="list-group-item">
-              <h5><a class="text-primary"
-                   href="/read/{{$announcement->slug}}">{{$announcement->title}}</a></h5>
-              <p class="text-secondary">{{$announcement->created_at}}</p>
-            </li>
-            @endforeach
-          </ul>
+          
           @if (count($announcements) > 0)
-          <a href="/announcements"
-             class="btn btn-dark btn-block">More</a>
+          <a href="/announcements" class="btn btn-dark btn-block my-3">More</a>
           @endif
-        </div>
+        </div> --}}
 
         <!-- Quick Facts -->
         <div class="bg-light mt-3">

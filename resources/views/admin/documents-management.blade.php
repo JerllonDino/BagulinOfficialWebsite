@@ -96,6 +96,14 @@
       </div>
       @endif
 
+      <div class="row my-3">
+        <select id="orderBy" class="form-control col-lg-3">
+          <option disabled selected>Order By</option>
+          <option value="date">Date</option>
+          <option value="name">File Name</option>
+        </select>
+      </div>
+
       <div class="row" id="docs">
         @if(count($documents) == 0)
         <div class="alert alert-light mt-3">
@@ -222,6 +230,12 @@
 
 @section('scripts')
 <script>
+  // Order By
+  $('#orderBy').on('change', function() {
+    order = $(this).val();
+    window.location = '?order_by=' + order;
+  })
+
   // File upload
   $('[name="documents"]').change(function() {
       var file = $(this);

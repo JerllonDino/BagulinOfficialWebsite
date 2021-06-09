@@ -308,3 +308,27 @@ hr {
 ._3-8w{
 	max-width: 50% !important;
 }
+
+#announcementsCarousel .carousel-item{
+	width: 100%;
+	background:#6c757d;
+	padding-top:40%;
+	background-size: cover;
+	background-position: center;
+	position: relative;
+	z-index: 2;
+}
+
+#announcementsCarousel .carousel-item:after{
+	content: "";
+	position: absolute;
+	top: 0; bottom: 0; left: 0; right: 0; 
+	background: rgba(0,0,0,0.5);
+	pointer-events: none;
+	z-index: 1;
+}
+
+#announcementsCarousel .carousel-control-next,
+#announcementsCarousel .carousel-control-prev {
+	z-index: 2;
+}
