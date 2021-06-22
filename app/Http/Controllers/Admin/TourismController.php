@@ -26,9 +26,9 @@ class TourismController extends Controller
             'spot_location' => 'required'
         ]);
 
-        $folderName = str_replace(' ', '-', $request->spot_name);
+        $folderName = str_replace(' ', '', $request->spot_name);
 
-        $directory = 'touristSpotImages/' . preg_replace('/[^A-Za-z0-9\-]/', '', $request->spot_name);
+        $directory = 'touristSpotImages/' . preg_replace('/[^A-Za-z0-9\-]/', '', $folderName);
         $spot = Tourism::find($request->id);
 
         if ($spot) {
