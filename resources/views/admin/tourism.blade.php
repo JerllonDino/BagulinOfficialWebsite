@@ -51,6 +51,9 @@
     <div class="modal-dialog" role="document">
         
             <div class="modal-content">
+                <div id="modal-loader" style="width: 100%; height: 100%; position: absolute; background-color: rgba(255,255,255, 0.6); z-index:9">
+                    <h1 class="text-center mt-5"><i class="fas fa-spinner fa-spin"></i></h1>
+                </div>
                 <div class="modal-header">
                     <h5 class="modal-title"><span id="modal-type"></span> Tourist Spot</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -145,7 +148,7 @@
             <li class="list-group-item" data-filename="${fileName}">
                 <input type="hidden" name="spot_images[]" value=`+JSON.stringify(value)+`>
                 <div class="float-right"><i class="fas fa-times mr-2 delete-image"></i></div>
-                <div class="float-left"><img src="`+base64+`" alt="img" style="width: 100%"></img>${fileName}</div>
+                <div class="float-left"><img src="${base64}" alt="img" style="width: 100%"></img>${fileName}</div>
             </li>
           `;
           $('#uploaded-images').append(html);
@@ -230,6 +233,7 @@ $('#uploaded-images').on('click', '.delete-image', function() {
     $spotTable.on('click', 'tbody tr', function() {
       if (!$(this).find('td:eq(0)').hasClass('dataTables_empty')) {
         id = $(this).attr('data-id');
+        $saveModal.modal('show');
 
         $.ajax({
             url: '{{ route("tourism.get_spot") }}',
@@ -238,7 +242,7 @@ $('#uploaded-images').on('click', '.delete-image', function() {
                 id: id
             },
             beforeSend: function(){
-
+                $('#modal-loader').show();
             },
         }).done(function(response){
             response.tourism_images.forEach(element => {
@@ -258,11 +262,11 @@ $('#uploaded-images').on('click', '.delete-image', function() {
                 $saveForm.find("[name='"+index+"']").val(value);
             });
 
-            $saveModal.modal('show');
+            
         }).fail(function(error){
 
         }).always(function(){
-
+            $('#modal-loader').hide();
         });
 
       }
@@ -272,6 +276,7 @@ $('#uploaded-images').on('click', '.delete-image', function() {
         e.preventDefault();
         var geo_url = $($("#geolocation").val()).attr('src');
         $(this).find('[name="spot_geolocation"]').val(geo_url);
+        $('#modal-loader').show();
         $saveForm[0].submit();
     });
 
