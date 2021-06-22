@@ -31,7 +31,7 @@ class Announcements extends Controller
 
         $announcement = new Announcement;
         $announcement->title = $request->title;
-        $announcement->slug = time() . rand(11, 99) . '_' . str_replace(' ', '-', $announcement->title);
+        $announcement->slug = time() . rand(11, 99) . '_' . preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $announcement->title));
         $announcement->content = $this->dataready($request->announcement_content);
         $announcement->save();
 
@@ -66,7 +66,7 @@ class Announcements extends Controller
         $prefix = explode('_', $announcement->slug)[0];
         $announcement->title = $request->title;
 
-        $announcement->slug =  $prefix . '_' . str_replace(' ', '-', $announcement->title);
+        $announcement->slug =  $prefix . '_' . preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $announcement->title));
         $announcement->content = $this->dataready($request->update_content);
         $announcement->save();
         
