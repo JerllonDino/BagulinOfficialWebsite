@@ -55,7 +55,7 @@ class TourismController extends Controller
                 $image = json_decode($image, true);
                 // dd($image);
                 $decoded = $this->decodeBase64($image['base64']);
-                $fileName =  time() . rand(11, 99) . '_' . str_replace('_', '-', $image['fileName']);
+                $fileName =  time() . rand(11, 99) . '_' . str_replace(['-', ' '], '_', $image['fileName']);
 
                 if ($decoded !== FALSE) {
                     $tourismImages = TourismImages::insert([
