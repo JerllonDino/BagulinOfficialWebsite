@@ -51,7 +51,7 @@ class TourismController extends Controller
 
             $images = $request->spot_images;
             foreach($images as $key => $image) {
-                $image = json_decode($image, true, );
+                $image = json_decode($image, true);
                 $decoded = $this->decodeBase64($image['base64']);
                 $fileName =  time() . rand(11, 99) . '_' . str_replace('_', '-', $image['fileName']);
 
