@@ -50,12 +50,10 @@ class TourismController extends Controller
         if($request->spot_images){
 
             $images = $request->spot_images;
-
             foreach($images as $key => $image) {
-                $image = json_decode($image, true);
-                // dd($image);
+                $image = json_decode($image, true, );
                 $decoded = $this->decodeBase64($image['base64']);
-                $fileName =  time() . rand(11, 99) . '_' . str_replace(['-', ' '], '_', $image['fileName']);
+                $fileName =  time() . rand(11, 99) . '_' . str_replace('_', '-', $image['fileName']);
 
                 if ($decoded !== FALSE) {
                     $tourismImages = TourismImages::insert([

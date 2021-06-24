@@ -142,7 +142,7 @@
           base64 = e.currentTarget.result;
           var value = {
               'base64': base64,
-              'fileName': fileName
+              'fileName': fileName.replace(/[^A-Z0-9]+/ig, "_")
           };
           html = `
             <li class="list-group-item" data-filename="${fileName}">
