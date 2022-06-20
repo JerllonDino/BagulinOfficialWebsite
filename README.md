@@ -2,7 +2,7 @@
 ### Description
 - A CMS for the Government website of Bagulin
 ### Tools
-- Made with Laravel PHP and MySQL
+- Made with `Laravel PHP`, `jQuery`, `AJAX` and `MySQL`
 ### Responsibilities
 - Responsible for implementing and configuring node nlp to the parsed characters from the resume
-Created At September 2021
+###### Created At September 2021
